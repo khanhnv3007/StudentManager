@@ -15,6 +15,7 @@
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+
 @property (nonatomic) BOOL isAdmin;
 @property (nonatomic) BOOL isTeacher;
 @property (nonatomic) BOOL isStudent;

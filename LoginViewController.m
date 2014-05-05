@@ -65,6 +65,7 @@
 			self.isAdmin = YES;
             appdelegate.username = self.userNameTextField.text;
             appdelegate.password = self.passwordTextField.text;
+            appdelegate.isAdmin = YES;
 			return YES;
 		}
 	}
@@ -73,6 +74,7 @@
 		if ([teacher.username isEqual:self.userNameTextField.text] && [teacher.password isEqual:self.passwordTextField.text]) {
             appdelegate.username = self.userNameTextField.text;
             appdelegate.password = self.passwordTextField.text;
+            appdelegate.isTeacher = YES;
 			NSLog(@"Teacher");
 			self.isTeacher = YES;
 			return YES;
@@ -85,6 +87,7 @@
 		if ([student.username isEqual:self.userNameTextField.text] && [student.password isEqual:self.passwordTextField.text]) {
             appdelegate.username = self.userNameTextField.text;
             appdelegate.password = self.passwordTextField.text;
+            appdelegate.isStudent = YES;
 			NSLog(@"%@", student.username);
 			self.isStudent = YES;
 			return YES;
@@ -93,6 +96,7 @@
     
 	if ([self.userNameTextField.text isEqualToString:@"admin"] && [self.passwordTextField.text isEqualToString:@"admin"]) {
         appdelegate.username = @"Admin";
+        appdelegate.isAdmin = YES;
 		self.isAdmin = YES;
 		return YES;
 	}
