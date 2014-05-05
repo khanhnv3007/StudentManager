@@ -18,8 +18,14 @@
 #import "Admin.h"
 #import "HomePageTableViewController.h"
 #import "ProfileTableViewController.h"
+#import "Teacher.h"
+#import "Student.h"
 
 @interface MenuViewController ()
+
+@property (nonatomic) BOOL isAdmin;
+@property (nonatomic) BOOL isTeacher;
+@property (nonatomic) BOOL isStudent;
 
 @end
 
@@ -31,20 +37,62 @@
 	return apdelegate.username;
 }
 
-- (void)getUserImage {
+- (void)initialize {
+	self.isAdmin = NO;
+	self.isTeacher = NO;
+	self.isStudent = NO;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewDidLoad];
+- (void)checkAuthen {
+	AppDelegate *apdelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+	self.isAdmin = apdelegate.isAdmin;
+	self.isTeacher = apdelegate.isTeacher;
+	self.isStudent = apdelegate.isStudent;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewDidLoad];
+}
+
+- (NSString *)getImagePath {
+	AppDelegate *apdelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+	NSString *imagePath = nil;
+    
+	NSArray *admin = [[DataManager sharedDataManager] getAllAdminAccount];
+	NSMutableArray *adminList = [NSMutableArray arrayWithArray:admin];
+
+    NSArray *teacher = [[DataManager sharedDataManager] getAllTeacherAccount];
+    NSMutableArray *teacherList = [NSMutableArray arrayWithArray:teacher];
+    
+	for (Admin *currentAdmin in adminList) {
+		if ([currentAdmin.username isEqual:apdelegate.username]) {
+			imagePath = currentAdmin.avatar;
+		}
+	}
+    
+    for ( Teacher *currentTeacher in teacherList) {
+		if ([currentTeacher.username isEqual:apdelegate.username]) {
+			imagePath = currentTeacher.avatar;
+		}
+	}
+    
+    NSArray *student = [[DataManager sharedDataManager]getAllStudentAccount];
+    NSMutableArray *studentList = [NSMutableArray arrayWithArray:student];
+    
+    for (Student *currentStudent in studentList) {
+        if ([currentStudent.username isEqual:apdelegate.username]) {
+            imagePath = currentStudent.avatar;
+        }
+    }
+    
+	return imagePath;
 }
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	NSArray *user = [[DataManager sharedDataManager] getAllAdminAccount];
-	NSMutableArray *userList = [NSMutableArray arrayWithArray:user];
-
+	[self initialize];
+    [self checkAuthen];
 
 	self.tableView.separatorColor = [UIColor colorWithRed:150 / 255.0f green:161 / 255.0f blue:177 / 255.0f alpha:1.0f];
 	self.tableView.delegate = self;
@@ -56,13 +104,7 @@
 	                                      view.backgroundColor = [UIColor colorWithRed:28.0 / 255 green:158.0 / 255 blue:121.0 / 255 alpha:1.0f];
 	                                      UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 100, 100)];
 	                                      imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-	                                      for (Admin *admin in userList) {
-	                                          if ([admin.username isEqual:[self getUserName]]) {
-	                                              imageView.image =  [UIImage imageWithContentsOfFile:admin.avatar]; //[UIImage imageNamed:@"Phong.jpg"];
-											  }
-										  }
-
-
+	                                      imageView.image =  [UIImage imageWithContentsOfFile:[self getImagePath]];
 	                                      imageView.layer.masksToBounds = YES;
 	                                      imageView.layer.cornerRadius = 50.0;
 	                                      imageView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -93,7 +135,6 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)sectionIndex {
 	if (sectionIndex == 0)
 		return nil;
-
 	UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 34)];
 	view.backgroundColor = [UIColor colorWithRed:167 / 255.0f green:167 / 255.0f blue:167 / 255.0f alpha:0.6f];
 
@@ -124,10 +165,16 @@
 		navigationController.viewControllers = @[homeViewController];
 	}
 	else if (indexPath.section == 0 && indexPath.row == 1) {
-        NSLog(@"OK");
-        ProfileTableViewController *profile = [self.storyboard instantiateViewControllerWithIdentifier:@"profile"];
-        navigationController.viewControllers = @[profile];
+		NSLog(@"OK");
+		ProfileTableViewController *profile = [self.storyboard instantiateViewControllerWithIdentifier:@"profile"];
+		navigationController.viewControllers = @[profile];
 	}
+    
+    if (((self.isAdmin || self.isStudent) && (indexPath.section == 1 && indexPath.row == 2)) || (self.isTeacher && indexPath.section == 1 && indexPath.row == 1)) {
+            UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+            UINavigationController *navController = [loginStoryboard instantiateInitialViewController];
+            self.view.window.rootViewController = navController;
+    }
 
 	self.frostedViewController.contentViewController = navigationController;
 	[self.frostedViewController hideMenuViewController];
@@ -145,10 +192,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex {
-	if (sectionIndex == 0) {
-		return 2;
-	}
-	return 3;
+    if (self.isAdmin || self.isStudent) {
+        if (sectionIndex == 0) {
+            return 2;
+        }
+        return 3;
+    }
+        return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -165,7 +215,14 @@
 		cell.textLabel.text = titles[indexPath.row];
 	}
 	else {
-		NSArray *titles = @[@"Manage Class", @"Manage Teacher - Student", @"Sign out"];
+        NSArray *titles = [[NSArray alloc]init];
+        if (self.isAdmin) {
+            titles = @[@"Manage Class", @"Manage Teacher - Student", @"Sign out"];
+        } else if (self.isStudent) {
+            titles = @[@"Your Class", @"Find Class", @"Sign out"];
+        } else {
+            titles = @[@"Your Class",@"Sign out"];
+        }
 		cell.textLabel.text = titles[indexPath.row];
 	}
 

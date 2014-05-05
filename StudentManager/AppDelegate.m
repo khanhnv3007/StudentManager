@@ -16,6 +16,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.isAdmin = NO;
+    self.isTeacher = NO;
+    self.isStudent = NO;
+    
     NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
 	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:[appName stringByAppendingString:@".sqlite"]];
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
