@@ -11,6 +11,7 @@
 #import "Teacher.h"
 #import "Student.h"
 #import "Subject.h"
+#import "Mark.h"
 
 @implementation DataManager
 
@@ -109,5 +110,9 @@
     return [Subject MR_findAllSortedBy:@"name" ascending:YES];
 }
 
+- (NSArray *)getAllMark
+{
+    return [Mark MR_findAllSortedBy:@"studentID" ascending:YES];
+}
 
 @end

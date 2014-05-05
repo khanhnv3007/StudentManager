@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *subject;
 @property (weak, nonatomic) IBOutlet UITextField *teacher;
 
-
 - (IBAction)createClass:(id)sender;
 
 @end

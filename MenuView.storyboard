@@ -20,6 +20,7 @@
                         <segue destination="win-yK-g2A" kind="push" id="iJh-ty-dbT"/>
                         <segue destination="tsc-Kh-Hom" kind="push" id="lyB-xt-5J5"/>
                         <segue destination="VHT-Ft-tCJ" kind="push" id="pnP-xn-fEv"/>
+                        <segue destination="DPN-fM-8is" kind="push" id="TPH-3I-JFW"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cK4-j8-e27" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -34,6 +35,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellClass" textLabel="6dX-mN-Rwb" style="IBUITableViewCellStyleDefault" id="Vbg-9X-xMP">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vbg-9X-xMP" id="fw4-RH-TOg">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6dX-mN-Rwb">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="iwv-CV-XDC" id="haL-6s-Bkh"/>
                             <outlet property="delegate" destination="iwv-CV-XDC" id="lsB-vf-rwz"/>
@@ -47,6 +67,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BAm-38-Hkx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="243" y="231"/>
+        </scene>
+        <!--Class Of Student Table View Controller - Your Class-->
+        <scene sceneID="ASa-84-ACz">
+            <objects>
+                <tableViewController storyboardIdentifier="classOfStudent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DPN-fM-8is" customClass="ClassOfStudentTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YW8-SL-gk6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellClassOfStudent" textLabel="5P4-ZJ-Rwh" style="IBUITableViewCellStyleDefault" id="H78-9m-HYZ">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H78-9m-HYZ" id="Kcw-j1-xrz">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5P4-ZJ-Rwh">
+                                            <rect key="frame" x="15" y="0.0" width="290" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DPN-fM-8is" id="szi-Ay-R4g"/>
+                            <outlet property="delegate" destination="DPN-fM-8is" id="qRl-0l-skJ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Your Class" id="sYA-w1-uD6"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TfZ-9V-kXu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-539" y="1339"/>
         </scene>
         <!--Class List Table View Controller - Class List-->
         <scene sceneID="wjx-dY-e0V">

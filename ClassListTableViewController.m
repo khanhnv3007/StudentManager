@@ -18,7 +18,7 @@
 
 @property (nonatomic, strong) NSMutableArray *classList;
 @property (weak, nonatomic) IBOutlet UITableView *rootTableView;
-@property (strong, nonatomic) NSString *classIsSelected;
+@property ( nonatomic) NSInteger classIsSelected;
 //@property (strong, nonatomic) Subject *classIsDeleted;
 
 @end
@@ -94,6 +94,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.classIsSelected = indexPath.row;
 	[tableView deselectRowAtIndexPath:indexPath animated:NO];
 	[[Util sharedUtil] showMessage:@"Are you sure want to enroll this class" withTitle:@"Message" cancelButtonTitle:@"YES" otherButtonTitles:@"NO" delegate:self andTag:100];
 }
@@ -111,10 +112,17 @@
 	return nil;
 }
 
+- (NSString *)getClassID
+{
+    Subject *class = (Subject *)[self.classList objectAtIndex:self.classIsSelected];
+    return class.subjectID;
+    
+}
+
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (alertView.tag == 100) {
 		if (buttonIndex == 0) {
-			MarkModel *markModel = [[DataManager sharedDataManager] createMarkModelWithStudentID:[self getStudentID] classID:nil Mid:nil Final:nil Average:nil];
+			MarkModel *markModel = [[DataManager sharedDataManager] createMarkModelWithStudentID:[self getStudentID] classID:[self getClassID] Mid:nil Final:nil Average:nil];
 			NSLog(@"OK");
 			[markModel managedObject];
 		}
