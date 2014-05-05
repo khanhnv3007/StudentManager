@@ -36,7 +36,7 @@
     <entity name="Subject" representedClassName="Subject" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subjectID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="teacherID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teacher" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="classofStudent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="studentinClass" inverseEntity="Student" syncable="YES"/>
         <relationship name="classWithTeacher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teacher" inverseName="teacherinClass" inverseEntity="Teacher" syncable="YES"/>
     </entity>

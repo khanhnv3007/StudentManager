@@ -69,13 +69,25 @@
     return studentModel;
 }
 
-- (SubjectModel *)createClassWithSubject:(NSString *)subject AndTeacher:(NSString *)teacherID
+- (SubjectModel *)createClassWithSubject:(NSString *)subject AndTeacher:(NSString *)teacher
 {
     SubjectModel *classModel = [[SubjectModel alloc] init];
     classModel.subjectID = [[Util sharedUtil]generateGUID];
     classModel.name = subject;
-    classModel.teacherID = teacherID;
+    classModel.teacher = teacher;
     return classModel;
+}
+
+- (MarkModel *)createMarkModelWithStudentID:(NSString *)studentID classID:(NSString *)classID Mid:(NSNumber *)mid Final:(NSNumber *)final Average:(NSNumber *)average
+{
+    MarkModel *markModel = [[MarkModel alloc] init];
+    markModel.markID = [[Util sharedUtil] generateGUID];
+    markModel.studentID = studentID;
+    markModel.classID = classID;
+    markModel.mid = mid;
+    markModel.final = final;
+    markModel.average = average;
+    return markModel;
 }
 
 - (NSArray *)getAllAdminAccount {

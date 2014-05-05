@@ -11,6 +11,7 @@
 #import "TeacherModel.h"
 #import "StudentModel.h"
 #import "SubjectModel.h"
+#import "MarkModel.h"
 
 
 @interface DataManager : NSObject
@@ -20,7 +21,8 @@
 - (AdminModel *)createNewAdminModelWithName:(NSString *)name birthday:(NSString *)birthday email:(NSString *)email phoneNumber:(NSString *)phoneNumber address:(NSString *)address userName:(NSString *)userName password:(NSString *)password avatar:(NSString *)avatar;
 - (TeacherModel *)createNewTeacherWithUserName:(NSString *)username password:(NSString *)password name:(NSString *)name birthday:(NSString *)birthday address:(NSString *)address phoneNumber:(NSString *)phoneNumber email:(NSString *)email avatar:(NSString *)avatar;
 - (StudentModel *)createNewStudentWithUserName:(NSString *)username password:(NSString *)password name:(NSString *)name birthday:(NSString *)birthday address:(NSString *)address phoneNumber:(NSString *)phoneNumber email:(NSString *)email avatar:(NSString *)avatar;
-- (SubjectModel *)createClassWithSubject:(NSString *)subject AndTeacher:(NSString *)teacherID;
+- (SubjectModel *)createClassWithSubject:(NSString *)subject AndTeacher:(NSString *)teacher;
+- (MarkModel *)createMarkModelWithStudentID:(NSString *)studentID classID:(NSString *)classID Mid:(NSNumber *)mid Final:(NSNumber *)final Average:(NSNumber *)average;
 
 - (NSArray *)getAllAdminAccount;
 - (NSArray *)getAllStudentAccount;

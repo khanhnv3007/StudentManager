@@ -10,6 +10,7 @@
 #import "DataManager.h"
 #import "StudentModel.h"
 #import "TeacherModel.h"
+#import "AdminModel.h"
 
 @interface AddTeacherStudentViewController ()
 
@@ -34,12 +35,22 @@
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
 }
-- (IBAction)addTeacher:(id)sender {
-    TeacherModel *teacherModel = [[DataManager sharedDataManager] createNewTeacherWithUserName:self.teacherUserName.text password:self.teacherUserName.text name:self.teacherName.text birthday:nil address:nil phoneNumber:nil email:nil avatar:nil];
-    [teacherModel managedObject];
-}
-- (IBAction)addStudent:(id)sender {
-    StudentModel *studentModel = [[DataManager sharedDataManager] createNewStudentWithUserName:self.studentUsername.text password:self.studentUsername.text name:self.studentName.text birthday:nil address:nil phoneNumber:nil email:nil avatar:nil];
-    [studentModel managedObject];
+
+- (IBAction)addToTheList:(id)sender {
+    if ([self.selectAuthor selectedSegmentIndex] == 0) {
+        AdminModel *adminModel = [[DataManager sharedDataManager] createNewAdminModelWithName:self.name.text birthday:nil email:nil phoneNumber:nil address:nil userName:self.username.text password:self.username.text avatar:nil];
+        [adminModel managedObject];
+    }
+    
+    if ([self.selectAuthor selectedSegmentIndex] == 1){
+        TeacherModel *teacherModel = [[DataManager sharedDataManager] createNewTeacherWithUserName:self.username.text password:self.username.text name:self.name.text birthday:nil address:nil phoneNumber:nil email:nil avatar:nil];
+        [teacherModel managedObject];
+    }
+    
+    if ([self.selectAuthor selectedSegmentIndex] == 2) {
+        StudentModel *studentModel = [[DataManager sharedDataManager] createNewStudentWithUserName:self.username.text password:self.username.text name:self.name.text birthday:nil address:nil phoneNumber:nil email:nil avatar:nil];
+        [studentModel managedObject];
+    }
+    
 }
 @end

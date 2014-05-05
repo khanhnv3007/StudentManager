@@ -11,14 +11,12 @@
 
 @interface AddTeacherStudentViewController : BaseloginController
 
-@property (weak, nonatomic) IBOutlet UITextField *teacherName;
-@property (weak, nonatomic) IBOutlet UITextField *teacherUserName;
+@property (weak, nonatomic) IBOutlet UITextField *name;
+@property (weak, nonatomic) IBOutlet UITextField *username;
 
-- (IBAction)addTeacher:(id)sender;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *selectAuthor;
 
-@property (weak, nonatomic) IBOutlet UITextField *studentName;
-@property (weak, nonatomic) IBOutlet UITextField *studentUsername;
 
-- (IBAction)addStudent:(id)sender;
+- (IBAction)addToTheList:(id)sender;
 
 @end
