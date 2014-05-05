@@ -17,5 +17,7 @@
 @property (nonatomic, retain) NSNumber * mid;
 @property (nonatomic, retain) NSNumber * average;
 @property (nonatomic, retain) NSNumber * final;
+@property (nonatomic, retain) NSString * markID;
+
 
 @end

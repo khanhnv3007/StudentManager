@@ -15,6 +15,7 @@
         <attribute name="average" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="classID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="final" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="markID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mid" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="studentID" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -50,10 +51,10 @@
         <relationship name="teacherinClass" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Student" positionX="-27" positionY="-54" width="128" height="208"/>
-        <element name="Teacher" positionX="412" positionY="126" width="128" height="193"/>
         <element name="Admin" positionX="252" positionY="-54" width="128" height="178"/>
-        <element name="Mark" positionX="-135" positionY="225" width="128" height="118"/>
+        <element name="Mark" positionX="-135" positionY="225" width="128" height="135"/>
+        <element name="Student" positionX="-27" positionY="-54" width="128" height="208"/>
         <element name="Subject" positionX="171" positionY="257" width="128" height="103"/>
+        <element name="Teacher" positionX="412" positionY="126" width="128" height="193"/>
     </elements>
 </model>
