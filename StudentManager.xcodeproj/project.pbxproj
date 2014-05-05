@@ -60,6 +60,7 @@
 		82DEAB3519172D2C0039B380 /* TeacherModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DEAB3419172D2C0039B380 /* TeacherModel.m */; };
 		82DEAB3919172D620039B380 /* MarkModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DEAB3819172D620039B380 /* MarkModel.m */; };
 		82DEAB3D19172D880039B380 /* SubjectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DEAB3C19172D880039B380 /* SubjectModel.m */; };
+		82DEAB40191735B10039B380 /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DEAB3F191735B10039B380 /* DataManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,8 @@
 		82DEAB3819172D620039B380 /* MarkModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkModel.m; sourceTree = "<group>"; };
 		82DEAB3B19172D880039B380 /* SubjectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubjectModel.h; sourceTree = "<group>"; };
 		82DEAB3C19172D880039B380 /* SubjectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubjectModel.m; sourceTree = "<group>"; };
+		82DEAB3E191735B10039B380 /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		82DEAB3F191735B10039B380 /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		BAFAD8F62A14431A994A3AB8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -435,6 +438,8 @@
 		82DEAB1A191729370039B380 /* DataManager */ = {
 			isa = PBXGroup;
 			children = (
+				82DEAB3E191735B10039B380 /* DataManager.h */,
+				82DEAB3F191735B10039B380 /* DataManager.m */,
 			);
 			name = DataManager;
 			sourceTree = "<group>";
@@ -629,6 +634,7 @@
 				82DEAB3D19172D880039B380 /* SubjectModel.m in Sources */,
 				82DEAB01191728980039B380 /* NSObject+Extension.m in Sources */,
 				82DEAB3919172D620039B380 /* MarkModel.m in Sources */,
+				82DEAB40191735B10039B380 /* DataManager.m in Sources */,
 				82DEAAF3191728570039B380 /* RMSwipeTableViewCell.m in Sources */,
 				09C4BBD5191738B000FB0D11 /* BaseloginController.m in Sources */,
 				82DEAB14191728BB0039B380 /* UIView+REFrostedViewController.m in Sources */,
