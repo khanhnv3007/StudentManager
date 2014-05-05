@@ -17,6 +17,7 @@
                     </toolbar>
                     <connections>
                         <segue destination="iwv-CV-XDC" kind="relationship" relationship="rootViewController" id="P8j-kK-ybQ"/>
+                        <segue destination="win-yK-g2A" kind="push" id="iJh-ty-dbT"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cK4-j8-e27" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -43,6 +44,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BAm-38-Hkx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-53" y="519"/>
+        </scene>
+        <!--Profile Table View Controller - Profile-->
+        <scene sceneID="qGC-HK-d4X">
+            <objects>
+                <tableViewController storyboardIdentifier="profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="win-yK-g2A" customClass="ProfileTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="af8-Ed-Gar">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="dqn-pz-xFG">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dqn-pz-xFG" id="bUs-HZ-6kz">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="win-yK-g2A" id="MHe-ex-FcO"/>
+                            <outlet property="delegate" destination="win-yK-g2A" id="YxE-bl-GtK"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Profile" id="lq6-Of-h1b"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qqr-nM-hP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-225" y="1186"/>
         </scene>
         <!--Create Class - Create Class-->
         <scene sceneID="36M-SC-Rot">

@@ -17,6 +17,7 @@
 #import "DataManager.h"
 #import "Admin.h"
 #import "HomePageTableViewController.h"
+#import "ProfileTableViewController.h"
 
 @interface MenuViewController ()
 
@@ -122,18 +123,10 @@
 		HomePageTableViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
 		navigationController.viewControllers = @[homeViewController];
 	}
-	else if (indexPath.section == 1 && indexPath.row == 0) {
-		NavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"manageClass"];
-		navigationController.viewControllers = @[navController];
-	}
-	else if (indexPath.section == 1 && indexPath.row == 1) {
-		NavigationController *navController = [self.storyboard instantiateViewControllerWithIdentifier:@"ManageStudentAndTeacher"];
-		navigationController.viewControllers = @[navController];
-	}
-	else if (indexPath.section == 1 && indexPath.row == 2) {
-		UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
-		UINavigationController *navController = [mainStoryboard instantiateInitialViewController];
-		self.view.window.rootViewController = navController;
+	else if (indexPath.section == 0 && indexPath.row == 1) {
+        NSLog(@"OK");
+        ProfileTableViewController *profile = [self.storyboard instantiateViewControllerWithIdentifier:@"profile"];
+        navigationController.viewControllers = @[profile];
 	}
 
 	self.frostedViewController.contentViewController = navigationController;
