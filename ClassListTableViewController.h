@@ -12,5 +12,6 @@
 @interface ClassListTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, SWTableViewCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray * filteredResult;
+@property (nonatomic, strong) id managedObject;
 
 @end

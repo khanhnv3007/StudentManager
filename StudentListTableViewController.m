@@ -71,14 +71,23 @@
 	return cell;
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
+        [tableView beginUpdates];
+        Student *studentIsDeleted = [self.studentList objectAtIndex:indexPath.row];
+        
+        [studentIsDeleted MR_deleteEntity];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        //[[Util sharedUtil] showMessage:@"You Sur Delete a contact" withTitle:@"Message" cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok" delegate:self andTag:1];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        [self loadAllStudent];
+        [self.rootTableView reloadData];
+        [tableView endUpdates];
     }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+	return YES;
 }
 
 @end

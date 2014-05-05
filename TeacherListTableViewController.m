@@ -55,6 +55,25 @@
 	return [self.teacherList count];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [tableView beginUpdates];
+        Teacher *teacherIsDeleted = [self.teacherList objectAtIndex:indexPath.row];
+        
+        [teacherIsDeleted MR_deleteEntity];
+        [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+        //[[Util sharedUtil] showMessage:@"You Sur Delete a contact" withTitle:@"Message" cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok" delegate:self andTag:1];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        [self loadAllTeacher];
+        [self.rootTableView reloadData];
+        [tableView endUpdates];
+    }
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+	return YES;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellTeacherList" forIndexPath:indexPath];
     
