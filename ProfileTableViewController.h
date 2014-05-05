@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "REFrostedViewController.h"
 
-@interface ProfileTableViewController : UITableViewController
+@interface ProfileTableViewController : UITableViewController<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UIImageView *avatar;
 @property (weak, nonatomic) IBOutlet UITextField *birthday;
@@ -21,6 +21,5 @@
 
 - (IBAction)showMenu:(id)sender;
 - (IBAction)update:(id)sender;
-
 
 @end
