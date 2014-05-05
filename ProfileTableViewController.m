@@ -7,8 +7,17 @@
 //
 
 #import "ProfileTableViewController.h"
+#import "DataManager.h"
+#import "Student.h"
+#import "AppDelegate.h"
+#import "Admin.h"
+#import "Teacher.h"
 
 @interface ProfileTableViewController ()
+
+@property (nonatomic, strong) NSMutableArray *List;
+@property (nonatomic, strong) NSString *getUserName;
+@property (nonatomic, strong) NSString *getPassword;
 
 @end
 
@@ -31,82 +40,183 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 0;
+- (IBAction)showMenu:(id)sender {
+    [self.view endEditing:YES];
+    [self.frostedViewController presentMenuViewController];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 0;
-}
-
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+- (IBAction)update:(id)sender {
+    AppDelegate *appdelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    if(appdelegate.isStudent){
+        [self updateStudent];
+    }
+    if(appdelegate.isAdmin){
+        [self updateAdmin];
+    }
     
-    // Configure the cell...
+    if (appdelegate.isTeacher) {
+        [self updateTeacher];
+    }
+}
+
+-(void)updateTeacher{
+    NSData *imageData = UIImagePNGRepresentation(self.avatar.image);
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *cache = [[Util sharedUtil] generateGUID];
+	NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", cache]];
+	NSLog((@"pre writing to file"));
+	if (![imageData writeToFile:imagePath atomically:NO]) {
+		DLog(@"Failed to cache image data to disk");
+	}
+	else {
+		DLog(@"the cachedImagedPath is %@", imagePath);
+	}
     
-    return cell;
+	for (Teacher *teacher in self.List) {
+		if ([teacher.username isEqual:self.getUserName]) {
+			teacher.name = self.name.text;
+            teacher.email = self.email.text;
+			teacher.avatar = imagePath;
+			teacher.phoneNumber = self.phoneNumber.text;
+			teacher.address = self.address.text;
+			teacher.password = self.password.text;
+		}
+	}
+
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:<#@"Nib name"#> bundle:nil];
+-(void)updateStudent{
+    NSData *imageData = UIImagePNGRepresentation(self.avatar.image);
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *cache = [[Util sharedUtil] generateGUID];
+	NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", cache]];
+	NSLog((@"pre writing to file"));
+	if (![imageData writeToFile:imagePath atomically:NO]) {
+		DLog(@"Failed to cache image data to disk");
+	}
+	else {
+		DLog(@"the cachedImagedPath is %@", imagePath);
+	}
     
-    // Pass the selected object to the new view controller.
-    
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
-}
-*/
+	for (Student *student in self.List) {
+		if ([student.username isEqual:self.getUserName]) {
+			student.name = self.name.text;
+			if([self NSStringIsValidEmail:self.email.text]){
+                student.email = self.email.text;
+            }else{
+                [[Util sharedUtil] showMessage:@"Your email format is invalid" withTitle:@"Update failed!"];
+            }
+			student.avatar = imagePath;
+			student.phoneNumber = self.phoneNumber.text;
+			student.address = self.address.text;
+			student.password = self.password.text;
+		}
+	}
 
+}
+
+-(void)updateAdmin{
+    NSData *imageData = UIImagePNGRepresentation(self.avatar.image);
+	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString *documentsDirectory = [paths objectAtIndex:0];
+	NSString *cache = [[Util sharedUtil] generateGUID];
+	NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", cache]];
+	NSLog((@"pre writing to file"));
+	if (![imageData writeToFile:imagePath atomically:NO]) {
+		DLog(@"Failed to cache image data to disk");
+	}
+	else {
+		DLog(@"the cachedImagedPath is %@", imagePath);
+	}
+	BOOL flag = YES;
+    
+	for (Admin *admin in self.List) {
+		if (admin.username == self.username.text) {
+			admin.name = self.name.text;
+			admin.address = self.address.text;
+			admin.phoneNumber = self.phoneNumber.text;
+			admin.username = self.username.text;
+			admin.password = self.password.text;
+            if([self NSStringIsValidEmail:self.email.text]){
+                admin.email = self.email.text;
+                NSLog(@"ok");
+            }else{
+                [[Util sharedUtil] showMessage:@"Your email format is invalid" withTitle:@"Update failed!"];
+                NSLog(@"fail");
+            }
+            admin.avatar = imagePath;
+			flag = NO;
+		}
+	}
+	if (flag == YES && self.name.text != nil) {
+		AdminModel *adminModel = [[DataManager sharedDataManager] createNewAdminModelWithName:self.name.text birthday:self.birthday.text email:self.email.text phoneNumber:self.phoneNumber.text address:self.address.text userName:self.username.text password:self.password.text avatar:imagePath];	NSLog(@"Saved");
+		[adminModel managedObject];
+	}
+    
+	[self.navigationController popViewControllerAnimated:YES];
+}
+
+-(BOOL) NSStringIsValidEmail:(NSString *)checkString
+{
+    BOOL stricterFilter = YES;
+    NSString *stricterFilterString = @"[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}";
+    NSString *laxString = @".+@([A-Za-z0-9]+\\.)+[A-Za-z]{2}[A-Za-z]*";
+    NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    return [emailTest evaluateWithObject:checkString];
+}
+
+- (NSString *)savePathLocalImage:(UIImage *)image {
+	NSString *pathImage = [[NSString alloc] init];
+	return pathImage;
+}
+
+- (void)chooseImageAccount {
+	UITapGestureRecognizer *tapAtImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(newTapMethod)];
+	[self.avatar setUserInteractionEnabled:YES];
+	[self.avatar addGestureRecognizer:tapAtImage];
+}
+
+- (void)newTapMethod {
+	[self showActionChooseImage];
+}
+
+- (void)showActionChooseImage {
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Title" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take photo", @"Choose from library", nil];
+	[actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+	picker.modalPresentationStyle = UIModalPresentationCurrentContext;
+	picker.delegate = self;
+	picker.allowsEditing = YES;
+	if ([buttonTitle isEqualToString:@"Take photo"]) {
+		if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+			picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+		}
+		[self presentViewController:picker animated:YES completion:NULL];
+	}
+	else if ([buttonTitle isEqualToString:@"Choose from library"]) {
+		UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+		picker.delegate = self;
+		picker.allowsEditing = YES;
+		picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+		[self presentViewController:picker animated:YES completion:NULL];
+	}
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+	[picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+	UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+	self.avatar.image = chosenImage;
+    
+	[picker dismissViewControllerAnimated:YES completion:NULL];
+}
 @end
