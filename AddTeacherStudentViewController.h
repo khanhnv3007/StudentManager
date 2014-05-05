@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseloginController.h"
 
-@interface AddTeacherStudentViewController : UIViewController
+@interface AddTeacherStudentViewController : BaseloginController
 
 @property (weak, nonatomic) IBOutlet UITextField *teacherName;
 @property (weak, nonatomic) IBOutlet UITextField *teacherUserName;

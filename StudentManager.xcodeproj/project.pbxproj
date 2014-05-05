@@ -28,6 +28,7 @@
 		09C4BC0B19175E5B00FB0D11 /* AddTeacherStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BC0A19175E5B00FB0D11 /* AddTeacherStudentViewController.m */; };
 		09C4BC0F191760F000FB0D11 /* StudentListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BC0E191760F000FB0D11 /* StudentListTableViewController.m */; };
 		09C4BC141917631B00FB0D11 /* TeacherListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BC131917631B00FB0D11 /* TeacherListTableViewController.m */; };
+		09C4BC1719176AC300FB0D11 /* saTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BC1619176AC300FB0D11 /* saTableViewController.m */; };
 		797F98921A6442F3931BBF60 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAFAD8F62A14431A994A3AB8 /* libPods.a */; };
 		82DEAAA7191724600039B380 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DEAAA6191724600039B380 /* Foundation.framework */; };
 		82DEAAA9191724600039B380 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DEAAA8191724600039B380 /* CoreGraphics.framework */; };
@@ -117,6 +118,8 @@
 		09C4BC0E191760F000FB0D11 /* StudentListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentListTableViewController.m; sourceTree = "<group>"; };
 		09C4BC121917631B00FB0D11 /* TeacherListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherListTableViewController.h; sourceTree = "<group>"; };
 		09C4BC131917631B00FB0D11 /* TeacherListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherListTableViewController.m; sourceTree = "<group>"; };
+		09C4BC1519176AC300FB0D11 /* saTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = saTableViewController.h; sourceTree = "<group>"; };
+		09C4BC1619176AC300FB0D11 /* saTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = saTableViewController.m; sourceTree = "<group>"; };
 		60AC9DD1A1224BDAB072A79F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		82DEAAA3191724600039B380 /* StudentManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DEAAA6191724600039B380 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -233,6 +236,8 @@
 				09C4BBE719173F5B00FB0D11 /* HomePage Controller */,
 				09C4BBD819173D3D00FB0D11 /* MenuView */,
 				09C4BBCF1917380A00FB0D11 /* Login Page */,
+				09C4BC1519176AC300FB0D11 /* saTableViewController.h */,
+				09C4BC1619176AC300FB0D11 /* saTableViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -779,6 +784,7 @@
 				82DEAB01191728980039B380 /* NSObject+Extension.m in Sources */,
 				82DEAB3919172D620039B380 /* MarkModel.m in Sources */,
 				82DEAB40191735B10039B380 /* DataManager.m in Sources */,
+				09C4BC1719176AC300FB0D11 /* saTableViewController.m in Sources */,
 				82DEAAF3191728570039B380 /* RMSwipeTableViewCell.m in Sources */,
 				09C4BC01191742A900FB0D11 /* ProfileTableViewController.m in Sources */,
 				09C4BBD5191738B000FB0D11 /* BaseloginController.m in Sources */,
