@@ -10,4 +10,13 @@
 
 @interface MarkModel : JSONModel
 
+@property (nonatomic, strong) NSString * classID;
+@property (nonatomic, strong) NSString * studentID;
+@property (nonatomic, strong) NSNumber * mid;
+@property (nonatomic, strong) NSNumber * average;
+@property (nonatomic, strong) NSNumber * final;
+@property (nonatomic, strong) NSString * markID;
+
+- (id)managedObject;
+
 @end

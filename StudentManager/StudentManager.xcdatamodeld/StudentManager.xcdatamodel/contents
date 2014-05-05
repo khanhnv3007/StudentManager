@@ -18,6 +18,7 @@
         <attribute name="markID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mid" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="studentID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="markOfStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="markofStudent" inverseEntity="Student" syncable="YES"/>
     </entity>
     <entity name="Student" representedClassName="Student" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -29,14 +30,15 @@
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="studentID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="markofStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mark" syncable="YES"/>
-        <relationship name="studentinClass" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" syncable="YES"/>
+        <relationship name="markofStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Mark" inverseName="markOfStudent" inverseEntity="Mark" syncable="YES"/>
+        <relationship name="studentinClass" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" inverseName="classofStudent" inverseEntity="Subject" syncable="YES"/>
     </entity>
     <entity name="Subject" representedClassName="Subject" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subjectID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="teacherID" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="classofStudent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" syncable="YES"/>
+        <relationship name="classofStudent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="studentinClass" inverseEntity="Student" syncable="YES"/>
+        <relationship name="classWithTeacher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teacher" inverseName="teacherinClass" inverseEntity="Teacher" syncable="YES"/>
     </entity>
     <entity name="Teacher" representedClassName="Teacher" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -48,13 +50,13 @@
         <attribute name="phoneNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="teacherID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="teacherinClass" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" syncable="YES"/>
+        <relationship name="teacherinClass" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" inverseName="classWithTeacher" inverseEntity="Subject" syncable="YES"/>
     </entity>
     <elements>
         <element name="Admin" positionX="252" positionY="-54" width="128" height="178"/>
-        <element name="Mark" positionX="-135" positionY="225" width="128" height="135"/>
+        <element name="Mark" positionX="-135" positionY="225" width="128" height="148"/>
         <element name="Student" positionX="-27" positionY="-54" width="128" height="208"/>
-        <element name="Subject" positionX="171" positionY="257" width="128" height="103"/>
+        <element name="Subject" positionX="171" positionY="257" width="128" height="118"/>
         <element name="Teacher" positionX="412" positionY="126" width="128" height="193"/>
     </elements>
 </model>
