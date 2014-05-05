@@ -31,6 +31,7 @@
 		09C4BC1719176AC300FB0D11 /* saTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BC1619176AC300FB0D11 /* saTableViewController.m */; };
 		09C4BC1C1917741A00FB0D11 /* ClassListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BC1B1917741A00FB0D11 /* ClassListTableViewController.m */; };
 		09C4BC20191776E400FB0D11 /* CreateClassViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BC1F191776E400FB0D11 /* CreateClassViewController.m */; };
+		09C4BC221917909900FB0D11 /* delete_icon_active-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BC211917909900FB0D11 /* delete_icon_active-1.png */; };
 		797F98921A6442F3931BBF60 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAFAD8F62A14431A994A3AB8 /* libPods.a */; };
 		82DEAAA7191724600039B380 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DEAAA6191724600039B380 /* Foundation.framework */; };
 		82DEAAA9191724600039B380 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DEAAA8191724600039B380 /* CoreGraphics.framework */; };
@@ -126,6 +127,7 @@
 		09C4BC1B1917741A00FB0D11 /* ClassListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassListTableViewController.m; sourceTree = "<group>"; };
 		09C4BC1E191776E400FB0D11 /* CreateClassViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateClassViewController.h; sourceTree = "<group>"; };
 		09C4BC1F191776E400FB0D11 /* CreateClassViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateClassViewController.m; sourceTree = "<group>"; };
+		09C4BC211917909900FB0D11 /* delete_icon_active-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_icon_active-1.png"; sourceTree = "<group>"; };
 		60AC9DD1A1224BDAB072A79F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		82DEAAA3191724600039B380 /* StudentManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DEAAA6191724600039B380 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -276,6 +278,7 @@
 				09C4BBC71917369A00FB0D11 /* mail.png */,
 				09C4BBC81917369A00FB0D11 /* mail@2x.png */,
 				09C4BBC31917368B00FB0D11 /* no-avatar.png */,
+				09C4BC211917909900FB0D11 /* delete_icon_active-1.png */,
 				09C4BBC41917368B00FB0D11 /* no-avatar@2x.png */,
 				09C4BBC11917367B00FB0D11 /* Studentmanager.png */,
 			);
@@ -750,6 +753,7 @@
 				09C4BBCD191736A300FB0D11 /* lock.png in Resources */,
 				82DEAABE191724600039B380 /* Images.xcassets in Resources */,
 				09C4BBCA1917369A00FB0D11 /* mail@2x.png in Resources */,
+				09C4BC221917909900FB0D11 /* delete_icon_active-1.png in Resources */,
 				09C4BBC61917368B00FB0D11 /* no-avatar@2x.png in Resources */,
 				09C4BBBF191735F400FB0D11 /* Login.storyboard in Resources */,
 				09C4BBCE191736A300FB0D11 /* lock@2x.png in Resources */,

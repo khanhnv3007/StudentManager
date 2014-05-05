@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSMutableArray *classList;
 @property (weak, nonatomic) IBOutlet UITableView *rootTableView;
 @property (strong, nonatomic) NSString *classIsSelected;
+@property (strong, nonatomic) Subject *classIsDeleted;
 
 @end
 
@@ -130,9 +131,13 @@
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView beginUpdates];
-    
+    self.classIsDeleted = (Subject*)[self.classList objectAtIndex:indexPath.row];
+    [self.classIsDeleted MR_deleteEntity];
+    [self loadAddClass];
+    [self.rootTableView reloadData];
+    //[[Util sharedUtil] showMessage:@"You Sur Delete a contact" withTitle:@"Message" cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok" delegate:self andTag:1];
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     [tableView endUpdates];
+    
 }
-
 @end
