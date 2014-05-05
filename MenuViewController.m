@@ -20,6 +20,7 @@
 #import "ProfileTableViewController.h"
 #import "ManagePeopleTableViewController.h"
 #import "ClassListTableViewController.h"
+#import "ClassOfStudentTableViewController.h"
 #import "Teacher.h"
 #import "Student.h"
 
@@ -184,6 +185,11 @@
     if ((indexPath.section == 1 && indexPath.row == 1 && self.isStudent) || (self.isAdmin && indexPath.section == 1 && indexPath.row == 0)) {
         ClassListTableViewController *classList = [self.storyboard instantiateViewControllerWithIdentifier:@"classList"];
         navigationController.viewControllers = @[classList];
+    }
+    
+    if (self.isStudent && indexPath.section == 1 && indexPath.row == 0) {
+        ClassOfStudentTableViewController *classOfStudent = [self.storyboard instantiateViewControllerWithIdentifier:@"classOfStudent"];
+        navigationController.viewControllers = @[classOfStudent];
     }
     
     if (self.isAdmin && indexPath.section == 1 && indexPath.row == 1) {

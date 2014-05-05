@@ -1,5 +1,5 @@
 //
-//  HomePageTableViewController.h
+//  ClassOfStudentTableViewController.h
 //  StudentManager
 //
 //  Created by Nguyễn Nam Phong on 5/5/14.
@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AppDelegate.h"
 
-@interface HomePageTableViewController : UITableViewController
+@interface ClassOfStudentTableViewController : UITableViewController
 
 @end

@@ -28,6 +28,7 @@
 - (NSArray *)getAllStudentAccount;
 - (NSArray *)getAllTeacherAccount;
 - (NSArray *)getAllClass;
+- (NSArray *)getAllMark;
 
 
 @end

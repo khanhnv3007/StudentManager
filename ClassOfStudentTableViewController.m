@@ -1,74 +1,70 @@
 //
-//  HomePageTableViewController.m
+//  ClassOfStudentTableViewController.m
 //  StudentManager
 //
 //  Created by Nguyễn Nam Phong on 5/5/14.
 //  Copyright (c) 2014 RoxWin. All rights reserved.
 //
 
-#import "HomePageTableViewController.h"
+#import "ClassOfStudentTableViewController.h"
 #import "DataManager.h"
-#import "Teacher.h"
+#import "Mark.h"
+#import "Student.h"
+#import "AppDelegate.h"
 #import "Subject.h"
 
-@interface HomePageTableViewController ()
-
-@property (nonatomic) BOOL isAdmin;
-@property (nonatomic) BOOL isTeacher;
-@property (nonatomic) BOOL isStudent;
-
-@property (nonatomic, strong) NSString *username;
-@property (nonatomic, strong) NSString *password;
+@interface ClassOfStudentTableViewController ()
 
 @property (nonatomic, strong) NSMutableArray *classList;
-@property (nonatomic, strong) NSMutableArray *teacherList;
 
 @end
 
-@implementation HomePageTableViewController
+@implementation ClassOfStudentTableViewController
 
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (NSString *)getStudentID{
+    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
+    NSArray *student = [[DataManager sharedDataManager]getAllStudentAccount];
+    NSMutableArray *stuList = [NSMutableArray arrayWithArray:student];
+    for (Student *student in stuList) {
+        if ([student.username isEqual:appDelegate.username]) {
+            return student.studentID;
+        }
+    }
+    return nil;
+}
+
+
+
+- (void)initialize
+{
+    NSArray *mark = [[DataManager sharedDataManager]getAllMark];
+    self.classList = [NSMutableArray arrayWithArray:mark];
+    for (Mark *mark in self.classList) {
+        if (![mark.studentID isEqual:[self getStudentID]]) {
+            [self.classList delete:mark];
+        }
+    }
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self initialize];
-    if (self.isTeacher) {
-        [self getListClass];
-    }
-
-}
-
-- (void)initialize
-{
-    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-    self.isAdmin = appDelegate.isAdmin;
-    self.isTeacher = appDelegate.isTeacher;
-    self.isStudent = appDelegate.isStudent;
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
     
-    self.username = appDelegate.username;
-    self.password = appDelegate.password;
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
-
-- (void)getListClass
-{
-    NSArray *class = [[DataManager sharedDataManager] getAllClass];
-    self.classList = [NSMutableArray arrayWithArray:class];
-    for (Subject *class in self.classList) {
-        if (![class.teacher isEqual:self.username]) {
-            //[self.classList delete:class];
-        }
-    }
-    
-//    
-//    NSArray *mark = [[DataManager sharedDataManager]getAllMark];
-//    self.classList = [NSMutableArray arrayWithArray:mark];
-//    for (Mark *mark in self.classList) {
-//        if (![mark.studentID isEqual:[self getStudentID]]) {
-//            [self.classList delete:mark];
-//        }
-//    }
-}
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -76,36 +72,36 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
-
-
-
-
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     return [self.classList count];
 }
-
+- (NSString *)getClassName:(Mark *)mark
+{
+    NSArray *class = [[DataManager sharedDataManager]getAllClass];
+    NSMutableArray *ListOfClass = [NSMutableArray arrayWithArray:class];
+    for (Subject *paramClass in ListOfClass ) {
+        if ([paramClass.subjectID isEqual:mark.classID]) {
+            return paramClass.name;
+        }
+    }
+    return nil;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellClass" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellClassOfStudent" forIndexPath:indexPath];
     
     // Configure the cell...
-    Subject *class = self.classList[indexPath.row];
-    cell.textLabel.text = class.name;
+    Mark *mark = self.classList[indexPath.row];
+    cell.textLabel.text = [self getClassName:mark];
     cell.imageView.image = [UIImage imageNamed:@"no-avatar.png"];
     
     return cell;
