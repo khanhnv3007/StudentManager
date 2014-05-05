@@ -53,10 +53,10 @@
         <relationship name="teacherinClass" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Subject" inverseName="classWithTeacher" inverseEntity="Subject" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Admin" positionX="252" positionY="-54" width="128" height="178"/>
+        <element name="Admin" positionX="126" positionY="-270" width="128" height="178"/>
         <element name="Mark" positionX="-135" positionY="225" width="128" height="148"/>
         <element name="Student" positionX="-27" positionY="-54" width="128" height="208"/>
-        <element name="Subject" positionX="171" positionY="257" width="128" height="118"/>
-        <element name="Teacher" positionX="412" positionY="126" width="128" height="193"/>
+        <element name="Subject" positionX="205" positionY="-54" width="128" height="118"/>
+        <element name="Teacher" positionX="448" positionY="-54" width="128" height="193"/>
     </elements>
 </model>

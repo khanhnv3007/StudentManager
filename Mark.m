@@ -16,5 +16,6 @@
 @dynamic mid;
 @dynamic average;
 @dynamic final;
+@dynamic markID;
 
 @end
