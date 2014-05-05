@@ -171,15 +171,15 @@
 		82DEAA9A191724600039B380 = {
 			isa = PBXGroup;
 			children = (
-				82DEAB16191728DD0039B380 /* Manager */,
-				82DEAB03191728BB0039B380 /* REFrostedViewController */,
-				82DEAAF91917285E0039B380 /* Util */,
 				82DEAADD1917281F0039B380 /* Common */,
+				82DEAAA5191724600039B380 /* Frameworks */,
+				82DEAB16191728DD0039B380 /* Manager */,
+				60AC9DD1A1224BDAB072A79F /* Pods.xcconfig */,
+				82DEAAA4191724600039B380 /* Products */,
+				82DEAB03191728BB0039B380 /* REFrostedViewController */,
 				82DEAAAE191724600039B380 /* StudentManager */,
 				82DEAACB191724610039B380 /* StudentManagerTests */,
-				82DEAAA5191724600039B380 /* Frameworks */,
-				82DEAAA4191724600039B380 /* Products */,
-				60AC9DD1A1224BDAB072A79F /* Pods.xcconfig */,
+				82DEAAF91917285E0039B380 /* Util */,
 			);
 			sourceTree = "<group>";
 		};
