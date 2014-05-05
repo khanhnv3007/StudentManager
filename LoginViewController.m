@@ -110,6 +110,15 @@
     [self alertWhenPasswordAndUserNameIsIncorrect];
     if ([self checkUserNameAndPassword]) {
         NSLog(@"OK");
+        [self presentViewController];
     }
 }
+
+- (void)presentViewController{
+    UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"MenuView" bundle:nil];
+    UINavigationController *navController = [nextStoryboard instantiateInitialViewController];
+    self.view.window.rootViewController = navController;
+    [Session sharedInstance].isAuthen = YES;
+}
+
 @end
