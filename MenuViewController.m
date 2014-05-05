@@ -18,6 +18,7 @@
 #import "Admin.h"
 #import "HomePageTableViewController.h"
 #import "ProfileTableViewController.h"
+#import "ManagePeopleTableViewController.h"
 #import "Teacher.h"
 #import "Student.h"
 
@@ -170,10 +171,19 @@
 		navigationController.viewControllers = @[profile];
 	}
     
+    if (self.isAdmin && indexPath.section == 1 && indexPath.row == 1) {
+        ManagePeopleTableViewController *managePeople = [self.storyboard instantiateViewControllerWithIdentifier:@"managePeople"];
+        navigationController.viewControllers = @[managePeople];
+    }
+    
     if (((self.isAdmin || self.isStudent) && (indexPath.section == 1 && indexPath.row == 2)) || (self.isTeacher && indexPath.section == 1 && indexPath.row == 1)) {
             UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
             UINavigationController *navController = [loginStoryboard instantiateInitialViewController];
             self.view.window.rootViewController = navController;
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+        appDelegate.isAdmin = NO;
+        appDelegate.isTeacher = NO;
+        appDelegate.isStudent = NO;
     }
 
 	self.frostedViewController.contentViewController = navigationController;
@@ -218,11 +228,14 @@
         NSArray *titles = [[NSArray alloc]init];
         if (self.isAdmin) {
             titles = @[@"Manage Class", @"Manage Teacher - Student", @"Sign out"];
-        } else if (self.isStudent) {
-            titles = @[@"Your Class", @"Find Class", @"Sign out"];
-        } else {
+        }
+        if (self.isTeacher) {
             titles = @[@"Your Class",@"Sign out"];
         }
+        if (self.isStudent) {
+            titles = @[@"Your Class", @"Find Class", @"Sign out"];
+        }
+
 		cell.textLabel.text = titles[indexPath.row];
 	}
 

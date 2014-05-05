@@ -24,6 +24,10 @@
 		09C4BBE619173EFD00FB0D11 /* menu30.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBE519173EFD00FB0D11 /* menu30.png */; };
 		09C4BBEA19173F7C00FB0D11 /* HomePageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BBE919173F7C00FB0D11 /* HomePageTableViewController.m */; };
 		09C4BC01191742A900FB0D11 /* ProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BBFF191742A900FB0D11 /* ProfileTableViewController.m */; };
+		09C4BC0719175C6B00FB0D11 /* ManagePeopleTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BC0619175C6B00FB0D11 /* ManagePeopleTableViewController.m */; };
+		09C4BC0B19175E5B00FB0D11 /* AddTeacherStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BC0A19175E5B00FB0D11 /* AddTeacherStudentViewController.m */; };
+		09C4BC0F191760F000FB0D11 /* StudentListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BC0E191760F000FB0D11 /* StudentListTableViewController.m */; };
+		09C4BC141917631B00FB0D11 /* TeacherListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C4BC131917631B00FB0D11 /* TeacherListTableViewController.m */; };
 		797F98921A6442F3931BBF60 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAFAD8F62A14431A994A3AB8 /* libPods.a */; };
 		82DEAAA7191724600039B380 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DEAAA6191724600039B380 /* Foundation.framework */; };
 		82DEAAA9191724600039B380 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DEAAA8191724600039B380 /* CoreGraphics.framework */; };
@@ -105,6 +109,14 @@
 		09C4BBE919173F7C00FB0D11 /* HomePageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageTableViewController.m; sourceTree = "<group>"; };
 		09C4BBFE191742A900FB0D11 /* ProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewController.h; sourceTree = "<group>"; };
 		09C4BBFF191742A900FB0D11 /* ProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewController.m; sourceTree = "<group>"; };
+		09C4BC0519175C6B00FB0D11 /* ManagePeopleTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagePeopleTableViewController.h; sourceTree = "<group>"; };
+		09C4BC0619175C6B00FB0D11 /* ManagePeopleTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagePeopleTableViewController.m; sourceTree = "<group>"; };
+		09C4BC0919175E5B00FB0D11 /* AddTeacherStudentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTeacherStudentViewController.h; sourceTree = "<group>"; };
+		09C4BC0A19175E5B00FB0D11 /* AddTeacherStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTeacherStudentViewController.m; sourceTree = "<group>"; };
+		09C4BC0D191760F000FB0D11 /* StudentListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentListTableViewController.h; sourceTree = "<group>"; };
+		09C4BC0E191760F000FB0D11 /* StudentListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentListTableViewController.m; sourceTree = "<group>"; };
+		09C4BC121917631B00FB0D11 /* TeacherListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherListTableViewController.h; sourceTree = "<group>"; };
+		09C4BC131917631B00FB0D11 /* TeacherListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherListTableViewController.m; sourceTree = "<group>"; };
 		60AC9DD1A1224BDAB072A79F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		82DEAAA3191724600039B380 /* StudentManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DEAAA6191724600039B380 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -215,6 +227,7 @@
 		09C4BBBB191735B400FB0D11 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				09C4BC0419175C4B00FB0D11 /* Manage People */,
 				09C4BC031917467700FB0D11 /* Base View Controller */,
 				09C4BBEB1917401E00FB0D11 /* Profile Account */,
 				09C4BBE719173F5B00FB0D11 /* HomePage Controller */,
@@ -328,6 +341,45 @@
 				09C4BBD4191738B000FB0D11 /* BaseloginController.m */,
 			);
 			name = "Base View Controller";
+			sourceTree = "<group>";
+		};
+		09C4BC0419175C4B00FB0D11 /* Manage People */ = {
+			isa = PBXGroup;
+			children = (
+				09C4BC111917630B00FB0D11 /* Teacher List */,
+				09C4BC0C191760C700FB0D11 /* Student List */,
+				09C4BC0819175E3B00FB0D11 /* Add teacher/ people */,
+				09C4BC0519175C6B00FB0D11 /* ManagePeopleTableViewController.h */,
+				09C4BC0619175C6B00FB0D11 /* ManagePeopleTableViewController.m */,
+			);
+			name = "Manage People";
+			sourceTree = "<group>";
+		};
+		09C4BC0819175E3B00FB0D11 /* Add teacher/ people */ = {
+			isa = PBXGroup;
+			children = (
+				09C4BC0919175E5B00FB0D11 /* AddTeacherStudentViewController.h */,
+				09C4BC0A19175E5B00FB0D11 /* AddTeacherStudentViewController.m */,
+			);
+			name = "Add teacher/ people";
+			sourceTree = "<group>";
+		};
+		09C4BC0C191760C700FB0D11 /* Student List */ = {
+			isa = PBXGroup;
+			children = (
+				09C4BC0D191760F000FB0D11 /* StudentListTableViewController.h */,
+				09C4BC0E191760F000FB0D11 /* StudentListTableViewController.m */,
+			);
+			name = "Student List";
+			sourceTree = "<group>";
+		};
+		09C4BC111917630B00FB0D11 /* Teacher List */ = {
+			isa = PBXGroup;
+			children = (
+				09C4BC121917631B00FB0D11 /* TeacherListTableViewController.h */,
+				09C4BC131917631B00FB0D11 /* TeacherListTableViewController.m */,
+			);
+			name = "Teacher List";
 			sourceTree = "<group>";
 		};
 		82DEAA9A191724600039B380 = {
@@ -721,6 +773,7 @@
 				82DEAB10191728BB0039B380 /* RECommonFunctions.m in Sources */,
 				82DEAB2919172CB70039B380 /* Subject.m in Sources */,
 				09C4BBE019173DCA00FB0D11 /* MenuViewController.m in Sources */,
+				09C4BC0B19175E5B00FB0D11 /* AddTeacherStudentViewController.m in Sources */,
 				09C4BBDC19173DAA00FB0D11 /* RootView.m in Sources */,
 				82DEAB3D19172D880039B380 /* SubjectModel.m in Sources */,
 				82DEAB01191728980039B380 /* NSObject+Extension.m in Sources */,
@@ -747,10 +800,13 @@
 				82DEAAB5191724600039B380 /* main.m in Sources */,
 				82DEAB13191728BB0039B380 /* UIImage+REFrostedViewController.m in Sources */,
 				82DEAAF8191728570039B380 /* SWUtilityButtonView.m in Sources */,
+				09C4BC0719175C6B00FB0D11 /* ManagePeopleTableViewController.m in Sources */,
 				82DEAB2619172CB70039B380 /* Mark.m in Sources */,
+				09C4BC141917631B00FB0D11 /* TeacherListTableViewController.m in Sources */,
 				82DEAB12191728BB0039B380 /* REFrostedViewController.m in Sources */,
 				09C4BBEA19173F7C00FB0D11 /* HomePageTableViewController.m in Sources */,
 				82DEAAF5191728570039B380 /* SWLongPressGestureRecognizer.m in Sources */,
+				09C4BC0F191760F000FB0D11 /* StudentListTableViewController.m in Sources */,
 				82DEAB3119172D0F0039B380 /* StudentModel.m in Sources */,
 				82DEAAFC191728770039B380 /* Util.m in Sources */,
 				09C4BBD21917382B00FB0D11 /* LoginViewController.m in Sources */,

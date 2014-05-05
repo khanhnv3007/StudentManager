@@ -12,7 +12,7 @@
 @implementation TeacherModel
 
 - (id)managedObject{
-    Teacher *teacher = [Teacher MR_findFirstByAttribute:@"teaherID" withValue:self.teacherID];
+    Teacher *teacher = [Teacher MR_findFirstByAttribute:@"teacherID" withValue:self.teacherID];
     if (teacher == nil) {
         teacher = [Teacher MR_createEntity];
     }

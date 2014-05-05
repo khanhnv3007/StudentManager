@@ -18,6 +18,7 @@
                     <connections>
                         <segue destination="iwv-CV-XDC" kind="relationship" relationship="rootViewController" id="P8j-kK-ybQ"/>
                         <segue destination="win-yK-g2A" kind="push" id="iJh-ty-dbT"/>
+                        <segue destination="tsc-Kh-Hom" kind="push" id="lyB-xt-5J5"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cK4-j8-e27" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -43,7 +44,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BAm-38-Hkx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-53" y="519"/>
+            <point key="canvasLocation" x="-73" y="271"/>
         </scene>
         <!--Profile Table View Controller - Profile-->
         <scene sceneID="qGC-HK-d4X">
@@ -62,12 +63,109 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qqr-nM-hP4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-53" y="1175"/>
+            <point key="canvasLocation" x="-73" y="911"/>
         </scene>
-        <!--Add Teacher Student - Add Teacher/Student-->
+        <!--Manage People Table View Controller - Manage People-->
+        <scene sceneID="vJl-v8-c7F">
+            <objects>
+                <tableViewController storyboardIdentifier="managePeople" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tsc-Kh-Hom" customClass="ManagePeopleTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Nhw-wG-W3s">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Manage" id="rQe-Ty-HOs">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellManagePeople" textLabel="OOU-Kx-15N" imageView="Lw2-cx-azq" rowHeight="90" style="IBUITableViewCellStyleDefault" id="Vvb-AT-x7D">
+                                        <rect key="frame" x="0.0" y="119" width="320" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vvb-AT-x7D" id="8zu-b4-Qm7">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Add Student/Teacher" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OOU-Kx-15N">
+                                                    <rect key="frame" x="106" y="0.0" width="179" height="89"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="no-avatar.png" id="Lw2-cx-azq">
+                                                    <rect key="frame" x="15" y="6" width="76" height="76"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Djn-WO-h5L" kind="push" id="185-So-WDt"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellManagePeople" textLabel="3KM-eM-5ay" imageView="UcL-bm-gOt" rowHeight="90" style="IBUITableViewCellStyleDefault" id="6SC-9W-wi6">
+                                        <rect key="frame" x="0.0" y="209" width="320" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6SC-9W-wi6" id="bxi-Yw-yki">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Student List" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3KM-eM-5ay">
+                                                    <rect key="frame" x="106" y="0.0" width="179" height="89"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="no-avatar.png" id="UcL-bm-gOt">
+                                                    <rect key="frame" x="15" y="6" width="76" height="76"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="50m-3B-xgW" kind="push" id="XEy-yQ-RrO"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellManagePeople" textLabel="AGo-lc-0ed" imageView="97f-Wn-Ifb" rowHeight="90" style="IBUITableViewCellStyleDefault" id="pNc-As-0d0">
+                                        <rect key="frame" x="0.0" y="299" width="320" height="90"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pNc-As-0d0" id="kGq-Zj-eYk">
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="89"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Teacher List" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AGo-lc-0ed">
+                                                    <rect key="frame" x="106" y="0.0" width="179" height="89"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="no-avatar.png" id="97f-Wn-Ifb">
+                                                    <rect key="frame" x="15" y="6" width="76" height="76"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Gz7-FS-26r" kind="push" id="5Lb-Wv-fed"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="tsc-Kh-Hom" id="Yg6-Fg-haf"/>
+                            <outlet property="delegate" destination="tsc-Kh-Hom" id="RRr-fs-ztV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Manage People" id="d4V-97-wT9"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6cy-jb-eiR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="356" y="716"/>
+        </scene>
+        <!--Add Teacher Student View Controller - Add Teacher/Student-->
         <scene sceneID="U39-MW-a6w">
             <objects>
-                <viewController id="Djn-WO-h5L" customClass="AddTeacherStudent" sceneMemberID="viewController">
+                <viewController id="Djn-WO-h5L" customClass="AddTeacherStudentViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NY9-Cs-2Xc"/>
                         <viewControllerLayoutGuide type="bottom" id="c8N-tu-aDP"/>
@@ -131,7 +229,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addTeacher:" destination="Djn-WO-h5L" eventType="touchUpInside" id="S7q-4j-PhH"/>
+                                    <action selector="addTeacher:" destination="Djn-WO-h5L" eventType="touchUpInside" id="j6X-QW-ZOi"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hbR-7m-MyT">
@@ -141,7 +239,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addStudent:" destination="Djn-WO-h5L" eventType="touchUpInside" id="iyN-Mp-dWb"/>
+                                    <action selector="addStudent:" destination="Djn-WO-h5L" eventType="touchUpInside" id="8JL-Py-57z"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -149,86 +247,32 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Teacher/Student" id="MPO-sP-Dny"/>
                     <connections>
-                        <outlet property="studentName" destination="rpg-Q0-36v" id="gwM-CO-HId"/>
-                        <outlet property="studentNumber" destination="Qoa-Ne-TG4" id="jIg-ca-VQ7"/>
-                        <outlet property="teacherName" destination="ycf-ut-Wwb" id="2R4-AT-Fj5"/>
-                        <outlet property="teacherUserName" destination="GrU-rA-VtQ" id="N5X-OP-P6F"/>
+                        <outlet property="studentName" destination="rpg-Q0-36v" id="xNu-v0-4Ar"/>
+                        <outlet property="studentUsername" destination="Qoa-Ne-TG4" id="hPn-Bx-Wme"/>
+                        <outlet property="teacherName" destination="ycf-ut-Wwb" id="maR-IC-JRx"/>
+                        <outlet property="teacherUserName" destination="GrU-rA-VtQ" id="GG7-N5-Q6V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZ6-c3-jhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1261" y="228"/>
+            <point key="canvasLocation" x="847" y="716"/>
         </scene>
-        <!--Teacher List - List-->
-        <scene sceneID="9p9-nc-WZg">
-            <objects>
-                <tableViewController id="jjB-fV-mhv" customClass="TeacherList" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="2jo-sg-4Kh">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="fHw-hH-7b9">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellTeacherList" textLabel="Bzm-0K-ojH" detailTextLabel="lfH-6j-AaP" imageView="UWN-4M-Ova" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="YUN-ua-zSg">
-                                <rect key="frame" x="0.0" y="66" width="320" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YUN-ua-zSg" id="MMm-Gf-WFE">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bzm-0K-ojH">
-                                            <rect key="frame" x="60" y="11" width="34" height="22"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="student2-50.png" id="UWN-4M-Ova">
-                                            <rect key="frame" x="15" y="14" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lfH-6j-AaP">
-                                            <rect key="frame" x="60" y="33" width="43" height="15"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="jjB-fV-mhv" id="PZ1-if-H30"/>
-                            <outlet property="delegate" destination="jjB-fV-mhv" id="tks-I5-3vY"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="List" id="zRc-sO-GnC"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4aA-9e-haq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1269" y="1031"/>
-        </scene>
-        <!--Student List - Student List-->
+        <!--Student List Table View Controller - Student List-->
         <scene sceneID="FQg-Up-tOo">
             <objects>
-                <tableViewController id="50m-3B-xgW" customClass="StudentList" sceneMemberID="viewController">
+                <tableViewController id="50m-3B-xgW" customClass="StudentListTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="jKJ-tr-aTP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="6fq-Lf-iQY">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellStudentList" textLabel="FK5-mX-WEq" detailTextLabel="e5p-tN-064" imageView="6cv-uq-oak" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="Awq-jk-bfI">
-                                <rect key="frame" x="0.0" y="66" width="320" height="60"/>
+                                <rect key="frame" x="0.0" y="130" width="320" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Awq-jk-bfI" id="9OD-Gt-pt1">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
@@ -265,7 +309,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXP-CU-IB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1269" y="1765"/>
+            <point key="canvasLocation" x="814" y="1326"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="gFp-Tn-cEN">
@@ -303,10 +347,64 @@
             </objects>
             <point key="canvasLocation" x="-1200" y="528"/>
         </scene>
+        <!--Teacher List Table View Controller - Teacher List-->
+        <scene sceneID="MyQ-dZ-BSr">
+            <objects>
+                <tableViewController id="Gz7-FS-26r" customClass="TeacherListTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="1bE-xO-9X5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <searchBar key="tableHeaderView" contentMode="redraw" id="dnA-Kf-BMK">
+                            <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellTeacherList" textLabel="YKP-9P-Hn1" detailTextLabel="kl7-wE-Vgy" imageView="1MO-F2-6jg" rowHeight="60" style="IBUITableViewCellStyleSubtitle" id="8KA-xK-UjG">
+                                <rect key="frame" x="0.0" y="130" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8KA-xK-UjG" id="pbg-JG-7HU">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YKP-9P-Hn1">
+                                            <rect key="frame" x="60" y="11" width="34" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kl7-wE-Vgy">
+                                            <rect key="frame" x="60" y="33" width="43" height="15"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="menu30.png" id="1MO-F2-6jg">
+                                            <rect key="frame" x="15" y="14" width="30" height="30"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Gz7-FS-26r" id="xdU-j5-D7h"/>
+                            <outlet property="delegate" destination="Gz7-FS-26r" id="kFR-vV-hzP"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Teacher List" id="cl5-WT-GM0"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oYf-1R-ykM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="387" y="1369"/>
+        </scene>
     </scenes>
     <resources>
         <image name="menu30.png" width="30" height="30"/>
-        <image name="student2-50.png" width="30" height="30"/>
+        <image name="no-avatar.png" width="76" height="76"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

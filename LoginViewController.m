@@ -75,7 +75,7 @@
             appdelegate.username = self.userNameTextField.text;
             appdelegate.password = self.passwordTextField.text;
             appdelegate.isTeacher = YES;
-			NSLog(@"Teacher");
+			NSLog(@"This is a teacher");
 			self.isTeacher = YES;
 			return YES;
 		}
