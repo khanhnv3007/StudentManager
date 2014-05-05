@@ -11,7 +11,7 @@
 @interface SubjectModel : JSONModel
 
 @property (nonatomic, strong) NSString * name;
-@property (nonatomic, strong) NSString * teacherID;
+@property (nonatomic, strong) NSString * teacher;
 @property (nonatomic, strong) NSString * subjectID;
 @property (nonatomic, strong) NSSet *classofStudent;
 

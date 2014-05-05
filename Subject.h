@@ -14,7 +14,7 @@
 @interface Subject : NSManagedObject
 
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * teacherID;
+@property (nonatomic, retain) NSString * teacher;
 @property (nonatomic, retain) NSString * subjectID;
 @property (nonatomic, retain) NSSet *classofStudent;
 @end

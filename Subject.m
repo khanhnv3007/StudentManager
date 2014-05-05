@@ -13,7 +13,7 @@
 @implementation Subject
 
 @dynamic name;
-@dynamic teacherID;
+@dynamic teacher;
 @dynamic subjectID;
 @dynamic classofStudent;
 

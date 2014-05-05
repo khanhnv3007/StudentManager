@@ -20,7 +20,7 @@
 
     subject.name = self.name;
     subject.subjectID = self.subjectID;
-    subject.teacherID = self.teacherID;
+    subject.teacher = self.teacher;
     
     [subject.managedObjectContext MR_saveOnlySelfAndWait];
     return subject;

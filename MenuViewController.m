@@ -19,6 +19,7 @@
 #import "HomePageTableViewController.h"
 #import "ProfileTableViewController.h"
 #import "ManagePeopleTableViewController.h"
+#import "ClassListTableViewController.h"
 #import "Teacher.h"
 #import "Student.h"
 
@@ -27,6 +28,8 @@
 @property (nonatomic) BOOL isAdmin;
 @property (nonatomic) BOOL isTeacher;
 @property (nonatomic) BOOL isStudent;
+
+@property (nonatomic, strong) NSString *nameOfUser;
 
 @end
 
@@ -68,12 +71,14 @@
 	for (Admin *currentAdmin in adminList) {
 		if ([currentAdmin.username isEqual:apdelegate.username]) {
 			imagePath = currentAdmin.avatar;
+            self.nameOfUser = currentAdmin.name;
 		}
 	}
     
     for ( Teacher *currentTeacher in teacherList) {
 		if ([currentTeacher.username isEqual:apdelegate.username]) {
 			imagePath = currentTeacher.avatar;
+            self.nameOfUser = currentTeacher.name;
 		}
 	}
     
@@ -83,6 +88,7 @@
     for (Student *currentStudent in studentList) {
         if ([currentStudent.username isEqual:apdelegate.username]) {
             imagePath = currentStudent.avatar;
+            self.nameOfUser = currentStudent.name;
         }
     }
     
@@ -105,7 +111,11 @@
 	                                      view.backgroundColor = [UIColor colorWithRed:28.0 / 255 green:158.0 / 255 blue:121.0 / 255 alpha:1.0f];
 	                                      UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 100, 100)];
 	                                      imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-	                                      imageView.image =  [UIImage imageWithContentsOfFile:[self getImagePath]];
+        if ([self getImagePath] == nil) {
+            imageView.image = [UIImage imageNamed:@"no-avatar.png"];
+        } else {
+            imageView.image =  [UIImage imageWithContentsOfFile:[self getImagePath]];
+        }
 	                                      imageView.layer.masksToBounds = YES;
 	                                      imageView.layer.cornerRadius = 50.0;
 	                                      imageView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -115,7 +125,7 @@
 	                                      imageView.clipsToBounds = YES;
 
 	                                      UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
-	                                      label.text = @"Welcome Phong!";
+	                                      label.text = [NSString stringWithFormat:@"Welcome %@", self.nameOfUser];
 	                                      label.backgroundColor = [UIColor clearColor];
 	                                      label.textColor = [UIColor colorWithRed:62 / 255.0f green:68 / 255.0f blue:75 / 255.0f alpha:1.0f];
 	                                      [label sizeToFit];
@@ -170,6 +180,11 @@
 		ProfileTableViewController *profile = [self.storyboard instantiateViewControllerWithIdentifier:@"profile"];
 		navigationController.viewControllers = @[profile];
 	}
+    
+    if ((indexPath.section == 1 && indexPath.row == 1 && self.isStudent) || (self.isAdmin && indexPath.section == 1 && indexPath.row == 0)) {
+        ClassListTableViewController *classList = [self.storyboard instantiateViewControllerWithIdentifier:@"classList"];
+        navigationController.viewControllers = @[classList];
+    }
     
     if (self.isAdmin && indexPath.section == 1 && indexPath.row == 1) {
         ManagePeopleTableViewController *managePeople = [self.storyboard instantiateViewControllerWithIdentifier:@"managePeople"];
