@@ -10,4 +10,16 @@
 
 @interface TeacherModel : JSONModel
 
+@property (nonatomic, strong) NSString * teacherID;
+@property (nonatomic, strong) NSString * name;
+@property (nonatomic, strong) NSDate * birthday;
+@property (nonatomic, strong) NSString * address;
+@property (nonatomic, strong) NSString * email;
+@property (nonatomic, strong) NSString * phoneNumber;
+@property (nonatomic, strong) NSString * username;
+@property (nonatomic, strong) NSString * password;
+@property (nonatomic, strong) NSString * avatar;
+@property (nonatomic, strong) NSSet *teacherinClass;
+- (id)managedObject;
+
 @end
