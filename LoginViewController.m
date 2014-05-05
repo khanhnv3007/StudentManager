@@ -11,6 +11,7 @@
 #import "Admin.h"
 #import "Student.h"
 #import "Teacher.h"
+#import "DataManager.h"
 
 @interface LoginViewController ()
 
@@ -60,17 +61,17 @@
 	self.teacherList = [NSMutableArray arrayWithArray:teacherAccount];
     
 	for (Admin *admin in self.adminList) {
-		if (([admin.userName isEqual:self.usernameTextField.text] && [admin.password isEqual:self.passwordTextField.text])) {
+		if (([admin.username isEqual:self.userNameTextField.text] && [admin.password isEqual:self.passwordTextField.text])) {
 			self.isAdmin = YES;
-            appdelegate.userName = self.usernameTextField.text;
+            appdelegate.username = self.userNameTextField.text;
             appdelegate.password = self.passwordTextField.text;
 			return YES;
 		}
 	}
     
 	for (Teacher *teacher in self.teacherList) {
-		if ([teacher.userName isEqual:self.usernameTextField.text] && [teacher.password isEqual:self.passwordTextField.text]) {
-            appdelegate.userName = self.usernameTextField.text;
+		if ([teacher.username isEqual:self.userNameTextField.text] && [teacher.password isEqual:self.passwordTextField.text]) {
+            appdelegate.username = self.userNameTextField.text;
             appdelegate.password = self.passwordTextField.text;
 			NSLog(@"Teacher");
 			self.isTeacher = YES;
@@ -79,19 +80,19 @@
 	}
     
 	for (Student *student in self.studentList) {
-		NSLog(@"User Name: %@", student.studentNumber);
+		NSLog(@"User Name: %@", student.username);
 		NSLog(@"Pass: %@", student.password);
-		if ([student.studentNumber isEqual:self.usernameTextField.text] && [student.password isEqual:self.passwordTextField.text]) {
-            appdelegate.userName = self.usernameTextField.text;
+		if ([student.username isEqual:self.userNameTextField.text] && [student.password isEqual:self.passwordTextField.text]) {
+            appdelegate.username = self.userNameTextField.text;
             appdelegate.password = self.passwordTextField.text;
-			NSLog(@"%@", student.studentNumber);
+			NSLog(@"%@", student.username);
 			self.isStudent = YES;
 			return YES;
 		}
 	}
     
-	if ([self.usernameTextField.text isEqualToString:@"admin"] && [self.passwordTextField.text isEqualToString:@"admin"]) {
-        appdelegate.userName = @"Admin";
+	if ([self.userNameTextField.text isEqualToString:@"admin"] && [self.passwordTextField.text isEqualToString:@"admin"]) {
+        appdelegate.username = @"Admin";
 		self.isAdmin = YES;
 		return YES;
 	}
@@ -99,7 +100,16 @@
 	return NO;
 }
 
+- (void)alertWhenPasswordAndUserNameIsIncorrect {
+	if (![self checkUserNameAndPassword]) {
+		[[Util sharedUtil] showMessage:@"Your user name or password is incorrect" withTitle:@"Login failed"];
+	}
+}
 
 - (IBAction)login:(id)sender {
+    [self alertWhenPasswordAndUserNameIsIncorrect];
+    if ([self checkUserNameAndPassword]) {
+        NSLog(@"OK");
+    }
 }
 @end

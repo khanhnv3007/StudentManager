@@ -19,4 +19,7 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *password;
+
 @end
