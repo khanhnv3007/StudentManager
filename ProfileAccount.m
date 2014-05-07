@@ -23,6 +23,10 @@
 @property (nonatomic, strong) NSString *getUsername;
 @property (nonatomic, strong) NSString *getPassword;
 
+@property (nonatomic, strong) Admin *admin;
+@property (nonatomic, strong) Teacher *teacher;
+@property (nonatomic, strong) Student *student;
+
 @end
 
 @implementation ProfileAccount
@@ -36,6 +40,10 @@
     
     self.getPassword = self.appDelegate.password;
     self.getUsername = self.appDelegate.username;
+    
+    self.admin = [Admin MR_findFirstByAttribute:@"username" withValue:self.getUsername];
+    self.teacher = [Teacher MR_findFirstByAttribute:@"username" withValue:self.getUsername];
+    self.student = [Student MR_findFirstByAttribute:@"username" withValue:self.getUsername];
     
 }
 
@@ -54,8 +62,15 @@
 
 - (void)showProfile
 {
-    self.password.text = self.getPassword;
-    self.username.text = self.getUsername;
+    if (self.isAdmin) {
+        self.name.text = self.admin.name;
+        self.address.text = self.admin.address;
+        self.phoneNumber.text = self.admin.phoneNumber;
+        self.email.text = self.admin.email;
+        self.username.text = self.admin.username;
+        self.password.text = self.admin.password;
+        self.avatar.image = [UIImage imageWithContentsOfFile:self.admin.avatar];
+    }
 }
 
 - (IBAction)showMenu:(id)sender {
