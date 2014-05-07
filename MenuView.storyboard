@@ -225,10 +225,10 @@
             </objects>
             <point key="canvasLocation" x="243" y="1515"/>
         </scene>
-        <!--Profile Table View Controller - Profile-->
+        <!--Profile Account - Profile-->
         <scene sceneID="qGC-HK-d4X">
             <objects>
-                <tableViewController storyboardIdentifier="profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="win-yK-g2A" customClass="ProfileTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="win-yK-g2A" customClass="ProfileAccount" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="af8-Ed-Gar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,7 +253,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birthday..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rr2-40-Ka1">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rr2-40-Ka1">
                                                     <rect key="frame" x="147" y="63" width="153" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -393,33 +393,25 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="showMenu:" destination="win-yK-g2A" eventType="touchUpInside" id="Hrs-RD-5Ku"/>
+                                    <action selector="showMenu:" destination="win-yK-g2A" eventType="touchUpInside" id="073-qY-MoK"/>
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="Occ-UW-3yZ">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NYa-5y-RFi">
-                                <rect key="frame" x="233" y="5" width="71" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="Update">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="update:" destination="win-yK-g2A" eventType="touchUpInside" id="0RS-aI-sKX"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="rightBarButtonItem" title="Update" id="5Mb-Kj-7Ug">
+                            <connections>
+                                <action selector="Update:" destination="win-yK-g2A" id="Ryd-Ye-SfM"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="address" destination="Q7G-WU-daY" id="o44-2Z-r0w"/>
-                        <outlet property="avatar" destination="WKt-PT-dJd" id="6VV-Js-4SV"/>
-                        <outlet property="birthday" destination="rr2-40-Ka1" id="tXf-DU-ntH"/>
-                        <outlet property="email" destination="Mh0-5Z-GkV" id="2kQ-rp-Kw2"/>
-                        <outlet property="name" destination="G39-WB-g1z" id="ljC-bw-N0b"/>
-                        <outlet property="password" destination="Uak-NF-DNk" id="eYH-EN-RJ1"/>
-                        <outlet property="phoneNumber" destination="PLa-Q3-UcQ" id="MLq-Xz-0Tq"/>
-                        <outlet property="username" destination="PLa-Q3-UcQ" id="tR6-6R-Ai4"/>
+                        <outlet property="address" destination="Q7G-WU-daY" id="Lpg-8g-5LT"/>
+                        <outlet property="avatar" destination="WKt-PT-dJd" id="TzZ-f3-asm"/>
+                        <outlet property="birthday" destination="rr2-40-Ka1" id="9kW-lo-Xv1"/>
+                        <outlet property="email" destination="Mh0-5Z-GkV" id="Jyf-ji-DdA"/>
+                        <outlet property="name" destination="G39-WB-g1z" id="p2z-2n-LIw"/>
+                        <outlet property="password" destination="Uak-NF-DNk" id="IPh-cL-7We"/>
+                        <outlet property="phoneNumber" destination="Z9E-Sd-yrG" id="KGA-zC-kDT"/>
+                        <outlet property="username" destination="PLa-Q3-UcQ" id="jJE-40-3Dg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qqr-nM-hP4" userLabel="First Responder" sceneMemberID="firstResponder"/>

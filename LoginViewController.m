@@ -77,6 +77,8 @@
     }
     
     if ([self.userNameTextField.text isEqualToString:@"admin"] && [self.passwordTextField.text isEqualToString:@"admin"]) {
+        self.appDelegate.username = @"admin";
+        self.appDelegate.password = @"admin";
         self.appDelegate.isAdmin = YES;
         return YES;
     }

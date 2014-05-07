@@ -17,6 +17,7 @@
 #import "Admin.h"
 #import "Teacher.h"
 #import "Student.h"
+#import "ProfileAccount.h"
 
 @interface MenuViewController ()
 
@@ -163,8 +164,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-//	NavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"navController"];
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	NavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"navController"];
+    
+    if (indexPath.section == 0 && indexPath.row == 1) {
+        ProfileAccount *profile = [self.storyboard instantiateViewControllerWithIdentifier:@"profile"];
+        navigationController.viewControllers = @[profile];
+    }
 //
 //	if (indexPath.section == 0 && indexPath.row == 0) {
 //		HomePageTableViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
@@ -191,19 +197,19 @@
 //        navigationController.viewControllers = @[managePeople];
 //    }
 //    
-//    if (((self.isAdmin || self.isStudent) && (indexPath.section == 1 && indexPath.row == 2)) || (self.isTeacher && indexPath.section == 1 && indexPath.row == 1)) {
-//            UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-//            UINavigationController *navController = [loginStoryboard instantiateInitialViewController];
-//            self.view.window.rootViewController = navController;
-//        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-//        appDelegate.isAdmin = NO;
-//        appDelegate.isTeacher = NO;
-//        appDelegate.isStudent = NO;
-    }
+    if (((self.isAdmin || self.isStudent) && (indexPath.section == 1 && indexPath.row == 2)) || (self.isTeacher && indexPath.section == 1 && indexPath.row == 1)) {
+            UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+            UINavigationController *navController = [loginStoryboard instantiateInitialViewController];
+            self.view.window.rootViewController = navController;
+        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+        appDelegate.isAdmin = NO;
+        appDelegate.isTeacher = NO;
+        appDelegate.isStudent = NO;
+   }
 //
-//	self.frostedViewController.contentViewController = navigationController;
-//	[self.frostedViewController hideMenuViewController];
-//}
+	self.frostedViewController.contentViewController = navigationController;
+	[self.frostedViewController hideMenuViewController];
+}
 
 #pragma mark -
 #pragma mark UITableView Datasource
