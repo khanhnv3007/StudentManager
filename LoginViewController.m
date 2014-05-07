@@ -11,8 +11,6 @@
 #import "Admin.h"
 #import "Student.h"
 #import "Teacher.h"
-#import "DataManager.h"
-
 @interface LoginViewController ()
 
 @property (nonatomic, strong) NSMutableArray *adminList;
@@ -22,6 +20,7 @@
 @property (nonatomic) BOOL isAdmin;
 @property (nonatomic) BOOL isTeacher;
 @property (nonatomic) BOOL isStudent;
+@property (nonatomic, strong) AppDelegate *appDelegate;
 
 @end
 
@@ -35,6 +34,7 @@
 	UIColor *mainColor = [UIColor colorWithRed:28.0 / 255 green:158.0 / 255 blue:121.0 / 255 alpha:1.0f];
 	self.view.backgroundColor = mainColor;
     self.loginButton.layer.cornerRadius = 5.0f;
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
 }
 
 - (void)viewDidLoad
@@ -44,76 +44,52 @@
     
 }
 
+- (BOOL)checkUserNameAndPass
+{
+    Student *student = [Student MR_findFirstByAttribute:@"username" withValue:self.userNameTextField.text];
+    if (student != nil) {
+        if ([student.password isEqual:self.passwordTextField.text]) {
+            self.appDelegate.username = student.username;
+            self.appDelegate.password = student.password;
+            self.appDelegate.isStudent = YES;
+            return YES;
+        }
+    }
+    
+    Teacher *teacher = [Teacher MR_findFirstByAttribute:@"username" withValue:self.userNameTextField.text];
+    if (teacher != nil) {
+        if ([teacher.password isEqual:self.passwordTextField.text]) {
+            self.appDelegate.username = teacher.username;
+            self.appDelegate.password = teacher.password;
+            self.appDelegate.isTeacher = YES;
+            return YES;
+        }
+    }
+    
+    Admin *admin = [Admin MR_findFirstByAttribute:@"username" withValue:self.userNameTextField.text];
+    if (admin != nil) {
+        if ([admin.password isEqual:self.passwordTextField.text]) {
+            self.appDelegate.username = admin.username;
+            self.appDelegate.password = admin.password;
+            self.appDelegate.isAdmin = YES;
+            return YES;
+        }
+    }
+    
+    if ([self.userNameTextField.text isEqualToString:@"admin"] && [self.passwordTextField.text isEqualToString:@"admin"]) {
+        self.appDelegate.isAdmin = YES;
+        return YES;
+    }
+    return NO;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (BOOL)checkUserNameAndPassword {
-    AppDelegate *appdelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-	NSArray *adminAccount = [[DataManager sharedDataManager] getAllAdminAccount];
-	NSArray *studentAccount = [[DataManager sharedDataManager] getAllStudentAccount];
-	NSArray *teacherAccount = [[DataManager sharedDataManager] getAllTeacherAccount];
-    
-	self.adminList = [NSMutableArray arrayWithArray:adminAccount];
-	self.studentList = [NSMutableArray arrayWithArray:studentAccount];
-	self.teacherList = [NSMutableArray arrayWithArray:teacherAccount];
-    
-	for (Admin *admin in self.adminList) {
-		if (([admin.username isEqual:self.userNameTextField.text] && [admin.password isEqual:self.passwordTextField.text])) {
-			self.isAdmin = YES;
-            appdelegate.username = self.userNameTextField.text;
-            appdelegate.password = self.passwordTextField.text;
-            appdelegate.isAdmin = YES;
-			return YES;
-		}
-	}
-    
-	for (Teacher *teacher in self.teacherList) {
-		if ([teacher.username isEqual:self.userNameTextField.text] && [teacher.password isEqual:self.passwordTextField.text]) {
-            appdelegate.username = self.userNameTextField.text;
-            appdelegate.password = self.passwordTextField.text;
-            appdelegate.isTeacher = YES;
-			NSLog(@"This is a teacher");
-			self.isTeacher = YES;
-			return YES;
-		}
-	}
-    
-	for (Student *student in self.studentList) {
-		NSLog(@"User Name: %@", student.username);
-		NSLog(@"Pass: %@", student.password);
-		if ([student.username isEqual:self.userNameTextField.text] && [student.password isEqual:self.passwordTextField.text]) {
-            appdelegate.username = self.userNameTextField.text;
-            appdelegate.password = self.passwordTextField.text;
-            appdelegate.isStudent = YES;
-			NSLog(@"%@", student.username);
-			self.isStudent = YES;
-			return YES;
-		}
-	}
-    
-	if ([self.userNameTextField.text isEqualToString:@"admin"] && [self.passwordTextField.text isEqualToString:@"admin"]) {
-        appdelegate.username = @"Admin";
-        appdelegate.isAdmin = YES;
-		self.isAdmin = YES;
-		return YES;
-	}
-    
-	return NO;
-}
-
-- (void)alertWhenPasswordAndUserNameIsIncorrect {
-	if (![self checkUserNameAndPassword]) {
-		[[Util sharedUtil] showMessage:@"Your user name or password is incorrect" withTitle:@"Login failed"];
-	}
 }
 
 - (IBAction)login:(id)sender {
-    [self alertWhenPasswordAndUserNameIsIncorrect];
-    if ([self checkUserNameAndPassword]) {
-        NSLog(@"OK");
+    if ([self checkUserNameAndPass]) {
         [self presentViewController];
     }
 }
