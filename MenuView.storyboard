@@ -161,10 +161,10 @@
             </objects>
             <point key="canvasLocation" x="-138" y="1503"/>
         </scene>
-        <!--Create Class View Controller - Create Class-->
+        <!--Create Class - Create Class-->
         <scene sceneID="2oG-Z6-lkC">
             <objects>
-                <viewController id="dOf-mt-KTB" customClass="CreateClassViewController" sceneMemberID="viewController">
+                <viewController id="dOf-mt-KTB" customClass="CreateClass" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FO1-XH-hNl"/>
                         <viewControllerLayoutGuide type="bottom" id="Lb9-o9-Kg9"/>
@@ -206,7 +206,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="createClass:" destination="dOf-mt-KTB" eventType="touchUpInside" id="SCk-YP-ycv"/>
+                                    <action selector="createClass:" destination="dOf-mt-KTB" eventType="touchUpInside" id="hYx-TQ-is0"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -214,8 +214,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Create Class" id="O6f-Gc-NOk"/>
                     <connections>
-                        <outlet property="subject" destination="XI6-66-Tu7" id="V0n-B1-MqX"/>
-                        <outlet property="teacher" destination="EKg-jL-d7S" id="UtA-XU-jAC"/>
+                        <outlet property="name" destination="XI6-66-Tu7" id="swM-ca-4wL"/>
+                        <outlet property="teacher" destination="EKg-jL-d7S" id="edB-P4-eBh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vG4-Gb-DMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
