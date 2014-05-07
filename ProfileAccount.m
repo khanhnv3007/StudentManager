@@ -28,6 +28,8 @@
 @property (nonatomic, strong) Teacher *teacher;
 @property (nonatomic, strong) Student *student;
 
+@property (nonatomic) UITextField *pass;
+
 @end
 
 @implementation ProfileAccount
@@ -44,13 +46,14 @@
 	self.admin = [Admin MR_findFirstByAttribute:@"username" withValue:self.getUsername];
 	self.teacher = [Teacher MR_findFirstByAttribute:@"username" withValue:self.getUsername];
 	self.student = [Student MR_findFirstByAttribute:@"username" withValue:self.getUsername];
+	self.password.enabled = NO;
 }
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self init_user];
 	[self showProfile];
-    [self chooseImageAccount];
+	[self chooseImageAccount];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,11 +68,12 @@
 		self.email.text = self.admin.email;
 		self.username.text = self.admin.username;
 		self.password.text = self.admin.password;
-        if (self.admin.avatar == nil) {
-            self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
-        } else {
-            self.avatar.image = [UIImage imageWithContentsOfFile:self.admin.avatar];
-        }
+		if (self.admin.avatar == nil) {
+			self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
+		}
+		else {
+			self.avatar.image = [UIImage imageWithContentsOfFile:self.admin.avatar];
+		}
 	}
 	else if (self.isTeacher) {
 		self.name.text = self.teacher.name;
@@ -79,10 +83,11 @@
 		self.username.text = self.teacher.username;
 		self.password.text = self.teacher.password;
 		if (self.teacher.avatar == nil) {
-            self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
-        } else {
-            self.avatar.image = [UIImage imageWithContentsOfFile:self.teacher.avatar];
-        }
+			self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
+		}
+		else {
+			self.avatar.image = [UIImage imageWithContentsOfFile:self.teacher.avatar];
+		}
 	}
 	else {
 		self.name.text = self.student.name;
@@ -92,10 +97,12 @@
 		self.username.text = self.student.username;
 		self.password.text = self.student.password;
 		if (self.student.avatar == nil) {
-            self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
-        } else {
-            self.avatar.image = [UIImage imageWithContentsOfFile:self.student.avatar];
-        }	}
+			self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
+		}
+		else {
+			self.avatar.image = [UIImage imageWithContentsOfFile:self.student.avatar];
+		}
+	}
 }
 
 - (IBAction)showMenu:(id)sender {
@@ -109,6 +116,25 @@
 	NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
 	NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
 	return [emailTest evaluateWithObject:checkString];
+}
+
+- (IBAction)changePassword:(id)sender {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Confirm Password" message:@"Enter your current password: " delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
+	alert.alertViewStyle = UIAlertViewStyleSecureTextInput;
+	[alert show];
+	self.pass = [alert textFieldAtIndex:0];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == 1) {
+		NSLog(@"cancel");
+	}
+	else {
+		if ([self.pass.text isEqualToString:self.admin.password]) {
+			[[Util sharedUtil] showMessage:@"Now, You can change your password :)" withTitle:@"Confirm Successully!"];
+			self.password.enabled = YES;
+		}
+	}
 }
 
 - (IBAction)Update:(id)sender {
@@ -137,7 +163,7 @@
 		}
 		self.admin.username = self.username.text;
 		self.admin.password = self.password.text;
-        [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+		[[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
 	}
 	else if (self.isTeacher) {
 		self.teacher.avatar = imagePath;
@@ -151,7 +177,7 @@
 		}
 		self.teacher.username = self.username.text;
 		self.teacher.password = self.password.text;
-        [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+		[[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
 	}
 	else {
 		self.student.avatar = imagePath;
@@ -165,7 +191,7 @@
 		}
 		self.student.username = self.username.text;
 		self.student.password = self.password.text;
-        [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+		[[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
 	}
 }
 
@@ -219,6 +245,20 @@
 	self.avatar.image = chosenImage;
 
 	[picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+	[self.view endEditing:YES];
+	[self.email resignFirstResponder];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+	[self.tableView resignFirstResponder];
+	[self.email resignFirstResponder];
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+	[self.email resignFirstResponder];
 }
 
 @end
