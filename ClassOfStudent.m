@@ -88,6 +88,7 @@
     Subject *class = self.classlist[indexPath.row];
     cell.imageView.image = [UIImage imageNamed:@"menu30.png"];
     cell.textLabel.text = class.name;
+    cell.detailTextLabel.text = class.classWithTeacher.name;
     return cell;
 }
 

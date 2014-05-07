@@ -25,4 +25,6 @@
 @property (nonatomic, strong) NSString *username;
 @property (nonatomic, strong) NSString *password;
 
+@property (nonatomic, strong) NSString *currentClass;
+
 @end

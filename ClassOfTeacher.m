@@ -7,100 +7,96 @@
 //
 
 #import "ClassOfTeacher.h"
+#import "Teacher.h"
+#import "Subject.h"
+#import "Student.h"
+#import "AppDelegate.h"
+#import "Admin.h"
 
 @interface ClassOfTeacher ()
+
+@property (strong, nonatomic) NSMutableArray *classList;
+@property (strong, nonatomic) NSArray *classes;
+
+@property (nonatomic, strong) AppDelegate *appDelegate;
+
+@property (nonatomic) BOOL isAdmin;
+@property (nonatomic) BOOL isTeacher;
+@property (nonatomic) BOOL isStudent;
+
+@property (nonatomic, strong) NSString *getUsername;
+@property (nonatomic, strong) NSString *getPassword;
+
+@property (nonatomic, strong) Admin *admin;
+@property (nonatomic, strong) Teacher *teacher;
+@property (nonatomic, strong) Student *student;
+
+
+@property (nonatomic, strong) UITableView *rootTableView;
+
 
 @end
 
 @implementation ClassOfTeacher
 
+- (void)init_user
+{
+    self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+	self.isAdmin = self.appDelegate.isAdmin;
+	self.isStudent = self.appDelegate.isStudent;
+	self.isTeacher = self.appDelegate.isTeacher;
+    
+	self.getPassword = self.appDelegate.password;
+	self.getUsername = self.appDelegate.username;
+    
+	self.admin = [Admin MR_findFirstByAttribute:@"username" withValue:self.getUsername];
+	self.teacher = [Teacher MR_findFirstByAttribute:@"username" withValue:self.getUsername];
+	self.student = [Student MR_findFirstByAttribute:@"username" withValue:self.getUsername];
+    
+	self.classes = [self.teacher.teacherinClass allObjects];
+	self.classList = [NSMutableArray arrayWithArray:self.classes];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self init_user];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return [self.classList count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellClass" forIndexPath:indexPath];
     
-    // Configure the cell...
+    Subject *class = self.classList[indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:@"menu30.png"];
+    cell.textLabel.text = class.name;
     
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    Subject *class = self.classList[indexPath.row];
+    self.appDelegate.currentClass = class.name;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

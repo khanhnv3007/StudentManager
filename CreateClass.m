@@ -20,14 +20,18 @@
 @property (nonatomic, strong) UIPickerView *seclectTeacher;
 
 @property (nonatomic, strong) AppDelegate *appDelegate;
-@property (nonatomic, strong) NSArray *teacherList;
+@property (nonatomic, strong) NSArray *teachers;
+@property (nonatomic, strong) NSMutableArray *teacherList;
+@property (nonatomic, strong) Teacher *teacherIsSelected;
 
 @end
 
 @implementation CreateClass
 
 - (void)init_user{
-    self.teacherList = [Teacher MR_findAll];
+    self.teachers = [Teacher MR_findAll];
+    self.teacherList = [NSMutableArray arrayWithArray:self.teachers];
+    
 }
 
 - (void)viewDidLoad
@@ -38,6 +42,8 @@
     
     self.seclectTeacher = [[UIPickerView alloc] init];
     self.seclectTeacher.dataSource = self;
+    self.seclectTeacher.delegate = self;
+    self.seclectTeacher.showsSelectionIndicator = YES;
     self.seclectTeacher.center = self.view.center;
     [self.view addSubview:self.seclectTeacher];
 }
@@ -47,16 +53,13 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)showMenu:(id)sender {
-    [self.frostedViewController presentMenuViewController];
-}
 
 - (IBAction)createClass:(id)sender {
     Subject *class = [Subject MR_createEntity];
     class.name = self.name.text;
     class.subjectID = [[Util sharedUtil] generateGUID];
+    class.classWithTeacher = self.teacherIsSelected;
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-
     [[Util sharedUtil] showMessage:@"Your class has been created!" withTitle:@"Create Success"];
 }
 
@@ -84,6 +87,13 @@
         return [NSString stringWithFormat:@"%@", teacher.name];
     }
     return nil;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.teacherIsSelected = self.teacherList[row];
+    NSLog(@"%@", self.teacherIsSelected.name);
+    self.teachername.text = self.teacherIsSelected.name;
 }
 
 @end

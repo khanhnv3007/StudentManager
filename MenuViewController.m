@@ -35,7 +35,7 @@
 @property (nonatomic, strong) Teacher *teacher;
 @property (nonatomic, strong) Student *student;
 
-- (void)showAvatar;
+
 - (NSString *)getNameofUser;
 @end
 
