@@ -49,13 +49,13 @@
 	self.teacher = [Teacher MR_findFirstByAttribute:@"username" withValue:self.getUsername];
 	self.student = [Student MR_findFirstByAttribute:@"username" withValue:self.getUsername];
     
-	self.teachers = [Student MR_findAll];
+	self.teachers = [Teacher MR_findAll];
 	self.teacherList = [NSMutableArray arrayWithArray:self.teachers];
 }
 
 - (void)loadAllTeacher
 {
-    self.teachers = [Student MR_findAll];
+    self.teachers = [Teacher MR_findAll];
     self.teacherList = [NSMutableArray arrayWithArray:self.teachers];
     [self.tableView reloadData];
 }
