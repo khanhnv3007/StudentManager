@@ -92,7 +92,19 @@
 
 - (IBAction)login:(id)sender {
     if ([self checkUserNameAndPass]) {
-        [self presentViewController];
+        if (self.appDelegate.isAdmin) {
+            [[Util sharedUtil]showMessage:@"Welcome Admin." withTitle:@"Login Successful!"];
+            [self presentViewController];
+        } else if (self.appDelegate.isTeacher) {
+            [[Util sharedUtil]showMessage:@"Welcome Teacher. Teach well - Study well" withTitle:@"Login Successful!"];
+            [self presentViewController];
+        } else{
+            [[Util sharedUtil]showMessage:@"Welcome Student. Study well - Teach Well" withTitle:@"Login Successful!"];
+            [self presentViewController];
+        }
+        
+    }else{
+        [[Util sharedUtil]showMessage:@"Username or password is incorrect" withTitle:@"Login failed!"];
     }
 }
 
