@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSArray *classes;
 
 @property (nonatomic, strong) UITableView *rootTableView;
+@property (nonatomic, strong) NSString *getID;
 
 @end
 
@@ -102,7 +103,6 @@
 	Subject *class = (Subject *)[self.classList objectAtIndex:indexPath.row];
 	cell.textLabel.text = class.name;
 	cell.detailTextLabel.text = class.classWithTeacher.name;
-
 	return cell;
 }
 
@@ -139,7 +139,22 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     [[Util sharedUtil]showMessage:@"Arenjfk" withTitle:@"fbdhb"];
+    if (self.isStudent) {
+        [[Util sharedUtil]showMessage:@"Are you sure want to enroll this class" withTitle:@"Confirm ?" cancelButtonTitle:@"YES" otherButtonTitles:@"NO" delegate:self andTag:100];
+        Subject *subject = self.classList[indexPath.row];
+        self.getID = subject.subjectID;
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (alertView.tag == 100) {
+        if (buttonIndex == 0) {
+            Subject *subject = [Subject MR_findFirstByAttribute:@"subjectID" withValue:self.getID];
+            [subject addClassofStudentObject:self.student];
+            //NSLog(@"ok");
+        }
+    }
 }
 
 /*

@@ -68,10 +68,10 @@
             </objects>
             <point key="canvasLocation" x="243" y="231"/>
         </scene>
-        <!--Class Of Student Table View Controller - Your Class-->
+        <!--Class Of Student - Your Class-->
         <scene sceneID="ASa-84-ACz">
             <objects>
-                <tableViewController storyboardIdentifier="classOfStudent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DPN-fM-8is" customClass="ClassOfStudentTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="classOfStudent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DPN-fM-8is" customClass="ClassOfStudent" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="YW8-SL-gk6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

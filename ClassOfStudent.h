@@ -1,5 +1,5 @@
 //
-//  ClassList.h
+//  ClassOfStudent.h
 //  StudentManager
 //
 //  Created by Nguyễn Nam Phong on 5/7/14.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ClassList : UITableViewController <UIAlertViewDelegate>
+@interface ClassOfStudent : UITableViewController
 
 @end

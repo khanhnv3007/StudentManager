@@ -13,6 +13,7 @@
 		09A3A96D191A384A00614D76 /* CreatePeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A96C191A384A00614D76 /* CreatePeople.m */; };
 		09A3A972191A3DC200614D76 /* StudentList.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A971191A3DC200614D76 /* StudentList.m */; };
 		09A3A976191A405F00614D76 /* TeacherList.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A975191A405F00614D76 /* TeacherList.m */; };
+		09A3A97A191A4A1D00614D76 /* ClassOfStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A979191A4A1D00614D76 /* ClassOfStudent.m */; };
 		09C4BBBF191735F400FB0D11 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBBE191735F400FB0D11 /* Login.storyboard */; };
 		09C4BBC21917367B00FB0D11 /* Studentmanager.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBC11917367B00FB0D11 /* Studentmanager.png */; };
 		09C4BBC51917368B00FB0D11 /* no-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBC31917368B00FB0D11 /* no-avatar.png */; };
@@ -92,6 +93,8 @@
 		09A3A971191A3DC200614D76 /* StudentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentList.m; sourceTree = "<group>"; };
 		09A3A974191A405F00614D76 /* TeacherList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherList.h; sourceTree = "<group>"; };
 		09A3A975191A405F00614D76 /* TeacherList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherList.m; sourceTree = "<group>"; };
+		09A3A978191A4A1D00614D76 /* ClassOfStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassOfStudent.h; sourceTree = "<group>"; };
+		09A3A979191A4A1D00614D76 /* ClassOfStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassOfStudent.m; sourceTree = "<group>"; };
 		09C4BBBE191735F400FB0D11 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		09C4BBC11917367B00FB0D11 /* Studentmanager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Studentmanager.png; sourceTree = "<group>"; };
 		09C4BBC31917368B00FB0D11 /* no-avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-avatar.png"; sourceTree = "<group>"; };
@@ -288,9 +291,19 @@
 			name = "Teacher List";
 			sourceTree = "<group>";
 		};
+		09A3A977191A4A0900614D76 /* Class Of Student */ = {
+			isa = PBXGroup;
+			children = (
+				09A3A978191A4A1D00614D76 /* ClassOfStudent.h */,
+				09A3A979191A4A1D00614D76 /* ClassOfStudent.m */,
+			);
+			name = "Class Of Student";
+			sourceTree = "<group>";
+		};
 		09C4BBBB191735B400FB0D11 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				09A3A977191A4A0900614D76 /* Class Of Student */,
 				09A3A969191A376500614D76 /* Manage People */,
 				09A3A964191A33CB00614D76 /* Manage Class */,
 				09A3A959191A27FB00614D76 /* Profile */,
@@ -730,6 +743,7 @@
 				09A3A968191A33EB00614D76 /* CreateClass.m in Sources */,
 				82DEAB1D19172CB60039B380 /* Student.m in Sources */,
 				09C4BBE419173DE100FB0D11 /* NavigationController.m in Sources */,
+				09A3A97A191A4A1D00614D76 /* ClassOfStudent.m in Sources */,
 				82DEAB2319172CB70039B380 /* Teacher.m in Sources */,
 				82DEAAF1191728570039B380 /* PPConstants.m in Sources */,
 				09A3A972191A3DC200614D76 /* StudentList.m in Sources */,
