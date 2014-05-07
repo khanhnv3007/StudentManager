@@ -29,7 +29,8 @@
     Subject *class = [Subject MR_createEntity];
     class.name = self.name.text;
     class.subjectID = [[Util sharedUtil] generateGUID];
-    
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+
     [[Util sharedUtil] showMessage:@"Your class has been created!" withTitle:@"Create Success"];
 }
 @end
