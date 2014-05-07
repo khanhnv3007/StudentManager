@@ -2,7 +2,7 @@
 //  Admin.m
 //  StudentManager
 //
-//  Created by khanhnv3007 on 5/5/14.
+//  Created by khanhnv3007 on 5/7/14.
 //  Copyright (c) 2014 RoxWin. All rights reserved.
 //
 
@@ -11,14 +11,14 @@
 
 @implementation Admin
 
-@dynamic adminID;
-@dynamic name;
-@dynamic birthday;
 @dynamic address;
+@dynamic adminID;
 @dynamic avatar;
+@dynamic birthday;
 @dynamic email;
+@dynamic name;
+@dynamic password;
 @dynamic phoneNumber;
 @dynamic username;
-@dynamic password;
 
 @end

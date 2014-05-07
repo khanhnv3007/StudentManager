@@ -2,25 +2,27 @@
 //  Student.m
 //  StudentManager
 //
-//  Created by khanhnv3007 on 5/5/14.
+//  Created by khanhnv3007 on 5/7/14.
 //  Copyright (c) 2014 RoxWin. All rights reserved.
 //
 
 #import "Student.h"
+#import "Mark.h"
+#import "Subject.h"
 
 
 @implementation Student
 
-@dynamic studentID;
-@dynamic name;
-@dynamic birthday;
 @dynamic address;
-@dynamic email;
-@dynamic phoneNumber;
-@dynamic username;
-@dynamic password;
 @dynamic avatar;
-@dynamic studentinClass;
+@dynamic birthday;
+@dynamic email;
+@dynamic name;
+@dynamic password;
+@dynamic phoneNumber;
+@dynamic studentID;
+@dynamic username;
 @dynamic markofStudent;
+@dynamic studentinClass;
 
 @end

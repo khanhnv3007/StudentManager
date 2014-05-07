@@ -13,12 +13,11 @@
     </entity>
     <entity name="Mark" representedClassName="Mark" syncable="YES">
         <attribute name="average" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="classID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="final" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="markID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mid" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="studentID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="markOfStudent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Student" inverseName="markofStudent" inverseEntity="Student" syncable="YES"/>
+        <relationship name="markOfSubject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Subject" inverseName="subjectOfMark" inverseEntity="Subject" syncable="YES"/>
     </entity>
     <entity name="Student" representedClassName="Student" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -36,9 +35,9 @@
     <entity name="Subject" representedClassName="Subject" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subjectID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="teacher" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="classofStudent" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Student" inverseName="studentinClass" inverseEntity="Student" syncable="YES"/>
         <relationship name="classWithTeacher" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Teacher" inverseName="teacherinClass" inverseEntity="Teacher" syncable="YES"/>
+        <relationship name="subjectOfMark" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Mark" inverseName="markOfSubject" inverseEntity="Mark" syncable="YES"/>
     </entity>
     <entity name="Teacher" representedClassName="Teacher" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,9 +53,9 @@
     </entity>
     <elements>
         <element name="Admin" positionX="126" positionY="-270" width="128" height="178"/>
-        <element name="Mark" positionX="-135" positionY="225" width="128" height="148"/>
-        <element name="Student" positionX="-27" positionY="-54" width="128" height="208"/>
-        <element name="Subject" positionX="205" positionY="-54" width="128" height="118"/>
+        <element name="Mark" positionX="225" positionY="126" width="128" height="133"/>
+        <element name="Student" positionX="18" positionY="-19" width="128" height="208"/>
+        <element name="Subject" positionX="252" positionY="-73" width="128" height="118"/>
         <element name="Teacher" positionX="448" positionY="-54" width="128" height="193"/>
     </elements>
 </model>
