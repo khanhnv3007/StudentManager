@@ -178,6 +178,10 @@
         navigationController.viewControllers = @[classList];
     }
     
+    if (indexPath.section == 1 && indexPath.row == 1 && self.isAdmin) {
+        navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"managePeople"]];
+    }
+    
 //
 //	if (indexPath.section == 0 && indexPath.row == 0) {
 //		HomePageTableViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];

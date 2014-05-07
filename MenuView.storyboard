@@ -415,10 +415,10 @@
             </objects>
             <point key="canvasLocation" x="243" y="871"/>
         </scene>
-        <!--Manage People Table View Controller - Manage People-->
+        <!--Table View Controller - Manage People-->
         <scene sceneID="vJl-v8-c7F">
             <objects>
-                <tableViewController storyboardIdentifier="managePeople" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tsc-Kh-Hom" customClass="ManagePeopleTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="managePeople" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tsc-Kh-Hom" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Nhw-wG-W3s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -512,10 +512,10 @@
             </objects>
             <point key="canvasLocation" x="528" y="-550"/>
         </scene>
-        <!--Add Teacher Student View Controller - Add Teacher/Student-->
+        <!--Create People - Add Teacher/Student-->
         <scene sceneID="U39-MW-a6w">
             <objects>
-                <viewController id="Djn-WO-h5L" customClass="AddTeacherStudentViewController" sceneMemberID="viewController">
+                <viewController id="Djn-WO-h5L" customClass="CreatePeople" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NY9-Cs-2Xc"/>
                         <viewControllerLayoutGuide type="bottom" id="c8N-tu-aDP"/>
@@ -555,7 +555,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addToTheList:" destination="Djn-WO-h5L" eventType="touchUpInside" id="6gW-TU-Iq7"/>
+                                    <action selector="createPeople:" destination="Djn-WO-h5L" eventType="touchUpInside" id="6Rt-fU-dDB"/>
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CND-8h-ukT">
@@ -572,9 +572,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Add Teacher/Student" id="MPO-sP-Dny"/>
                     <connections>
-                        <outlet property="name" destination="ycf-ut-Wwb" id="kZJ-N4-mu2"/>
-                        <outlet property="selectAuthor" destination="CND-8h-ukT" id="tFw-a8-l3h"/>
-                        <outlet property="username" destination="GrU-rA-VtQ" id="nD8-NL-QDK"/>
+                        <outlet property="name" destination="ycf-ut-Wwb" id="Xa6-HF-CXW"/>
+                        <outlet property="selectUser" destination="CND-8h-ukT" id="pxS-w8-XM2"/>
+                        <outlet property="username" destination="GrU-rA-VtQ" id="1po-Zm-SXV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nZ6-c3-jhu" userLabel="First Responder" sceneMemberID="firstResponder"/>
