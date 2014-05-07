@@ -14,6 +14,7 @@
 		09A3A972191A3DC200614D76 /* StudentList.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A971191A3DC200614D76 /* StudentList.m */; };
 		09A3A976191A405F00614D76 /* TeacherList.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A975191A405F00614D76 /* TeacherList.m */; };
 		09A3A97A191A4A1D00614D76 /* ClassOfStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A979191A4A1D00614D76 /* ClassOfStudent.m */; };
+		09B861C0191A6BB50034799F /* ClassOfTeacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B861BF191A6BB50034799F /* ClassOfTeacher.m */; };
 		09C4BBBF191735F400FB0D11 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBBE191735F400FB0D11 /* Login.storyboard */; };
 		09C4BBC21917367B00FB0D11 /* Studentmanager.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBC11917367B00FB0D11 /* Studentmanager.png */; };
 		09C4BBC51917368B00FB0D11 /* no-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBC31917368B00FB0D11 /* no-avatar.png */; };
@@ -95,6 +96,8 @@
 		09A3A975191A405F00614D76 /* TeacherList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherList.m; sourceTree = "<group>"; };
 		09A3A978191A4A1D00614D76 /* ClassOfStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassOfStudent.h; sourceTree = "<group>"; };
 		09A3A979191A4A1D00614D76 /* ClassOfStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassOfStudent.m; sourceTree = "<group>"; };
+		09B861BE191A6BB50034799F /* ClassOfTeacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassOfTeacher.h; sourceTree = "<group>"; };
+		09B861BF191A6BB50034799F /* ClassOfTeacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassOfTeacher.m; sourceTree = "<group>"; };
 		09C4BBBE191735F400FB0D11 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		09C4BBC11917367B00FB0D11 /* Studentmanager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Studentmanager.png; sourceTree = "<group>"; };
 		09C4BBC31917368B00FB0D11 /* no-avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-avatar.png"; sourceTree = "<group>"; };
@@ -300,9 +303,19 @@
 			name = "Class Of Student";
 			sourceTree = "<group>";
 		};
+		09B861BD191A6B630034799F /* Class of teacher */ = {
+			isa = PBXGroup;
+			children = (
+				09B861BE191A6BB50034799F /* ClassOfTeacher.h */,
+				09B861BF191A6BB50034799F /* ClassOfTeacher.m */,
+			);
+			name = "Class of teacher";
+			sourceTree = "<group>";
+		};
 		09C4BBBB191735B400FB0D11 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				09B861BD191A6B630034799F /* Class of teacher */,
 				09A3A977191A4A0900614D76 /* Class Of Student */,
 				09A3A969191A376500614D76 /* Manage People */,
 				09A3A964191A33CB00614D76 /* Manage Class */,
@@ -753,6 +766,7 @@
 				82DEAAF4191728570039B380 /* SWCellScrollView.m in Sources */,
 				82DEAAB5191724600039B380 /* main.m in Sources */,
 				09A3A963191A2ECC00614D76 /* ClassList.m in Sources */,
+				09B861C0191A6BB50034799F /* ClassOfTeacher.m in Sources */,
 				82DEAB13191728BB0039B380 /* UIImage+REFrostedViewController.m in Sources */,
 				82DEAAF8191728570039B380 /* SWUtilityButtonView.m in Sources */,
 				82DEAB2619172CB70039B380 /* Mark.m in Sources */,

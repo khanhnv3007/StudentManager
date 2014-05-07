@@ -1,66 +1,28 @@
 //
-//  ClassOfStudent.m
+//  ClassOfTeacher.m
 //  StudentManager
 //
 //  Created by Nguyễn Nam Phong on 5/7/14.
 //  Copyright (c) 2014 RoxWin. All rights reserved.
 //
 
-#import "ClassOfStudent.h"
-#import "Subject.h"
-#import "Teacher.h"
-#import "Student.h"
-#import "Admin.h"
-#import "AppDelegate.h"
+#import "ClassOfTeacher.h"
 
-@interface ClassOfStudent ()
-
-@property (nonatomic, strong) AppDelegate *appDelegate;
-
-@property (nonatomic) BOOL isAdmin;
-@property (nonatomic) BOOL isTeacher;
-@property (nonatomic) BOOL isStudent;
-
-@property (nonatomic, strong) NSString *getUsername;
-@property (nonatomic, strong) NSString *getPassword;
-
-@property (nonatomic, strong) Admin *admin;
-@property (nonatomic, strong) Teacher *teacher;
-@property (nonatomic, strong) Student *student;
-
-@property (nonatomic, strong) NSMutableArray *classlist;
-@property (nonatomic, strong) NSArray *classes;
-
-@property (nonatomic, strong) UITableView *rootTableView;
-
+@interface ClassOfTeacher ()
 
 @end
 
-@implementation ClassOfStudent
-
-- (void)init_user {
-	self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-	self.isAdmin = self.appDelegate.isAdmin;
-	self.isStudent = self.appDelegate.isStudent;
-	self.isTeacher = self.appDelegate.isTeacher;
-    
-    self.getUsername = self.appDelegate.username;
-    self.getPassword = self.appDelegate.password;
-    
-	self.admin = [Admin MR_findFirstByAttribute:@"username" withValue:self.getUsername];
-	self.teacher = [Teacher MR_findFirstByAttribute:@"username" withValue:self.getUsername];
-	self.student = [Student MR_findFirstByAttribute:@"username" withValue:self.getUsername];
-
-    self.classes = [self.student.studentinClass allObjects];
-    self.classlist = [NSMutableArray arrayWithArray:self.classes];
-    
-}
+@implementation ClassOfTeacher
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self init_user];
-
+    
+    // Uncomment the following line to preserve selection between presentations.
+    // self.clearsSelectionOnViewWillAppear = NO;
+    
+    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,24 +35,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.classlist count];
+    return 0;
 }
 
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellClassOfStudent" forIndexPath:indexPath];
-    Subject *class = self.classlist[indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:@"menu30.png"];
-    cell.textLabel.text = class.name;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    // Configure the cell...
+    
     return cell;
 }
-
+*/
 
 /*
 // Override to support conditional editing of the table view.

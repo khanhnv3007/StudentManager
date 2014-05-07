@@ -196,7 +196,11 @@
 	if (indexPath.section == 1 && indexPath.row == 1 && self.isAdmin) {
 		navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"managePeople"]];
 	}
-
+    
+    if (indexPath.section == 1 && indexPath.row == 0 && self.isStudent) {
+        navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"classOfStudent"]];
+    }
+    
 	if (((self.isAdmin || self.isStudent) && (indexPath.section == 1 && indexPath.row == 2)) || (self.isTeacher && indexPath.section == 1 && indexPath.row == 1)) {
 		UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
 		UINavigationController *navController = [loginStoryboard instantiateInitialViewController];

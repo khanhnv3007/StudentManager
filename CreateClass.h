@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreateClass : UIViewController
+@interface CreateClass : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *teacher;
 - (IBAction)showMenu:(id)sender;
 
 - (IBAction)createClass:(id)sender;
+
 
 @end
