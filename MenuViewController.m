@@ -173,7 +173,7 @@
         navigationController.viewControllers = @[profile];
     }
     
-    if (indexPath.section == 1 && indexPath.row == 0 && self.isAdmin) {
+    if ((indexPath.section == 1 && indexPath.row == 0 && self.isAdmin) || (indexPath.section == 1 && indexPath.row == 1 && self.isStudent )) {
         ClassList *classList = [self.storyboard instantiateViewControllerWithIdentifier:@"classList"];
         navigationController.viewControllers = @[classList];
     }
@@ -181,33 +181,7 @@
     if (indexPath.section == 1 && indexPath.row == 1 && self.isAdmin) {
         navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"managePeople"]];
     }
-    
-//
-//	if (indexPath.section == 0 && indexPath.row == 0) {
-//		HomePageTableViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];
-//		navigationController.viewControllers = @[homeViewController];
-//	}
-//	else if (indexPath.section == 0 && indexPath.row == 1) {
-//		NSLog(@"OK");
-//		ProfileTableViewController *profile = [self.storyboard instantiateViewControllerWithIdentifier:@"profile"];
-//		navigationController.viewControllers = @[profile];
-//	}
-//    
-//    if ((indexPath.section == 1 && indexPath.row == 1 && self.isStudent) || (self.isAdmin && indexPath.section == 1 && indexPath.row == 0)) {
-//        ClassListTableViewController *classList = [self.storyboard instantiateViewControllerWithIdentifier:@"classList"];
-//        navigationController.viewControllers = @[classList];
-//    }
-//    
-//    if (self.isStudent && indexPath.section == 1 && indexPath.row == 0) {
-//        ClassOfStudentTableViewController *classOfStudent = [self.storyboard instantiateViewControllerWithIdentifier:@"classOfStudent"];
-//        navigationController.viewControllers = @[classOfStudent];
-//    }
-//    
-//    if (self.isAdmin && indexPath.section == 1 && indexPath.row == 1) {
-//        ManagePeopleTableViewController *managePeople = [self.storyboard instantiateViewControllerWithIdentifier:@"managePeople"];
-//        navigationController.viewControllers = @[managePeople];
-//    }
-//    
+  
     if (((self.isAdmin || self.isStudent) && (indexPath.section == 1 && indexPath.row == 2)) || (self.isTeacher && indexPath.section == 1 && indexPath.row == 1)) {
             UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
             UINavigationController *navController = [loginStoryboard instantiateInitialViewController];
@@ -217,7 +191,6 @@
         appDelegate.isTeacher = NO;
         appDelegate.isStudent = NO;
    }
-//
 	self.frostedViewController.contentViewController = navigationController;
 	[self.frostedViewController hideMenuViewController];
 }
