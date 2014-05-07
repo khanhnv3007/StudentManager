@@ -50,6 +50,7 @@
 	[super viewDidLoad];
 	[self init_user];
 	[self showProfile];
+    [self chooseImageAccount];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,7 +65,11 @@
 		self.email.text = self.admin.email;
 		self.username.text = self.admin.username;
 		self.password.text = self.admin.password;
-		self.avatar.image = [UIImage imageWithContentsOfFile:self.admin.avatar];
+        if (self.admin.avatar == nil) {
+            self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
+        } else {
+            self.avatar.image = [UIImage imageWithContentsOfFile:self.admin.avatar];
+        }
 	}
 	else if (self.isTeacher) {
 		self.name.text = self.teacher.name;
@@ -73,7 +78,11 @@
 		self.email.text = self.teacher.email;
 		self.username.text = self.teacher.username;
 		self.password.text = self.teacher.password;
-		self.avatar.image = [UIImage imageWithContentsOfFile:self.teacher.avatar];
+		if (self.teacher.avatar == nil) {
+            self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
+        } else {
+            self.avatar.image = [UIImage imageWithContentsOfFile:self.teacher.avatar];
+        }
 	}
 	else {
 		self.name.text = self.student.name;
@@ -82,8 +91,11 @@
 		self.email.text = self.student.email;
 		self.username.text = self.student.username;
 		self.password.text = self.student.password;
-		self.avatar.image = [UIImage imageWithContentsOfFile:self.student.avatar];
-	}
+		if (self.student.avatar == nil) {
+            self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
+        } else {
+            self.avatar.image = [UIImage imageWithContentsOfFile:self.student.avatar];
+        }	}
 }
 
 - (IBAction)showMenu:(id)sender {
@@ -100,10 +112,18 @@
 }
 
 - (IBAction)Update:(id)sender {
+	NSData *imageData = UIImagePNGRepresentation(self.avatar.image);
 	NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
 	NSString *documentsDirectory = [paths objectAtIndex:0];
 	NSString *cache = [[Util sharedUtil] generateGUID];
 	NSString *imagePath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", cache]];
+	NSLog((@"pre writing to file"));
+	if (![imageData writeToFile:imagePath atomically:NO]) {
+		DLog(@"Failed to cache image data to disk");
+	}
+	else {
+		DLog(@"the cachedImagedPath is %@", imagePath);
+	}
 
 	if (self.isAdmin) {
 		self.admin.avatar = imagePath;
@@ -117,6 +137,7 @@
 		}
 		self.admin.username = self.username.text;
 		self.admin.password = self.password.text;
+        [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
 	}
 	else if (self.isTeacher) {
 		self.teacher.avatar = imagePath;
@@ -130,7 +151,8 @@
 		}
 		self.teacher.username = self.username.text;
 		self.teacher.password = self.password.text;
-    }
+        [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+	}
 	else {
 		self.student.avatar = imagePath;
 		self.student.name = self.name.text;
@@ -143,7 +165,60 @@
 		}
 		self.student.username = self.username.text;
 		self.student.password = self.password.text;
+        [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
 	}
+}
+
+- (NSString *)savePathLocalImage:(UIImage *)image {
+	NSString *pathImage = [[NSString alloc] init];
+	return pathImage;
+}
+
+- (void)chooseImageAccount {
+	UITapGestureRecognizer *tapAtImage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(newTapMethod)];
+	[self.avatar setUserInteractionEnabled:YES];
+	[self.avatar addGestureRecognizer:tapAtImage];
+}
+
+- (void)newTapMethod {
+	[self showActionChooseImage];
+}
+
+- (void)showActionChooseImage {
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Title" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take photo", @"Choose from library", nil];
+	[actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+	UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+	picker.modalPresentationStyle = UIModalPresentationCurrentContext;
+	picker.delegate = self;
+	picker.allowsEditing = YES;
+	if ([buttonTitle isEqualToString:@"Take photo"]) {
+		if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+			picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+		}
+		[self presentViewController:picker animated:YES completion:NULL];
+	}
+	else if ([buttonTitle isEqualToString:@"Choose from library"]) {
+		UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+		picker.delegate = self;
+		picker.allowsEditing = YES;
+		picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+		[self presentViewController:picker animated:YES completion:NULL];
+	}
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+	[picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+	UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+	self.avatar.image = chosenImage;
+
+	[picker dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end
