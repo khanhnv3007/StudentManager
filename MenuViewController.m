@@ -22,33 +22,42 @@
 
 @interface MenuViewController ()
 
+@property (nonatomic, strong) AppDelegate *appDelegate;
+
 @property (nonatomic) BOOL isAdmin;
 @property (nonatomic) BOOL isTeacher;
 @property (nonatomic) BOOL isStudent;
 
-@property (nonatomic, strong) NSString *nameOfUser;
+@property (nonatomic, strong) NSString *getUsername;
+@property (nonatomic, strong) NSString *getPassword;
 
+@property (nonatomic, strong) Admin *admin;
+@property (nonatomic, strong) Teacher *teacher;
+@property (nonatomic, strong) Student *student;
+
+- (void)showAvatar;
+- (NSString *)getNameofUser;
 @end
 
 
 @implementation MenuViewController
 
-- (NSString *)getUserName {
-	AppDelegate *apdelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-	return apdelegate.username;
+- (void)init_user {
+	self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+	self.isAdmin = self.appDelegate.isAdmin;
+	self.isStudent = self.appDelegate.isStudent;
+	self.isTeacher = self.appDelegate.isTeacher;
+
+	self.getPassword = self.appDelegate.password;
+	self.getUsername = self.appDelegate.username;
+
+	self.admin = [Admin MR_findFirstByAttribute:@"username" withValue:self.getUsername];
+	self.teacher = [Teacher MR_findFirstByAttribute:@"username" withValue:self.getUsername];
+	self.student = [Student MR_findFirstByAttribute:@"username" withValue:self.getUsername];
 }
 
-- (void)initialize {
-	self.isAdmin = NO;
-	self.isTeacher = NO;
-	self.isStudent = NO;
-}
-
-- (void)checkAuthen {
-	AppDelegate *apdelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-	self.isAdmin = apdelegate.isAdmin;
-	self.isTeacher = apdelegate.isTeacher;
-	self.isStudent = apdelegate.isStudent;
+- (NSString *)getNameofUser {
+	return self.appDelegate.username;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -58,45 +67,44 @@
 //- (NSString *)getImagePath {
 //	AppDelegate *apdelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
 //	NSString *imagePath = nil;
-//    
+//
 //	NSArray *admin = [[DataManager sharedDataManager] getAllAdminAccount];
 //	NSMutableArray *adminList = [NSMutableArray arrayWithArray:admin];
 //
 //    NSArray *teacher = [[DataManager sharedDataManager] getAllTeacherAccount];
 //    NSMutableArray *teacherList = [NSMutableArray arrayWithArray:teacher];
-//    
+//
 //	for (Admin *currentAdmin in adminList) {
 //		if ([currentAdmin.username isEqual:apdelegate.username]) {
 //			imagePath = currentAdmin.avatar;
 //            self.nameOfUser = currentAdmin.name;
 //		}
 //	}
-//    
+//
 //    for ( Teacher *currentTeacher in teacherList) {
 //		if ([currentTeacher.username isEqual:apdelegate.username]) {
 //			imagePath = currentTeacher.avatar;
 //            self.nameOfUser = currentTeacher.name;
 //		}
 //	}
-//    
+//
 //    NSArray *student = [[DataManager sharedDataManager]getAllStudentAccount];
 //    NSMutableArray *studentList = [NSMutableArray arrayWithArray:student];
-//    
+//
 //    for (Student *currentStudent in studentList) {
 //        if ([currentStudent.username isEqual:apdelegate.username]) {
 //            imagePath = currentStudent.avatar;
 //            self.nameOfUser = currentStudent.name;
 //        }
 //    }
-//    
+//
 //	return imagePath;
 //}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	[self initialize];
-    [self checkAuthen];
+	[self init_user];
 
 	self.tableView.separatorColor = [UIColor colorWithRed:150 / 255.0f green:161 / 255.0f blue:177 / 255.0f alpha:1.0f];
 	self.tableView.delegate = self;
@@ -108,11 +116,18 @@
 	                                      view.backgroundColor = [UIColor colorWithRed:28.0 / 255 green:158.0 / 255 blue:121.0 / 255 alpha:1.0f];
 	                                      UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 50, 100, 100)];
 	                                      imageView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-//        if ([self getImagePath] == nil) {
-//            imageView.image = [UIImage imageNamed:@"no-avatar.png"];
-//        } else {
-//            imageView.image =  [UIImage imageWithContentsOfFile:[self getImagePath]];
-//        }
+	                                      if (self.isAdmin && self.admin.avatar != nil) {
+	                                          imageView.image = [UIImage imageWithContentsOfFile:self.admin.avatar];
+										  }
+	                                      else if (self.isTeacher && self.teacher.avatar != nil) {
+	                                          imageView.image = [UIImage imageWithContentsOfFile:self.teacher.avatar];
+										  }
+	                                      else if (self.isStudent && self.student.avatar != nil) {
+	                                          imageView.image = [UIImage imageWithContentsOfFile:self.student.avatar];
+										  }
+	                                      else {
+	                                          imageView.image = [UIImage imageNamed:@"no-avatar.png"];
+										  }
 	                                      imageView.layer.masksToBounds = YES;
 	                                      imageView.layer.cornerRadius = 50.0;
 	                                      imageView.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -122,7 +137,7 @@
 	                                      imageView.clipsToBounds = YES;
 
 	                                      UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 150, 0, 24)];
-	                                      label.text = [NSString stringWithFormat:@"Welcome %@", self.nameOfUser];
+	                                      label.text = [NSString stringWithFormat:@"Welcome %@", [self getNameofUser]];
 	                                      label.backgroundColor = [UIColor clearColor];
 	                                      label.textColor = [UIColor colorWithRed:62 / 255.0f green:68 / 255.0f blue:75 / 255.0f alpha:1.0f];
 	                                      [label sizeToFit];
@@ -167,30 +182,30 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	NavigationController *navigationController = [self.storyboard instantiateViewControllerWithIdentifier:@"navController"];
-    
-    if (indexPath.section == 0 && indexPath.row == 1) {
-        ProfileAccount *profile = [self.storyboard instantiateViewControllerWithIdentifier:@"profile"];
-        navigationController.viewControllers = @[profile];
-    }
-    
-    if ((indexPath.section == 1 && indexPath.row == 0 && self.isAdmin) || (indexPath.section == 1 && indexPath.row == 1 && self.isStudent )) {
-        ClassList *classList = [self.storyboard instantiateViewControllerWithIdentifier:@"classList"];
-        navigationController.viewControllers = @[classList];
-    }
-    
-    if (indexPath.section == 1 && indexPath.row == 1 && self.isAdmin) {
-        navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"managePeople"]];
-    }
-  
-    if (((self.isAdmin || self.isStudent) && (indexPath.section == 1 && indexPath.row == 2)) || (self.isTeacher && indexPath.section == 1 && indexPath.row == 1)) {
-            UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-            UINavigationController *navController = [loginStoryboard instantiateInitialViewController];
-            self.view.window.rootViewController = navController;
-        AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-        appDelegate.isAdmin = NO;
-        appDelegate.isTeacher = NO;
-        appDelegate.isStudent = NO;
-   }
+
+	if (indexPath.section == 0 && indexPath.row == 1) {
+		ProfileAccount *profile = [self.storyboard instantiateViewControllerWithIdentifier:@"profile"];
+		navigationController.viewControllers = @[profile];
+	}
+
+	if ((indexPath.section == 1 && indexPath.row == 0 && self.isAdmin) || (indexPath.section == 1 && indexPath.row == 1 && self.isStudent)) {
+		ClassList *classList = [self.storyboard instantiateViewControllerWithIdentifier:@"classList"];
+		navigationController.viewControllers = @[classList];
+	}
+
+	if (indexPath.section == 1 && indexPath.row == 1 && self.isAdmin) {
+		navigationController.viewControllers = @[[self.storyboard instantiateViewControllerWithIdentifier:@"managePeople"]];
+	}
+
+	if (((self.isAdmin || self.isStudent) && (indexPath.section == 1 && indexPath.row == 2)) || (self.isTeacher && indexPath.section == 1 && indexPath.row == 1)) {
+		UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+		UINavigationController *navController = [loginStoryboard instantiateInitialViewController];
+		self.view.window.rootViewController = navController;
+		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+		appDelegate.isAdmin = NO;
+		appDelegate.isTeacher = NO;
+		appDelegate.isStudent = NO;
+	}
 	self.frostedViewController.contentViewController = navigationController;
 	[self.frostedViewController hideMenuViewController];
 }
@@ -207,13 +222,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)sectionIndex {
-    if (self.isAdmin || self.isStudent) {
-        if (sectionIndex == 0) {
-            return 2;
-        }
-        return 3;
-    }
-        return 2;
+	if (self.isAdmin || self.isStudent) {
+		if (sectionIndex == 0) {
+			return 2;
+		}
+		return 3;
+	}
+	return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -230,16 +245,16 @@
 		cell.textLabel.text = titles[indexPath.row];
 	}
 	else {
-        NSArray *titles = [[NSArray alloc]init];
-        if (self.isAdmin) {
-            titles = @[@"Manage Class", @"Manage Teacher - Student", @"Sign out"];
-        }
-        if (self.isTeacher) {
-            titles = @[@"Your Class",@"Sign out"];
-        }
-        if (self.isStudent) {
-            titles = @[@"Your Class", @"Find Class", @"Sign out"];
-        }
+		NSArray *titles = [[NSArray alloc]init];
+		if (self.isAdmin) {
+			titles = @[@"Manage Class", @"Manage Teacher - Student", @"Sign out"];
+		}
+		if (self.isTeacher) {
+			titles = @[@"Your Class", @"Sign out"];
+		}
+		if (self.isStudent) {
+			titles = @[@"Your Class", @"Find Class", @"Sign out"];
+		}
 
 		cell.textLabel.text = titles[indexPath.row];
 	}
