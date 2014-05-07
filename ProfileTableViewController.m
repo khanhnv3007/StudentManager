@@ -98,9 +98,10 @@
         }
 
     }
+    
     if(self.isAdmin){
         for (Admin *admin in self.adminList) {
-            if (admin.username == self.username.text) {
+            if ([admin.username isEqual:self.getUserName]) {
                 admin.name = self.name.text;
                 admin.address = self.address.text;
                 admin.phoneNumber = self.phoneNumber.text;
@@ -113,7 +114,8 @@
                     [[Util sharedUtil] showMessage:@"Your email format is invalid" withTitle:@"Update failed!"];
                     NSLog(@"fail");
                 }
-                admin.avatar = imagePath;            }
+                admin.avatar = imagePath;
+            }
         }
     }
     

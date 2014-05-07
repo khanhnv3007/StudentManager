@@ -9,6 +9,7 @@
 #import "StudentListTableViewController.h"
 #import "Student.h"
 #import "DataManager.h"
+#import "AppDelegate.h"
 
 @interface StudentListTableViewController ()
 
@@ -18,7 +19,6 @@
 @end
 
 @implementation StudentListTableViewController
-
 
 - (void)viewDidLoad {
 	[super viewDidLoad];

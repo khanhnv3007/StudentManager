@@ -21,140 +21,122 @@
 
 @implementation ClassOfStudentTableViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+- (NSString *)getStudentID {
+	AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+	NSArray *student = [[DataManager sharedDataManager]getAllStudentAccount];
+	NSMutableArray *stuList = [NSMutableArray arrayWithArray:student];
+	for (Student *student in stuList) {
+		if ([student.username isEqual:appDelegate.username]) {
+			return student.studentID;
+		}
+	}
+	return nil;
 }
 
-- (NSString *)getStudentID{
-    AppDelegate *appDelegate = (AppDelegate*)[[UIApplication sharedApplication]delegate];
-    NSArray *student = [[DataManager sharedDataManager]getAllStudentAccount];
-    NSMutableArray *stuList = [NSMutableArray arrayWithArray:student];
-    for (Student *student in stuList) {
-        if ([student.username isEqual:appDelegate.username]) {
-            return student.studentID;
-        }
-    }
-    return nil;
+- (void)initialize {
+	NSArray *mark = [[DataManager sharedDataManager]getAllMark];
+	self.classList = [NSMutableArray arrayWithArray:mark];
+	for (Mark *mark in self.classList) {
+		if (![mark.studentID isEqual:[self getStudentID]]) {
+			//[self.classList delete:mark];
+		}
+	}
 }
 
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	[self initialize];
+	// Uncomment the following line to preserve selection between presentations.
+	// self.clearsSelectionOnViewWillAppear = NO;
 
-
-- (void)initialize
-{
-    NSArray *mark = [[DataManager sharedDataManager]getAllMark];
-    self.classList = [NSMutableArray arrayWithArray:mark];
-    for (Mark *mark in self.classList) {
-        if (![mark.studentID isEqual:[self getStudentID]]) {
-            //[self.classList delete:mark];
-        }
-    }
+	// Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+	// self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self initialize];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)didReceiveMemoryWarning {
+	[super didReceiveMemoryWarning];
+	// Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+	return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.classList count];
-}
-- (NSString *)getClassName:(Mark *)mark
-{
-    NSArray *class = [[DataManager sharedDataManager]getAllClass];
-    NSMutableArray *ListOfClass = [NSMutableArray arrayWithArray:class];
-    for (Subject *paramClass in ListOfClass ) {
-        if ([paramClass.subjectID isEqual:mark.classID]) {
-            return paramClass.name;
-        }
-    }
-    return nil;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+	return [self.classList count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellClassOfStudent" forIndexPath:indexPath];
-    
-    // Configure the cell...
-    Mark *mark = self.classList[indexPath.row];
-    cell.textLabel.text = [self getClassName:mark];
-    cell.imageView.image = [UIImage imageNamed:@"no-avatar.png"];
-    
-    return cell;
+- (NSString *)getClassName:(Mark *)mark {
+	NSArray *class = [[DataManager sharedDataManager]getAllClass];
+	NSMutableArray *ListOfClass = [NSMutableArray arrayWithArray:class];
+	for (Subject *paramClass in ListOfClass) {
+		if ([paramClass.subjectID isEqual:mark.classID]) {
+			return paramClass.name;
+		}
+	}
+	return nil;
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellClassOfStudent" forIndexPath:indexPath];
+
+	// Configure the cell...
+	Mark *mark = self.classList[indexPath.row];
+	cell.textLabel.text = [self getClassName:mark];
+	cell.imageView.image = [UIImage imageNamed:@"no-avatar.png"];
+
+	return cell;
+}
 
 /*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
+   // Override to support conditional editing of the table view.
+   - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+   {
     // Return NO if you do not want the specified item to be editable.
     return YES;
-}
-*/
+   }
+ */
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+   // Override to support editing the table view.
+   - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+   {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     } else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+    }
+   }
+ */
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
+   // Override to support rearranging the table view.
+   - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+   {
+   }
+ */
 
 /*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
+   // Override to support conditional rearranging of the table view.
+   - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+   {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
-}
-*/
+   }
+ */
 
 /*
-#pragma mark - Navigation
+   #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
+   // In a storyboard-based application, you will often want to do a little preparation before navigation
+   - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+   {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
+   }
+ */
 
 @end
