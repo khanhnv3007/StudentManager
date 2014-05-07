@@ -68,7 +68,8 @@
 
 	Student *currentStudent = self.studentList[indexPath.row];
     cell.student = currentStudent;
-
+    cell.name.text = currentStudent.name;
+    cell.imageView.image = [UIImage imageWithContentsOfFile:currentStudent.avatar];
     cell.delegate = self;
 	return cell;
 }

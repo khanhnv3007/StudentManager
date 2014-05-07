@@ -24,6 +24,8 @@
 - (void)awakeFromNib
 {
     // Initialization code
+    self.avatar.contentMode = UIViewContentModeScaleAspectFill;
+    self.avatar.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -33,10 +35,5 @@
     // Configure the view for the selected state
 }
 
-- (void)setThisCell:(Student *)student
-{
-    self.imageView.image = [UIImage imageWithContentsOfFile:student.avatar];
-    self.name.text = student.name;
-}
 
 @end
