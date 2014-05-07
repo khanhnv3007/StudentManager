@@ -11,6 +11,8 @@
 		09A3A963191A2ECC00614D76 /* ClassList.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A962191A2ECC00614D76 /* ClassList.m */; };
 		09A3A968191A33EB00614D76 /* CreateClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A967191A33EB00614D76 /* CreateClass.m */; };
 		09A3A96D191A384A00614D76 /* CreatePeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A96C191A384A00614D76 /* CreatePeople.m */; };
+		09A3A972191A3DC200614D76 /* StudentList.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A971191A3DC200614D76 /* StudentList.m */; };
+		09A3A976191A405F00614D76 /* TeacherList.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A975191A405F00614D76 /* TeacherList.m */; };
 		09C4BBBF191735F400FB0D11 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBBE191735F400FB0D11 /* Login.storyboard */; };
 		09C4BBC21917367B00FB0D11 /* Studentmanager.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBC11917367B00FB0D11 /* Studentmanager.png */; };
 		09C4BBC51917368B00FB0D11 /* no-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBC31917368B00FB0D11 /* no-avatar.png */; };
@@ -86,6 +88,10 @@
 		09A3A967191A33EB00614D76 /* CreateClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateClass.m; sourceTree = "<group>"; };
 		09A3A96B191A384A00614D76 /* CreatePeople.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreatePeople.h; sourceTree = "<group>"; };
 		09A3A96C191A384A00614D76 /* CreatePeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreatePeople.m; sourceTree = "<group>"; };
+		09A3A970191A3DC200614D76 /* StudentList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StudentList.h; sourceTree = "<group>"; };
+		09A3A971191A3DC200614D76 /* StudentList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StudentList.m; sourceTree = "<group>"; };
+		09A3A974191A405F00614D76 /* TeacherList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TeacherList.h; sourceTree = "<group>"; };
+		09A3A975191A405F00614D76 /* TeacherList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TeacherList.m; sourceTree = "<group>"; };
 		09C4BBBE191735F400FB0D11 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		09C4BBC11917367B00FB0D11 /* Studentmanager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Studentmanager.png; sourceTree = "<group>"; };
 		09C4BBC31917368B00FB0D11 /* no-avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-avatar.png"; sourceTree = "<group>"; };
@@ -248,6 +254,8 @@
 		09A3A969191A376500614D76 /* Manage People */ = {
 			isa = PBXGroup;
 			children = (
+				09A3A96F191A3DAA00614D76 /* Teacher List */,
+				09A3A96E191A3DA000614D76 /* Student List */,
 				09A3A96A191A383800614D76 /* Create People */,
 			);
 			name = "Manage People";
@@ -260,6 +268,24 @@
 				09A3A96C191A384A00614D76 /* CreatePeople.m */,
 			);
 			name = "Create People";
+			sourceTree = "<group>";
+		};
+		09A3A96E191A3DA000614D76 /* Student List */ = {
+			isa = PBXGroup;
+			children = (
+				09A3A970191A3DC200614D76 /* StudentList.h */,
+				09A3A971191A3DC200614D76 /* StudentList.m */,
+			);
+			name = "Student List";
+			sourceTree = "<group>";
+		};
+		09A3A96F191A3DAA00614D76 /* Teacher List */ = {
+			isa = PBXGroup;
+			children = (
+				09A3A974191A405F00614D76 /* TeacherList.h */,
+				09A3A975191A405F00614D76 /* TeacherList.m */,
+			);
+			name = "Teacher List";
 			sourceTree = "<group>";
 		};
 		09C4BBBB191735B400FB0D11 /* Classes */ = {
@@ -706,7 +732,9 @@
 				09C4BBE419173DE100FB0D11 /* NavigationController.m in Sources */,
 				82DEAB2319172CB70039B380 /* Teacher.m in Sources */,
 				82DEAAF1191728570039B380 /* PPConstants.m in Sources */,
+				09A3A972191A3DC200614D76 /* StudentList.m in Sources */,
 				82DEAB2019172CB60039B380 /* Admin.m in Sources */,
+				09A3A976191A405F00614D76 /* TeacherList.m in Sources */,
 				82DEAABC191724600039B380 /* StudentManager.xcdatamodeld in Sources */,
 				82DEAAF4191728570039B380 /* SWCellScrollView.m in Sources */,
 				82DEAAB5191724600039B380 /* main.m in Sources */,
