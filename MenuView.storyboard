@@ -223,7 +223,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vG4-Gb-DMz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="285" y="1523"/>
+            <point key="canvasLocation" x="243" y="1515"/>
         </scene>
         <!--Profile Table View Controller - Profile-->
         <scene sceneID="qGC-HK-d4X">

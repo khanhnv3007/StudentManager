@@ -50,7 +50,7 @@
     self.classList = [NSMutableArray arrayWithArray:mark];
     for (Mark *mark in self.classList) {
         if (![mark.studentID isEqual:[self getStudentID]]) {
-            [self.classList delete:mark];
+            //[self.classList delete:mark];
         }
     }
 }
