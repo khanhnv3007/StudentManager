@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ClassList : UITableViewController <UIAlertViewDelegate>
+- (IBAction)showMenu:(id)sender;
 
 @end

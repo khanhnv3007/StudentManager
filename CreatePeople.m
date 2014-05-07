@@ -10,6 +10,7 @@
 #import "Student.h"
 #import "Admin.h"
 #import "Teacher.h"
+#import "REFrostedViewController.h"
 
 @interface CreatePeople ()
 
@@ -49,5 +50,9 @@
         student.password = self.username.text;
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     }
+}
+
+- (IBAction)showMenu:(id)sender {
+    [self.frostedViewController presentMenuViewController];
 }
 @end

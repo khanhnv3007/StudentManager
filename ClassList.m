@@ -12,6 +12,7 @@
 #import "Teacher.h"
 #import "Admin.h"
 #import "Subject.h"
+#import "REFrostedViewController.h"
 
 @interface ClassList ()
 
@@ -184,4 +185,7 @@
    }
  */
 
+- (IBAction)showMenu:(id)sender {
+    [self.frostedViewController presentMenuViewController];
+}
 @end

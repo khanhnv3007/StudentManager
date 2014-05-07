@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UISegmentedControl *selectUser;
 
 - (IBAction)createPeople:(id)sender;
+- (IBAction)showMenu:(id)sender;
 
 @end

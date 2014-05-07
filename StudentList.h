@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface StudentList : UITableViewController
+- (IBAction)showMenu:(id)sender;
 
 @end

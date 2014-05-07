@@ -8,6 +8,7 @@
 
 #import "CreateClass.h"
 #import "Subject.h"
+#import "REFrostedViewController.h"
 
 @interface CreateClass ()
 
@@ -23,6 +24,10 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (IBAction)showMenu:(id)sender {
+    [self.frostedViewController presentMenuViewController];
 }
 
 - (IBAction)createClass:(id)sender {

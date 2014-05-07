@@ -100,7 +100,17 @@
                             <outlet property="delegate" destination="DPN-fM-8is" id="qRl-0l-skJ"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Your Class" id="sYA-w1-uD6"/>
+                    <navigationItem key="navigationItem" title="Your Class" id="sYA-w1-uD6">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Gd8-ee-nyY">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hrU-sJ-eZZ">
+                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="menu30.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TfZ-9V-kXu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -150,6 +160,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Class List" id="4fA-ZQ-fnI">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Uxu-fZ-t2Z">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="o26-rD-rEN">
+                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="menu30.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <connections>
+                                <action selector="showMenu:" destination="VHT-Ft-tCJ" id="Cze-TI-AfV"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="PDM-bD-edc">
                             <connections>
                                 <segue destination="dOf-mt-KTB" kind="push" id="70l-88-gFz"/>
@@ -212,7 +234,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create Class" id="O6f-Gc-NOk"/>
+                    <navigationItem key="navigationItem" title="Create Class" id="O6f-Gc-NOk">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="rIq-1U-jPg">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Qon-Hp-rdp">
+                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="menu30.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMenu:" destination="dOf-mt-KTB" eventType="touchUpInside" id="tHC-mW-XLt"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="name" destination="XI6-66-Tu7" id="swM-ca-4wL"/>
                         <outlet property="teacher" destination="EKg-jL-d7S" id="edB-P4-eBh"/>
@@ -506,7 +541,17 @@
                             <outlet property="delegate" destination="tsc-Kh-Hom" id="RRr-fs-ztV"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Manage People" id="d4V-97-wT9"/>
+                    <navigationItem key="navigationItem" title="Manage People" id="d4V-97-wT9">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="VHY-Lj-ZKu">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="5zV-0X-rtS">
+                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="menu30.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6cy-jb-eiR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -570,7 +615,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Teacher/Student" id="MPO-sP-Dny"/>
+                    <navigationItem key="navigationItem" title="Add Teacher/Student" id="MPO-sP-Dny">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="lXt-NW-ztI">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dmx-cP-cIG">
+                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="menu30.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMenu:" destination="Djn-WO-h5L" eventType="touchUpInside" id="F2D-py-XrY"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="name" destination="ycf-ut-Wwb" id="Xa6-HF-CXW"/>
                         <outlet property="selectUser" destination="CND-8h-ukT" id="pxS-w8-XM2"/>
@@ -624,7 +682,20 @@
                             <outlet property="delegate" destination="50m-3B-xgW" id="8ZO-Yd-Htd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Student List" id="QWx-kT-uPz"/>
+                    <navigationItem key="navigationItem" title="Student List" id="QWx-kT-uPz">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="H6D-gi-Fef">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oX6-IB-6mM">
+                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="menu30.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMenu:" destination="50m-3B-xgW" eventType="touchUpInside" id="q0F-Hi-aPn"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXP-CU-IB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
