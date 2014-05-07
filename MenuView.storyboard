@@ -27,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="-539" y="528"/>
         </scene>
-        <!--Home Page Table View Controller - HomePage-->
+        <!--Table View Controller - HomePage-->
         <scene sceneID="ZgW-pm-4om">
             <objects>
-                <tableViewController storyboardIdentifier="homeController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iwv-CV-XDC" customClass="HomePageTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="homeController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iwv-CV-XDC" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EXW-Vt-1YJ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -106,10 +106,10 @@
             </objects>
             <point key="canvasLocation" x="-539" y="1339"/>
         </scene>
-        <!--Class List Table View Controller - Class List-->
+        <!--Class List - Class List-->
         <scene sceneID="wjx-dY-e0V">
             <objects>
-                <tableViewController storyboardIdentifier="classList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VHT-Ft-tCJ" customClass="ClassListTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="classList" useStoryboardIdentifierAsRestorationIdentifier="YES" id="VHT-Ft-tCJ" customClass="ClassList" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="WCf-ra-WBP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -156,9 +156,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="rootTableView" destination="WCf-ra-WBP" id="gGb-dD-u3Z"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fLt-5S-o5C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

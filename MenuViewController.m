@@ -18,6 +18,7 @@
 #import "Teacher.h"
 #import "Student.h"
 #import "ProfileAccount.h"
+#import "ClassList.h"
 
 @interface MenuViewController ()
 
@@ -171,6 +172,12 @@
         ProfileAccount *profile = [self.storyboard instantiateViewControllerWithIdentifier:@"profile"];
         navigationController.viewControllers = @[profile];
     }
+    
+    if (indexPath.section == 1 && indexPath.row == 0 && self.isAdmin) {
+        ClassList *classList = [self.storyboard instantiateViewControllerWithIdentifier:@"classList"];
+        navigationController.viewControllers = @[classList];
+    }
+    
 //
 //	if (indexPath.section == 0 && indexPath.row == 0) {
 //		HomePageTableViewController *homeViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"homeController"];

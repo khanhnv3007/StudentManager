@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09A3A95F191A284E00614D76 /* ProfileAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A95E191A284E00614D76 /* ProfileAccount.m */; };
+		09A3A963191A2ECC00614D76 /* ClassList.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A962191A2ECC00614D76 /* ClassList.m */; };
 		09C4BBBF191735F400FB0D11 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBBE191735F400FB0D11 /* Login.storyboard */; };
 		09C4BBC21917367B00FB0D11 /* Studentmanager.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBC11917367B00FB0D11 /* Studentmanager.png */; };
 		09C4BBC51917368B00FB0D11 /* no-avatar.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBC31917368B00FB0D11 /* no-avatar.png */; };
@@ -77,6 +78,8 @@
 /* Begin PBXFileReference section */
 		09A3A95D191A284E00614D76 /* ProfileAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAccount.h; sourceTree = "<group>"; };
 		09A3A95E191A284E00614D76 /* ProfileAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileAccount.m; sourceTree = "<group>"; };
+		09A3A961191A2ECC00614D76 /* ClassList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassList.h; sourceTree = "<group>"; };
+		09A3A962191A2ECC00614D76 /* ClassList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClassList.m; sourceTree = "<group>"; };
 		09C4BBBE191735F400FB0D11 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		09C4BBC11917367B00FB0D11 /* Studentmanager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Studentmanager.png; sourceTree = "<group>"; };
 		09C4BBC31917368B00FB0D11 /* no-avatar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "no-avatar.png"; sourceTree = "<group>"; };
@@ -209,9 +212,19 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		09A3A960191A2EBA00614D76 /* Class List */ = {
+			isa = PBXGroup;
+			children = (
+				09A3A961191A2ECC00614D76 /* ClassList.h */,
+				09A3A962191A2ECC00614D76 /* ClassList.m */,
+			);
+			name = "Class List";
+			sourceTree = "<group>";
+		};
 		09C4BBBB191735B400FB0D11 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				09A3A960191A2EBA00614D76 /* Class List */,
 				09A3A959191A27FB00614D76 /* Profile */,
 				09C4BC031917467700FB0D11 /* Base View Controller */,
 				09C4BBD819173D3D00FB0D11 /* MenuView */,
@@ -653,6 +666,7 @@
 				82DEAABC191724600039B380 /* StudentManager.xcdatamodeld in Sources */,
 				82DEAAF4191728570039B380 /* SWCellScrollView.m in Sources */,
 				82DEAAB5191724600039B380 /* main.m in Sources */,
+				09A3A963191A2ECC00614D76 /* ClassList.m in Sources */,
 				82DEAB13191728BB0039B380 /* UIImage+REFrostedViewController.m in Sources */,
 				82DEAAF8191728570039B380 /* SWUtilityButtonView.m in Sources */,
 				82DEAB2619172CB70039B380 /* Mark.m in Sources */,
