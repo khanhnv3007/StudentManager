@@ -52,13 +52,38 @@
     self.student = [Student MR_findFirstByAttribute:@"username" withValue:self.getUsername];
     
     self.classes = [Subject MR_findAll];
+    self.classList = [NSMutableArray arrayWithArray:self.classes];
+}
+
+- (void)addButton
+{
+    if (self.isAdmin) {
+        self.navigationItem.rightBarButtonItem.enabled = YES;
+    } else {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+}
+
+- (void)loadAllClass
+{
+    self.classes = [Subject MR_findAll];
+    self.classList = [NSMutableArray arrayWithArray:self.classes];
+    [self.tableView reloadData];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self init_user];
+    [self addButton];
+    [self loadAllClass];
 
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self loadAllClass];
 }
 
 - (void)didReceiveMemoryWarning
@@ -75,7 +100,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.classes count];
+    return [self.classList count];
 }
 
 
@@ -84,7 +109,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellClassList" forIndexPath:indexPath];
     
     cell.imageView.image = [UIImage imageNamed:@"menu30.png"];
-    //cell.textLabel.text = self.classes[indexPath.row];
+    Subject *class = (Subject *)[self.classList objectAtIndex:indexPath.row];
+    cell.textLabel.text = class.name;
+    cell.detailTextLabel.text = class.classWithTeacher.name;
     
     return cell;
 }
