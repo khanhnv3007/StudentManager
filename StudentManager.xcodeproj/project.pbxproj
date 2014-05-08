@@ -34,6 +34,7 @@
 		09C4BBE619173EFD00FB0D11 /* menu30.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BBE519173EFD00FB0D11 /* menu30.png */; };
 		09C4BC221917909900FB0D11 /* delete_icon_active-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C4BC211917909900FB0D11 /* delete_icon_active-1.png */; };
 		797F98921A6442F3931BBF60 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BAFAD8F62A14431A994A3AB8 /* libPods.a */; };
+		82D99474191B531E00A3E805 /* ManagePeople.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D99473191B531E00A3E805 /* ManagePeople.m */; };
 		82DEAAA7191724600039B380 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DEAAA6191724600039B380 /* Foundation.framework */; };
 		82DEAAA9191724600039B380 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DEAAA8191724600039B380 /* CoreGraphics.framework */; };
 		82DEAAAB191724600039B380 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82DEAAAA191724600039B380 /* UIKit.framework */; };
@@ -126,6 +127,8 @@
 		09C4BBE519173EFD00FB0D11 /* menu30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu30.png; sourceTree = "<group>"; };
 		09C4BC211917909900FB0D11 /* delete_icon_active-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete_icon_active-1.png"; sourceTree = "<group>"; };
 		60AC9DD1A1224BDAB072A79F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		82D99472191B531E00A3E805 /* ManagePeople.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagePeople.h; sourceTree = "<group>"; };
+		82D99473191B531E00A3E805 /* ManagePeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagePeople.m; sourceTree = "<group>"; };
 		82DEAAA3191724600039B380 /* StudentManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StudentManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DEAAA6191724600039B380 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		82DEAAA8191724600039B380 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -269,6 +272,8 @@
 				09A3A96F191A3DAA00614D76 /* Teacher List */,
 				09A3A96E191A3DA000614D76 /* Student List */,
 				09A3A96A191A383800614D76 /* Create People */,
+				82D99472191B531E00A3E805 /* ManagePeople.h */,
+				82D99473191B531E00A3E805 /* ManagePeople.m */,
 			);
 			name = "Manage People";
 			sourceTree = "<group>";
@@ -793,6 +798,7 @@
 				82DEAABC191724600039B380 /* StudentManager.xcdatamodeld in Sources */,
 				82DEAAF4191728570039B380 /* SWCellScrollView.m in Sources */,
 				82DEAAB5191724600039B380 /* main.m in Sources */,
+				82D99474191B531E00A3E805 /* ManagePeople.m in Sources */,
 				09A3A963191A2ECC00614D76 /* ClassList.m in Sources */,
 				09B861C0191A6BB50034799F /* ClassOfTeacher.m in Sources */,
 				82DEAB13191728BB0039B380 /* UIImage+REFrostedViewController.m in Sources */,

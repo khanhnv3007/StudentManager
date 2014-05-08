@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *teacher;
 
 - (IBAction)createClass:(id)sender;
+- (IBAction)showMenu:(id)sender;
 
 
 @property (weak, nonatomic) IBOutlet UILabel *teachername;

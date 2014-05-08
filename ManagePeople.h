@@ -1,14 +1,14 @@
 //
-//  TeacherList.h
+//  ManagePeople.h
 //  StudentManager
 //
-//  Created by Nguyễn Nam Phong on 5/7/14.
+//  Created by khanhnv3007 on 5/8/14.
 //  Copyright (c) 2014 RoxWin. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface TeacherList : UITableViewController
+@interface ManagePeople : UITableViewController
 - (IBAction)showMenu:(id)sender;
 
 @end

@@ -14,6 +14,7 @@
 #import "Student.h"
 #import "Admin.h"
 #import "AppDelegate.h"
+#import "REFrostedViewController.h"
 
 @interface CreateClass ()
 
@@ -66,6 +67,10 @@
     class.classWithTeacher = self.teacherIsSelected;
     [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
     [[Util sharedUtil] showMessage:@"Your class has been created!" withTitle:@"Create Success"];
+}
+
+- (IBAction)showMenu:(id)sender {
+    [self.frostedViewController presentMenuViewController];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView

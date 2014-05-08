@@ -132,6 +132,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Class" id="h8I-pK-0Th">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="d7p-AF-OYm">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="LbF-ly-7VI">
+                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="menu30.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMenu:" destination="VcV-Km-RQf" eventType="touchUpInside" id="drq-PW-Jqx"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="a2f-6B-3Ej"/>
                     </navigationItem>
                 </tableViewController>
@@ -313,7 +325,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Create Class" id="O6f-Gc-NOk"/>
+                    <navigationItem key="navigationItem" title="Create Class" id="O6f-Gc-NOk">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="VP9-be-xC9">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="uSq-nV-VMZ">
+                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="menu30.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMenu:" destination="dOf-mt-KTB" eventType="touchUpInside" id="2wg-9G-7gN"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="name" destination="XI6-66-Tu7" id="swM-ca-4wL"/>
                         <outlet property="teachername" destination="902-QU-7MN" id="CMS-1e-XHr"/>
@@ -526,10 +551,10 @@
             </objects>
             <point key="canvasLocation" x="243" y="871"/>
         </scene>
-        <!--Table View Controller - Manage People-->
+        <!--Manage People - Manage People-->
         <scene sceneID="vJl-v8-c7F">
             <objects>
-                <tableViewController storyboardIdentifier="managePeople" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tsc-Kh-Hom" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="managePeople" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tsc-Kh-Hom" customClass="ManagePeople" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Nhw-wG-W3s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -625,6 +650,9 @@
                                 <state key="normal" image="menu30.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="showMenu:" destination="tsc-Kh-Hom" eventType="touchUpInside" id="Nnz-vy-rPS"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -856,7 +884,20 @@
                             <outlet property="delegate" destination="Gz7-FS-26r" id="kFR-vV-hzP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Teacher List" id="cl5-WT-GM0"/>
+                    <navigationItem key="navigationItem" title="Teacher List" id="cl5-WT-GM0">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="W5m-ON-oPI">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="wtf-Xm-5fy">
+                                <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="menu30.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMenu:" destination="Gz7-FS-26r" eventType="touchUpInside" id="kW7-U0-CNv"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oYf-1R-ykM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -12,6 +12,7 @@
 #import "Teacher.h"
 #import "AppDelegate.h"
 #import "StudentMarkCell.h"
+#import "REFrostedViewController.h"
 
 @interface MarkOfClass ()
 
@@ -75,4 +76,7 @@
 }
 
 
+- (IBAction)showMenu:(id)sender {
+    [self.frostedViewController presentMenuViewController];
+}
 @end
