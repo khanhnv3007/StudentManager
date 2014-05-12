@@ -11,13 +11,11 @@
 @interface CreateClass : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
-@property (weak, nonatomic) IBOutlet UITextField *teacher;
 
 - (IBAction)createClass:(id)sender;
-- (IBAction)showMenu:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *teacher;
 
-
-@property (weak, nonatomic) IBOutlet UILabel *teachername;
+@property (weak, nonatomic) IBOutlet UIButton *createButton;
 
 
 @end
