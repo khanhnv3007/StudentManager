@@ -165,10 +165,15 @@
     }
     
 	if (((self.isAdmin || self.isStudent) && (indexPath.section == 1 && indexPath.row == 2)) || (self.isTeacher && indexPath.section == 1 && indexPath.row == 1)) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults removeObjectForKey:@"username"];
+        [defaults removeObjectForKey:@"password"];
+        [defaults synchronize];
 		UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
 		UINavigationController *navController = [loginStoryboard instantiateInitialViewController];
 		self.view.window.rootViewController = navController;
 		AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
+       
 		appDelegate.isAdmin = NO;
 		appDelegate.isTeacher = NO;
 		appDelegate.isStudent = NO;

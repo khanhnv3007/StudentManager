@@ -41,7 +41,49 @@
 {
     [super viewDidLoad];
     [self initial];
+    [self checkUserDefault];
+}
+
+- (BOOL)checkUserNameAndPass2
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    Student *student = [Student MR_findFirstByAttribute:@"username" withValue:[defaults stringForKey:@"username"]];
+    if (student != nil) {
+        if ([student.password isEqual:[defaults stringForKey:@"password"]]) {
+            self.appDelegate.username = student.username;
+            self.appDelegate.password = student.password;
+            self.appDelegate.isStudent = YES;
+            return YES;
+        }
+    }
     
+    Teacher *teacher = [Teacher MR_findFirstByAttribute:@"username" withValue:[defaults stringForKey:@"username"]];
+    if (teacher != nil) {
+        if ([teacher.password isEqual:[defaults stringForKey:@"password"]]) {
+            self.appDelegate.username = teacher.username;
+            self.appDelegate.password = teacher.password;
+            self.appDelegate.isTeacher = YES;
+            return YES;
+        }
+    }
+    
+    Admin *admin = [Admin MR_findFirstByAttribute:@"username" withValue:[defaults stringForKey:@"username"]];
+    if (admin != nil) {
+        if ([admin.password isEqual:[defaults stringForKey:@"password"]]) {
+            self.appDelegate.username = admin.username;
+            self.appDelegate.password = admin.password;
+            self.appDelegate.isAdmin = YES;
+            return YES;
+        }
+    }
+    
+    if ([[defaults stringForKey:@"username"] isEqualToString:@"admin"] && [[defaults stringForKey:@"password"] isEqualToString:@"admin"]) {
+        self.appDelegate.username = @"admin";
+        self.appDelegate.password = @"admin";
+        self.appDelegate.isAdmin = YES;
+        return YES;
+    }
+    return NO;
 }
 
 - (BOOL)checkUserNameAndPass
@@ -92,6 +134,10 @@
 
 - (IBAction)login:(id)sender {
     if ([self checkUserNameAndPass]) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:self.userNameTextField.text forKey:@"username"];
+        [defaults setObject:self.passwordTextField.text forKey:@"password"];
+        [defaults synchronize];
         if (self.appDelegate.isAdmin) {
             [[Util sharedUtil]showMessage:@"Welcome Admin." withTitle:@"Login Successful!"];
             [self presentViewController];
@@ -106,6 +152,33 @@
     }else{
         [[Util sharedUtil]showMessage:@"Username or password is incorrect" withTitle:@"Login failed!"];
     }
+}
+
+-(void)checkUserDefault{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
+    // check if user is already Login
+    if([defaults objectForKey:@"username"]!=nil  && [defaults objectForKey:@"password"]){
+//        if ([self checkUserNameAndPass2]) {
+//            if (self.appDelegate.isAdmin) {
+//                [[Util sharedUtil]showMessage:@"Welcome Admin." withTitle:@"Login Successful!"];
+//                [self nextView];
+//            } else if (self.appDelegate.isTeacher) {
+//                [[Util sharedUtil]showMessage:@"Welcome Teacher. Teach well - Study well" withTitle:@"Login Successful!"];
+//                [self presentViewController];
+//            } else{
+//                [[Util sharedUtil]showMessage:@"Welcome Student. Study well - Teach Well" withTitle:@"Login Successful!"];
+//                [self presentViewController];
+//            }
+//            
+//        }
+        self.userNameTextField.text = [defaults stringForKey:@"username"];
+        self.passwordTextField.text = [defaults stringForKey:@"password"];
+    }
+}
+
+-(void)nextView{
+    [self presentViewController];
 }
 
 - (void)presentViewController{
