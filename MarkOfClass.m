@@ -71,12 +71,18 @@
     cell.student = currentStudent;
     cell.name.text = currentStudent.name;
     cell.imageView.image = [UIImage imageWithContentsOfFile:currentStudent.avatar];
+    cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    cell.imageView.clipsToBounds = YES;
     cell.delegate = self;
 	return cell;
 }
 
-
-- (IBAction)showMenu:(id)sender {
-    [self.frostedViewController presentMenuViewController];
+- (IBAction)updateMark:(id)sender
+{
+    
 }
+
+//- (IBAction)showMenu:(id)sender {
+//    [self.frostedViewController presentMenuViewController];
+//}
 @end

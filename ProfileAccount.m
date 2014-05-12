@@ -27,12 +27,46 @@
 @property (nonatomic, strong) Admin *admin;
 @property (nonatomic, strong) Teacher *teacher;
 @property (nonatomic, strong) Student *student;
-
+@property (nonatomic, strong) UIDatePicker *pickerView;
 @property (nonatomic) UITextField *pass;
 
 @end
 
 @implementation ProfileAccount
+
+- (void)createPicker
+{
+    self.pickerView = [[UIDatePicker alloc] init];
+    [self.pickerView sizeToFit];
+    [self.pickerView setDatePickerMode:UIDatePickerModeDate];
+    self.pickerView.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    self.birthday.inputView = self.pickerView;
+}
+
+- (void)pickerViewWithDoneButton
+{
+    UIToolbar *keyboardDonebutton = [[UIToolbar alloc] init];
+    keyboardDonebutton.barStyle = UIBarStyleBlack;
+    keyboardDonebutton.translucent = YES;
+    keyboardDonebutton.tintColor = nil;
+    [keyboardDonebutton sizeToFit];
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(doneClicked:)];
+    [keyboardDonebutton setItems:[NSArray arrayWithObjects:doneButton, nil]];
+    self.birthday.inputAccessoryView = keyboardDonebutton;
+}
+
+- (void)setDateClicked:(id)sender
+{
+    self.birthday.text = [[Util sharedUtil] getStringFromDate:self.pickerView.date];
+    NSLog(@"%@", self.birthday.text);
+    [self.birthday becomeFirstResponder];
+}
+- (void)doneClicked:(id)sender
+{
+    self.birthday.text = [[Util sharedUtil] getStringFromDate:self.pickerView.date];
+    NSLog(@"%@", self.birthday.text);
+    [self.birthday resignFirstResponder];
+}
 
 - (void)init_user {
 	self.appDelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
@@ -54,6 +88,9 @@
 	[self init_user];
 	[self showProfile];
 	[self chooseImageAccount];
+    
+    [self createPicker];
+    [self pickerViewWithDoneButton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -68,6 +105,7 @@
 		self.email.text = self.admin.email;
 		self.username.text = self.admin.username;
 		self.password.text = self.admin.password;
+        self.birthday.text = [[Util sharedUtil] getStringFromDate:self.admin.birthday];
 		if (self.admin.avatar == nil) {
 			self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
 		}
@@ -82,6 +120,7 @@
 		self.email.text = self.teacher.email;
 		self.username.text = self.teacher.username;
 		self.password.text = self.teacher.password;
+        self.birthday.text = [[Util sharedUtil] getStringFromDate:self.teacher.birthday];
 		if (self.teacher.avatar == nil) {
 			self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
 		}
@@ -96,6 +135,7 @@
 		self.email.text = self.student.email;
 		self.username.text = self.student.username;
 		self.password.text = self.student.password;
+        self.birthday.text = [[Util sharedUtil] getStringFromDate:self.student.birthday];
 		if (self.student.avatar == nil) {
 			self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
 		}
@@ -155,6 +195,8 @@
 		self.admin.avatar = imagePath;
 		self.admin.name = self.name.text;
 		self.admin.address = self.address.text;
+        self.admin.phoneNumber = self.phoneNumber.text;
+        self.admin.birthday = [[Util sharedUtil] getDateFromString:self.birthday.text];
 		if ([self NSStringIsValidEmail:self.email.text] || [self.email.text isEqualToString:@""]) {
 			self.admin.email = self.email.text;
 		}
@@ -164,11 +206,14 @@
 		self.admin.username = self.username.text;
 		self.admin.password = self.password.text;
 		[[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+        [[Util sharedUtil] showMessage:@"Your account has been updated" withTitle:@"Success!"];
 	}
 	else if (self.isTeacher) {
 		self.teacher.avatar = imagePath;
 		self.teacher.name = self.name.text;
 		self.teacher.address = self.address.text;
+        self.teacher.phoneNumber = self.phoneNumber.text;
+        self.teacher.birthday = [[Util sharedUtil] getDateFromString:self.birthday.text];
 		if ([self NSStringIsValidEmail:self.email.text] || [self.email.text isEqualToString:@""]) {
 			self.teacher.email = self.email.text;
 		}
@@ -178,11 +223,14 @@
 		self.teacher.username = self.username.text;
 		self.teacher.password = self.password.text;
 		[[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+        [[Util sharedUtil] showMessage:@"Your account has been updated" withTitle:@"Success!"];
 	}
 	else {
 		self.student.avatar = imagePath;
 		self.student.name = self.name.text;
 		self.student.address = self.address.text;
+        self.student.birthday = [[Util sharedUtil] getDateFromString:self.birthday.text];
+        self.student.phoneNumber = self.phoneNumber.text;
 		if ([self NSStringIsValidEmail:self.email.text] || [self.email.text isEqualToString:@""]) {
 			self.student.email = self.email.text;
 		}
@@ -192,6 +240,7 @@
 		self.student.username = self.username.text;
 		self.student.password = self.password.text;
 		[[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+        [[Util sharedUtil] showMessage:@"Your account has been updated" withTitle:@"Success!"];
 	}
 }
 

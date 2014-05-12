@@ -10,7 +10,7 @@
 #import "SWTableViewCell.h"
 
 @interface MarkOfClass : UITableViewController <SWTableViewCellDelegate>
-- (IBAction)showMenu:(id)sender;
+
 
 - (IBAction)updateMark:(id)sender;
 
