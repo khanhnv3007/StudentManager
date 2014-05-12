@@ -159,26 +159,34 @@
     NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
     // check if user is already Login
     if([defaults objectForKey:@"username"]!=nil  && [defaults objectForKey:@"password"]){
-//        if ([self checkUserNameAndPass2]) {
-//            if (self.appDelegate.isAdmin) {
-//                [[Util sharedUtil]showMessage:@"Welcome Admin." withTitle:@"Login Successful!"];
-//                [self nextView];
-//            } else if (self.appDelegate.isTeacher) {
-//                [[Util sharedUtil]showMessage:@"Welcome Teacher. Teach well - Study well" withTitle:@"Login Successful!"];
-//                [self presentViewController];
-//            } else{
-//                [[Util sharedUtil]showMessage:@"Welcome Student. Study well - Teach Well" withTitle:@"Login Successful!"];
-//                [self presentViewController];
-//            }
-//            
-//        }
+        if ([self checkUserNameAndPass2]) {
+            if (self.appDelegate.isAdmin) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome!" message:@"Do you want return back to the last session?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
+                alert.alertViewStyle = UIAlertViewStyleDefault;
+                [alert show];
+            } else if (self.appDelegate.isTeacher) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome!" message:@"Do you want return back to the last session?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
+                alert.alertViewStyle = UIAlertViewStyleDefault;
+                [alert show];
+            } else{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome!" message:@"Do you want return back to the last session?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
+                alert.alertViewStyle = UIAlertViewStyleDefault;
+                [alert show];
+            }
+            
+        }
         self.userNameTextField.text = [defaults stringForKey:@"username"];
         self.passwordTextField.text = [defaults stringForKey:@"password"];
     }
 }
 
--(void)nextView{
-    [self presentViewController];
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == 1) {
+		NSLog(@"cancel");
+	}
+	else {
+		[self presentViewController];
+	}
 }
 
 - (void)presentViewController{
