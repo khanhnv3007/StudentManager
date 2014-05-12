@@ -73,6 +73,7 @@
 		82DEAB2319172CB70039B380 /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DEAB2219172CB70039B380 /* Teacher.m */; };
 		82DEAB2619172CB70039B380 /* Mark.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DEAB2519172CB70039B380 /* Mark.m */; };
 		82DEAB2919172CB70039B380 /* Subject.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DEAB2819172CB70039B380 /* Subject.m */; };
+		82F89AFD1920C3A700246D7E /* teacher33.png in Resources */ = {isa = PBXBuildFile; fileRef = 82F89AFC1920C3A700246D7E /* teacher33.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -196,6 +197,7 @@
 		82DEAB2519172CB70039B380 /* Mark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mark.m; sourceTree = "<group>"; };
 		82DEAB2719172CB70039B380 /* Subject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Subject.h; sourceTree = "<group>"; };
 		82DEAB2819172CB70039B380 /* Subject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Subject.m; sourceTree = "<group>"; };
+		82F89AFC1920C3A700246D7E /* teacher33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = teacher33.png; sourceTree = "<group>"; };
 		BAFAD8F62A14431A994A3AB8 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -391,6 +393,7 @@
 		09C4BBC01917365C00FB0D11 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				82F89AFC1920C3A700246D7E /* teacher33.png */,
 				09C4BBE519173EFD00FB0D11 /* menu30.png */,
 				09C4BBCB191736A300FB0D11 /* lock.png */,
 				09C4BBCC191736A300FB0D11 /* lock@2x.png */,
@@ -718,6 +721,7 @@
 			files = (
 				09C4BBD719173CD600FB0D11 /* MenuView.storyboard in Resources */,
 				09C4BBC91917369A00FB0D11 /* mail.png in Resources */,
+				82F89AFD1920C3A700246D7E /* teacher33.png in Resources */,
 				82DEAAB3191724600039B380 /* InfoPlist.strings in Resources */,
 				09C4BBCD191736A300FB0D11 /* lock.png in Resources */,
 				82DEAABE191724600039B380 /* Images.xcassets in Resources */,
