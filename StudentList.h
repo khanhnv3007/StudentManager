@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface StudentList : UITableViewController
+@interface StudentList : UITableViewController <UIAlertViewDelegate>
 - (IBAction)showMenu:(id)sender;
 
 @end

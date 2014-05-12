@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TeacherList : UITableViewController
+@interface TeacherList : UITableViewController < UIAlertViewDelegate>
 
 @end

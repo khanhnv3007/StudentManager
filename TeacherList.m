@@ -31,6 +31,7 @@
 @property (nonatomic, strong) NSArray *teachers;
 
 @property (nonatomic, strong) UITableView *rootTableView;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 @end
 
@@ -105,6 +106,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (self.isAdmin) {
+        self.indexPath = indexPath;
 		return YES;
 	}
 	return NO;
@@ -113,49 +115,24 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		[tableView beginUpdates];
-        
-		Teacher *TeacherIsDeleted = [self.teacherList objectAtIndex:indexPath.row];
-        
-		[TeacherIsDeleted MR_deleteEntity];
-		[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-        
-		[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        [self loadAllTeacher];
-        [self.rootTableView reloadData];
-		[tableView endUpdates];
-	}
-	else if (editingStyle == UITableViewCellEditingStyleInsert) {
-		// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        [[Util sharedUtil] showMessage:@"Are you sure want to delete this teacher?" withTitle:@"Warning!" cancelButtonTitle:@"Yes" otherButtonTitles:@"NO" delegate:self andTag:2];
 	}
 }
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    if (alertView.tag == 2) {
+        if (buttonIndex == 0) {
+            [self.tableView beginUpdates];
+            Teacher *TeacherIsDeleted = [self.teacherList objectAtIndex:self.indexPath.row];
+            [TeacherIsDeleted MR_deleteEntity];
+            [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+            [self.tableView deleteRowsAtIndexPaths:@[self.indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self loadAllTeacher];
+            [self.rootTableView reloadData];
+            [self.tableView endUpdates];
+        }
+    }
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

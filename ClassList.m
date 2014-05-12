@@ -13,6 +13,7 @@
 #import "Admin.h"
 #import "Subject.h"
 #import "REFrostedViewController.h"
+#import "Mark.h"
 
 @interface ClassList ()
 
@@ -34,6 +35,7 @@
 
 @property (nonatomic, strong) UITableView *rootTableView;
 @property (nonatomic, strong) NSString *getID;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 @end
 
@@ -110,55 +112,67 @@
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (self.isAdmin) {
+		self.indexPath = indexPath;
 		return YES;
 	}
 	return NO;
 }
 
+- (void)tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		[tableView beginUpdates];
-
-		Subject *ClassIsDeleted = [self.classList objectAtIndex:indexPath.row];
-        
-		[ClassIsDeleted MR_deleteEntity];
-		[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-
-		[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        [self loadAllClass];
-        [self.rootTableView reloadData];
-		[tableView endUpdates];
-	}
-	else if (editingStyle == UITableViewCellEditingStyleInsert) {
-		// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+		[[Util sharedUtil] showMessage:@"Are you sure want to delete this class" withTitle:@"Warning!" cancelButtonTitle:@"YES" otherButtonTitles:@"NO" delegate:self andTag:1];
 	}
 }
 
 //student enroll class
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (self.isStudent) {
-        [[Util sharedUtil]showMessage:@"Are you sure want to enroll this class" withTitle:@"Confirm ?" cancelButtonTitle:@"YES" otherButtonTitles:@"NO" delegate:self andTag:100];
-        Subject *subject = self.classList[indexPath.row];
-        self.getID = subject.subjectID;
-    }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (self.isStudent) {
+		[[Util sharedUtil]showMessage:@"Are you sure want to enroll this class" withTitle:@"Confirm ?" cancelButtonTitle:@"YES" otherButtonTitles:@"NO" delegate:self andTag:100];
+		Subject *subject = self.classList[indexPath.row];
+		self.getID = subject.subjectID;
+	}
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (alertView.tag == 100) {
-        if (buttonIndex == 0) {
-            Subject *subject = [Subject MR_findFirstByAttribute:@"subjectID" withValue:self.getID];
-            [subject addClassofStudentObject:self.student];
-            [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-        }
-    }
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (alertView.tag == 1) {
+		if (buttonIndex == 0) {
+			[self.tableView beginUpdates];
+
+			Subject *ClassIsDeleted = [self.classList objectAtIndex:self.indexPath.row];
+			[ClassIsDeleted MR_deleteEntity];
+			[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+
+			[self.tableView deleteRowsAtIndexPaths:@[self.indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+			[self loadAllClass];
+			[self.rootTableView reloadData];
+			[self.tableView endUpdates];
+		}
+	}
+	if (alertView.tag == 100) {
+		if (buttonIndex == 0) {
+			Subject *subject = [Subject MR_findFirstByAttribute:@"subjectID" withValue:self.getID];
+			[subject addClassofStudentObject:self.student];
+			Mark *markOfStudent = [Mark MR_createEntity];
+			markOfStudent.markID = [[Util sharedUtil]generateGUID];
+			markOfStudent.mid = 0;
+			markOfStudent.final = 0;
+			markOfStudent.average = 0;
+			markOfStudent.markOfStudent = self.student;
+			markOfStudent.markOfSubject = subject;
+			[subject addSubjectOfMarkObject:markOfStudent];
+			[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+		}
+	}
 }
 
 - (IBAction)showMenu:(id)sender {
-    [self.frostedViewController presentMenuViewController];
+	[self.frostedViewController presentMenuViewController];
 }
+
 @end

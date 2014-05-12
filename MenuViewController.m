@@ -64,43 +64,6 @@
 	[super viewDidLoad];
 }
 
-//- (NSString *)getImagePath {
-//	AppDelegate *apdelegate = (AppDelegate *)[[UIApplication sharedApplication]delegate];
-//	NSString *imagePath = nil;
-//
-//	NSArray *admin = [[DataManager sharedDataManager] getAllAdminAccount];
-//	NSMutableArray *adminList = [NSMutableArray arrayWithArray:admin];
-//
-//    NSArray *teacher = [[DataManager sharedDataManager] getAllTeacherAccount];
-//    NSMutableArray *teacherList = [NSMutableArray arrayWithArray:teacher];
-//
-//	for (Admin *currentAdmin in adminList) {
-//		if ([currentAdmin.username isEqual:apdelegate.username]) {
-//			imagePath = currentAdmin.avatar;
-//            self.nameOfUser = currentAdmin.name;
-//		}
-//	}
-//
-//    for ( Teacher *currentTeacher in teacherList) {
-//		if ([currentTeacher.username isEqual:apdelegate.username]) {
-//			imagePath = currentTeacher.avatar;
-//            self.nameOfUser = currentTeacher.name;
-//		}
-//	}
-//
-//    NSArray *student = [[DataManager sharedDataManager]getAllStudentAccount];
-//    NSMutableArray *studentList = [NSMutableArray arrayWithArray:student];
-//
-//    for (Student *currentStudent in studentList) {
-//        if ([currentStudent.username isEqual:apdelegate.username]) {
-//            imagePath = currentStudent.avatar;
-//            self.nameOfUser = currentStudent.name;
-//        }
-//    }
-//
-//	return imagePath;
-//}
-
 - (void)viewDidLoad {
 	[super viewDidLoad];
 

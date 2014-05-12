@@ -69,6 +69,8 @@
             self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
         } else {
             self.avatar.image = [UIImage imageWithContentsOfFile:self.admin.avatar];
+            self.avatar.contentMode = UIViewContentModeScaleAspectFit;
+            self.avatar.clipsToBounds = YES;
         }
 	}
 	else if (self.isTeacher) {
@@ -82,6 +84,10 @@
             self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
         } else {
             self.avatar.image = [UIImage imageWithContentsOfFile:self.teacher.avatar];
+            self.avatar.contentMode = UIViewContentModeScaleAspectFit;
+            self.avatar.clipsToBounds = YES;
+            self.avatar.layer.cornerRadius = 50.0f;
+            self.avatar.layer.masksToBounds = YES;
         }
 	}
 	else {
@@ -95,6 +101,8 @@
             self.avatar.image = [UIImage imageNamed:@"no-avatar.png"];
         } else {
             self.avatar.image = [UIImage imageWithContentsOfFile:self.student.avatar];
+            self.avatar.contentMode = UIViewContentModeScaleAspectFit;
+            self.avatar.clipsToBounds = YES;
         }	}
 }
 

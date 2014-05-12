@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		099B317119207D510016FECD /* UpdateMark.m in Sources */ = {isa = PBXBuildFile; fileRef = 099B317019207D510016FECD /* UpdateMark.m */; };
 		09A3A95F191A284E00614D76 /* ProfileAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A95E191A284E00614D76 /* ProfileAccount.m */; };
 		09A3A963191A2ECC00614D76 /* ClassList.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A962191A2ECC00614D76 /* ClassList.m */; };
 		09A3A968191A33EB00614D76 /* CreateClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 09A3A967191A33EB00614D76 /* CreateClass.m */; };
@@ -84,6 +85,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		099B316F19207D510016FECD /* UpdateMark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateMark.h; sourceTree = "<group>"; };
+		099B317019207D510016FECD /* UpdateMark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateMark.m; sourceTree = "<group>"; };
 		09A3A95D191A284E00614D76 /* ProfileAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileAccount.h; sourceTree = "<group>"; };
 		09A3A95E191A284E00614D76 /* ProfileAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileAccount.m; sourceTree = "<group>"; };
 		09A3A961191A2ECC00614D76 /* ClassList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClassList.h; sourceTree = "<group>"; };
@@ -220,6 +223,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		099B316E19207D390016FECD /* Update mark */ = {
+			isa = PBXGroup;
+			children = (
+				099B316F19207D510016FECD /* UpdateMark.h */,
+				099B317019207D510016FECD /* UpdateMark.m */,
+			);
+			name = "Update mark";
+			sourceTree = "<group>";
+		};
 		09A3A958191A225400614D76 /* Subject */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +333,7 @@
 		09B861C1191A80820034799F /* Mark */ = {
 			isa = PBXGroup;
 			children = (
+				099B316E19207D390016FECD /* Update mark */,
 				09B861C9191A8A0B0034799F /* MarkOfClassCell */,
 				09B861C5191A83280034799F /* MarkOfClass.h */,
 				09B861C6191A83280034799F /* MarkOfClass.m */,
@@ -768,6 +781,7 @@
 				82DEAB2919172CB70039B380 /* Subject.m in Sources */,
 				09C4BBE019173DCA00FB0D11 /* MenuViewController.m in Sources */,
 				09C4BBDC19173DAA00FB0D11 /* RootView.m in Sources */,
+				099B317119207D510016FECD /* UpdateMark.m in Sources */,
 				09A3A96D191A384A00614D76 /* CreatePeople.m in Sources */,
 				82DEAB01191728980039B380 /* NSObject+Extension.m in Sources */,
 				82DEAAF3191728570039B380 /* RMSwipeTableViewCell.m in Sources */,

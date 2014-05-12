@@ -11,4 +11,7 @@
 
 @interface MarkOfClass : UITableViewController <SWTableViewCellDelegate>
 
+- (IBAction)updateMark:(id)sender;
+
+
 @end

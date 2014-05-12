@@ -24,8 +24,17 @@
 - (void)awakeFromNib
 {
     // Initialization code
-    self.avatar.contentMode = UIViewContentModeScaleAspectFill;
-    self.avatar.clipsToBounds = YES;
+//    self.avatar.contentMode = UIViewContentModeScaleAspectFill;
+//    self.avatar.clipsToBounds = YES;
+//    self.avatar.layer.masksToBounds = YES;
+//    self.avatar.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+//    self.avatar.layer.masksToBounds = YES;
+//    self.avatar.layer.cornerRadius = 50.0;
+//    self.avatar.layer.borderColor = [UIColor whiteColor].CGColor;
+//    self.avatar.layer.borderWidth = 3.0f;
+//    self.avatar.layer.rasterizationScale = [UIScreen mainScreen].scale;
+//    self.avatar.layer.shouldRasterize = YES;
+//    self.avatar.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

@@ -32,6 +32,7 @@
 @property (nonatomic, strong) NSArray *students;
 
 @property (nonatomic, strong) UITableView *rootTableView;
+@property (nonatomic, strong) NSIndexPath *indexPath;
 
 @end
 
@@ -108,6 +109,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (self.isAdmin) {
+        self.indexPath = indexPath;
 		return YES;
 	}
 	return NO;
@@ -116,49 +118,29 @@
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		[tableView beginUpdates];
-        
-		Student *studentIsDeleted = [self.studentList objectAtIndex:indexPath.row];
-        
-		[studentIsDeleted MR_deleteEntity];
-		[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-        
-		[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-        
-        [self loadAllStudent];
-        [self.rootTableView reloadData];
-		[tableView endUpdates];
-	}
-	else if (editingStyle == UITableViewCellEditingStyleInsert) {
-		// Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        [[Util sharedUtil] showMessage:@"Are you sure want to delete this student?" withTitle:@"Warning!" cancelButtonTitle:@"YES" otherButtonTitles:@"NO" delegate:self andTag:3];
 	}
 }
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+    if (alertView.tag == 3) {
+        if (buttonIndex == 0) {
+            [self.tableView beginUpdates];
+            
+            Student *studentIsDeleted = [self.studentList objectAtIndex:self.indexPath.row];
+            
+            [studentIsDeleted MR_deleteEntity];
+            [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+            
+            [self.tableView deleteRowsAtIndexPaths:@[self.indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            
+            [self loadAllStudent];
+            [self.rootTableView reloadData];
+            [self.tableView endUpdates];
+        }
+    }
 }
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)showMenu:(id)sender {
     [self.frostedViewController presentMenuViewController];

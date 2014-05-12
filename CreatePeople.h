@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CreatePeople : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface CreatePeople : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *username;
