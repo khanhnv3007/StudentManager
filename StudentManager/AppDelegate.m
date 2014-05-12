@@ -24,15 +24,28 @@
 	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:[appName stringByAppendingString:@".sqlite"]];
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-    UINavigationController *navController = [mainStoryboard instantiateViewControllerWithIdentifier:@"navRoot"];
-    self.window.rootViewController = navController;
-    // Override point for customization after application launch.
+    [self checkIsAuthen];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
 }
 
+- (void)checkIsAuthen
+{
+    if ([Session sharedInstance].isAuthen == YES) {
+        UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"MenuView" bundle:nil];
+        UINavigationController *navController = [nextStoryboard instantiateInitialViewController];
+        self.window.rootViewController = navController;
+        NSLog(@"isauthen");
+    }
+    else
+    {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        UINavigationController *navController = [mainStoryboard instantiateViewControllerWithIdentifier:@"navRoot"];
+        self.window.rootViewController = navController;
+        NSLog(@"not authen");
+    }
+}
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

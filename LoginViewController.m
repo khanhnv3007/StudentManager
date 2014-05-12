@@ -156,22 +156,11 @@
 
 -(void)checkUserDefault{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
     // check if user is already Login
     if([defaults objectForKey:@"username"]!=nil  && [defaults objectForKey:@"password"]){
-//        if ([self checkUserNameAndPass2]) {
-//            if (self.appDelegate.isAdmin) {
-//                [[Util sharedUtil]showMessage:@"Welcome Admin." withTitle:@"Login Successful!"];
-//                [self nextView];
-//            } else if (self.appDelegate.isTeacher) {
-//                [[Util sharedUtil]showMessage:@"Welcome Teacher. Teach well - Study well" withTitle:@"Login Successful!"];
-//                [self presentViewController];
-//            } else{
-//                [[Util sharedUtil]showMessage:@"Welcome Student. Study well - Teach Well" withTitle:@"Login Successful!"];
-//                [self presentViewController];
-//            }
-//            
-//        }
+        if ([self checkUserNameAndPass2]) {
+            [self presentViewController];
+        }
         self.userNameTextField.text = [defaults stringForKey:@"username"];
         self.passwordTextField.text = [defaults stringForKey:@"password"];
     }

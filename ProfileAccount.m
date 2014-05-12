@@ -91,6 +91,16 @@
     
     [self createPicker];
     [self pickerViewWithDoneButton];
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [self.tableView addGestureRecognizer:gestureRecognizer];
+}
+- (void)hideKeyboard
+{
+    [self.email resignFirstResponder];
+    [self.name resignFirstResponder];
+    [self.address resignFirstResponder];
+    [self.phoneNumber resignFirstResponder];
+    [self.password resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
