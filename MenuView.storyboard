@@ -605,10 +605,10 @@
             </objects>
             <point key="canvasLocation" x="243" y="871"/>
         </scene>
-        <!--Table View Controller - Manage People-->
+        <!--Manage People - Manage People-->
         <scene sceneID="vJl-v8-c7F">
             <objects>
-                <tableViewController storyboardIdentifier="managePeople" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tsc-Kh-Hom" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="managePeople" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tsc-Kh-Hom" customClass="ManagePeople" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Nhw-wG-W3s">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -704,6 +704,9 @@
                                 <state key="normal" image="menu30.png">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="showMenu:" destination="tsc-Kh-Hom" eventType="touchUpInside" id="u0c-iz-odj"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
@@ -712,7 +715,7 @@
             </objects>
             <point key="canvasLocation" x="528" y="-550"/>
         </scene>
-        <!--Create People - Add Teacher/Student-->
+        <!--Create People - Create People-->
         <scene sceneID="U39-MW-a6w">
             <objects>
                 <viewController id="Djn-WO-h5L" customClass="CreatePeople" sceneMemberID="viewController">
@@ -770,20 +773,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Teacher/Student" id="MPO-sP-Dny">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="lXt-NW-ztI">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dmx-cP-cIG">
-                                <rect key="frame" x="16" y="7" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="menu30.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="showMenu:" destination="Djn-WO-h5L" eventType="touchUpInside" id="F2D-py-XrY"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Create People" id="LZk-9z-umB"/>
                     <connections>
                         <outlet property="name" destination="ycf-ut-Wwb" id="Xa6-HF-CXW"/>
                         <outlet property="selectUser" destination="CND-8h-ukT" id="pxS-w8-XM2"/>
@@ -837,20 +827,7 @@
                             <outlet property="delegate" destination="50m-3B-xgW" id="8ZO-Yd-Htd"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Student List" id="QWx-kT-uPz">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="H6D-gi-Fef">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="oX6-IB-6mM">
-                                <rect key="frame" x="16" y="7" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="menu30.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="showMenu:" destination="50m-3B-xgW" eventType="touchUpInside" id="q0F-Hi-aPn"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Student List" id="U5E-sT-dPH"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aXP-CU-IB6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
