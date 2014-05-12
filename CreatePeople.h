@@ -18,6 +18,4 @@
 - (IBAction)createPeople:(id)sender;
 - (IBAction)showMenu:(id)sender;
 
-@property (nonatomic, strong) UIPickerView *selectTeacher;
-
 @end

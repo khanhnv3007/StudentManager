@@ -35,7 +35,7 @@
         admin.username = self.username.text;
         admin.password = self.username.text;
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-        [[Util sharedUtil]showMessage:@"Admin was created" withTitle:@"Success!"];
+        [[Util sharedUtil] showMessage:@"An admin has been created!" withTitle:@"Create Success"];
     }
     if (self.selectUser.selectedSegmentIndex == 1) {
         Teacher *teacher = [Teacher MR_createEntity];
@@ -43,7 +43,7 @@
         teacher.username = self.username.text;
         teacher.password = self.username.text;
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-        [[Util sharedUtil]showMessage:@"Teacher was created" withTitle:@"Success!"];
+        [[Util sharedUtil] showMessage:@"A teacher has been created!" withTitle:@"Create Success"];
     }
     if (self.selectUser.selectedSegmentIndex == 2) {
         Student *student = [Student MR_createEntity];
@@ -51,8 +51,13 @@
         student.username = self.username.text;
         student.password = self.username.text;
         [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-        [[Util sharedUtil]showMessage:@"Student was created" withTitle:@"Success!"];
+        [[Util sharedUtil] showMessage:@"A student has been created!" withTitle:@"Create Success"];
     }
+    
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
 }
 
 - (IBAction)showMenu:(id)sender {

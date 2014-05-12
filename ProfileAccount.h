@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
+- (IBAction)changePassword:(id)sender;
 
 - (IBAction)Update:(id)sender;
 - (IBAction)showMenu:(id)sender;
