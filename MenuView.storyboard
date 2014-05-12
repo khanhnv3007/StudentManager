@@ -531,11 +531,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="d5d-Ci-PkY">
-                                        <rect key="frame" x="0.0" y="457" width="320" height="44"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="79" id="d5d-Ci-PkY">
+                                        <rect key="frame" x="0.0" y="457" width="320" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="d5d-Ci-PkY" id="tZe-g7-v3P">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="78"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uak-NF-DNk">
@@ -550,6 +550,16 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FnN-Qd-ecm">
+                                                    <rect key="frame" x="150" y="44" width="150" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" title="Change Password">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="changePassword:" destination="win-yK-g2A" eventType="touchUpInside" id="h4y-Rv-lcv"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
