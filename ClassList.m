@@ -102,7 +102,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellClassList" forIndexPath:indexPath];
 
-	cell.imageView.image = [UIImage imageNamed:@"menu30.png"];
+	cell.imageView.image = [UIImage imageNamed:@"teacher33.png"];
+	cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+	cell.imageView.clipsToBounds = YES;
+	cell.imageView.layer.cornerRadius = 10.0f;
+	cell.imageView.layer.masksToBounds = YES;
+	cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
 	Subject *class = (Subject *)[self.classList objectAtIndex:indexPath.row];
 	cell.textLabel.text = class.name;
 	cell.detailTextLabel.text = class.classWithTeacher.name;
