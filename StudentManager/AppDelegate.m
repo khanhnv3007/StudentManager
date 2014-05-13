@@ -23,10 +23,26 @@
     NSString *appName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
 	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:[appName stringByAppendingString:@".sqlite"]];
 	self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
-    UINavigationController *navController = [mainStoryboard instantiateViewControllerWithIdentifier:@"navRoot"];
-    self.window.rootViewController = navController;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber* isAuthe = [defaults valueForKey:@"isAuthenticated"];
+    if (isAuthe.boolValue) {
+        NSString* type = [defaults stringForKey:@"type"];
+        if ([type isEqualToString:@"5"]){
+            self.isAdmin = YES;
+        } else if([type isEqualToString:@"6"]){
+            self.isTeacher = YES;
+        } else self.isStudent = YES;
+        self.username = [defaults stringForKey:@"username"];
+        self.password = [defaults stringForKey:@"password"];
+        if(self.isAdmin) NSLog(@"%@ %@",self.username, @"admin");
+        UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"MenuView" bundle:nil];
+        UINavigationController *navController = [nextStoryboard instantiateInitialViewController];
+        self.window.rootViewController = navController;
+    }else{
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
+        UINavigationController *navController = [mainStoryboard instantiateViewControllerWithIdentifier:@"navRoot"];
+        self.window.rootViewController = navController;
+    }
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

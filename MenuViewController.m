@@ -168,7 +168,9 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults removeObjectForKey:@"username"];
         [defaults removeObjectForKey:@"password"];
+        [[NSUserDefaults standardUserDefaults] setValue:@1 forKey:@"isAuthenticated"];
         [defaults synchronize];
+        
 		UIStoryboard *loginStoryboard = [UIStoryboard storyboardWithName:@"Login" bundle:nil];
 		UINavigationController *navController = [loginStoryboard instantiateInitialViewController];
 		self.view.window.rootViewController = navController;

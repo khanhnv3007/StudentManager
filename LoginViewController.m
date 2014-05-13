@@ -193,6 +193,18 @@
     UIStoryboard *nextStoryboard = [UIStoryboard storyboardWithName:@"MenuView" bundle:nil];
     UINavigationController *navController = [nextStoryboard instantiateInitialViewController];
     self.view.window.rootViewController = navController;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setValue:@1 forKey:@"isAuthenticated"];
+    if (self.appDelegate.isAdmin) {
+        [defaults setObject:@5 forKey:@"type"];
+    } else if (self.appDelegate.isTeacher) {
+        [defaults setObject:@6 forKey:@"type"];
+    } else{
+        [defaults setObject:@7 forKey:@"type"];
+    }
+    [defaults setObject:self.userNameTextField.text forKey:@"username"];
+    [defaults setObject:self.passwordTextField.text forKey:@"password"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     [Session sharedInstance].isAuthen = YES;
 }
 

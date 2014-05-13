@@ -173,7 +173,9 @@
 		if ([self.pass.text isEqualToString:self.admin.password]) {
 			[[Util sharedUtil] showMessage:@"Now, You can change your password :)" withTitle:@"Confirm Successully!"];
 			self.password.enabled = YES;
-		}
+		}else{
+            [[Util sharedUtil] showMessage:@"Password is not match" withTitle:@"Failed!"];
+        }
 	}
 }
 
