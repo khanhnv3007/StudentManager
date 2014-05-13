@@ -156,37 +156,18 @@
 
 -(void)checkUserDefault{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
     // check if user is already Login
     if([defaults objectForKey:@"username"]!=nil  && [defaults objectForKey:@"password"]){
         if ([self checkUserNameAndPass2]) {
-            if (self.appDelegate.isAdmin) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome!" message:@"Do you want return back to the last session?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
-                alert.alertViewStyle = UIAlertViewStyleDefault;
-                [alert show];
-            } else if (self.appDelegate.isTeacher) {
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome!" message:@"Do you want return back to the last session?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
-                alert.alertViewStyle = UIAlertViewStyleDefault;
-                [alert show];
-            } else{
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Welcome!" message:@"Do you want return back to the last session?" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:@"Cancel", nil];
-                alert.alertViewStyle = UIAlertViewStyleDefault;
-                [alert show];
-            }
-            
+            [self presentViewController];
         }
         self.userNameTextField.text = [defaults stringForKey:@"username"];
         self.passwordTextField.text = [defaults stringForKey:@"password"];
     }
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if (buttonIndex == 1) {
-		NSLog(@"cancel");
-	}
-	else {
-		[self presentViewController];
-	}
+-(void)nextView{
+    [self presentViewController];
 }
 
 - (void)presentViewController{

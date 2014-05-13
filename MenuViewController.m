@@ -179,6 +179,7 @@
 		appDelegate.isAdmin = NO;
 		appDelegate.isTeacher = NO;
 		appDelegate.isStudent = NO;
+        [Session sharedInstance].isAuthen = NO;
 	}
 	self.frostedViewController.contentViewController = navigationController;
 	[self.frostedViewController hideMenuViewController];
